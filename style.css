@@ -237,7 +237,7 @@ img {
     transition: var(--transition-fast);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    align-self: flex-start;
+    align-self: center;
 }
 
 .btn-primary {
