@@ -147,21 +147,21 @@
     }
 
     .card-thumb {
-      background: var(--bg-card-hover);
       height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
       overflow: hidden;
     }
 
-    .card-thumb-num {
-      font-size: 56px;
-      font-weight: 700;
-      color: rgba(226, 185, 111, 0.15);
-      user-select: none;
-      line-height: 1;
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-thumb img {
+      transform: scale(1.04);
     }
 
     .card-industry {
@@ -305,7 +305,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">01</span>
+          <img src="images/logistics-lp.jpg" alt="物流会社LP">
           <span class="card-industry">物流</span>
         </div>
         <div class="card-body">
@@ -316,7 +316,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">02</span>
+          <img src="images/kottohin-lp.jpg" alt="骨董品買取LP">
           <span class="card-industry">骨董品買取</span>
         </div>
         <div class="card-body">
@@ -327,7 +327,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">03</span>
+          <img src="images/beauty-lp.jpg" alt="美容サロンLP">
           <span class="card-industry">美容サロン</span>
         </div>
         <div class="card-body">
@@ -338,7 +338,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">04</span>
+          <img src="images/fitness-lp.jpg" alt="フィットネスジムLP">
           <span class="card-industry">フィットネス</span>
         </div>
         <div class="card-body">
@@ -349,7 +349,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">05</span>
+          <img src="images/brand-purchase-lp.jpg" alt="ブランド買取LP">
           <span class="card-industry">ブランド買取</span>
         </div>
         <div class="card-body">
@@ -360,7 +360,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">06</span>
+          <img src="images/recruit-driver-lp.jpg" alt="採用LP">
           <span class="card-industry">ドライバー採用</span>
         </div>
         <div class="card-body">
@@ -371,7 +371,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">07</span>
+          <img src="images/tax-accountant-lp.jpg" alt="税理士事務所LP">
           <span class="card-industry">税理士</span>
         </div>
         <div class="card-body">
@@ -382,7 +382,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">08</span>
+          <img src="images/real-estate-sale-lp.jpg" alt="不動産売却LP">
           <span class="card-industry">不動産売却</span>
         </div>
         <div class="card-body">
@@ -393,7 +393,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">09</span>
+          <img src="images/private-tour-lp.jpg" alt="プライベートツアーLP">
           <span class="card-industry">インバウンド旅行</span>
         </div>
         <div class="card-body">
@@ -404,7 +404,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">10</span>
+          <img src="images/reform-lp.jpg" alt="リフォームLP">
           <span class="card-industry">住宅リフォーム</span>
         </div>
         <div class="card-body">
@@ -415,7 +415,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">11</span>
+          <img src="images/architecture-lp-demo.jpg" alt="建築デザインLP">
           <span class="card-industry">建築・空間デザイン</span>
         </div>
         <div class="card-body">
@@ -426,7 +426,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">12</span>
+          <img src="images/cafe-lp.jpg" alt="カフェLP">
           <span class="card-industry">カフェ</span>
         </div>
         <div class="card-body">
@@ -437,7 +437,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">13</span>
+          <img src="images/tver-lp.jpg" alt="プロモLP">
           <span class="card-industry">TVプロモーション</span>
         </div>
         <div class="card-body">
@@ -448,7 +448,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">14</span>
+          <img src="images/insurance-consulting-lp.jpg" alt="保険コンサルLP">
           <span class="card-industry">保険コンサル</span>
         </div>
         <div class="card-body">
@@ -459,7 +459,7 @@
 
       <div class="card">
         <div class="card-thumb">
-          <span class="card-thumb-num">15</span>
+          <img src="images/colorverse.jpg" alt="ブランドポータル">
           <span class="card-industry">多言語ブランド</span>
         </div>
         <div class="card-body">
