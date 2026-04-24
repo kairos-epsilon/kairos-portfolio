@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー | Kairos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#020408;--bg2:#050a12;--bg3:#080f1a;
+  --cyan:#00e5ff;--cyan-dim:#00b8d4;
+  --purple:#b347ff;--green:#00ff88;
+  --white:#e8f4f8;--gray:#4a6572;--gray2:#2a3a45;
+  --border:rgba(0,229,255,0.12);--border2:rgba(0,229,255,0.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Noto Sans JP',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden;cursor:none;}
+#cursor{position:fixed;width:8px;height:8px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan);}
+#cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(0,229,255,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.12s ease;}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(to bottom,transparent 0px,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);pointer-events:none;z-index:1000;opacity:0.4;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
+nav.scrolled{background:rgba(2,4,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Orbitron',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:0.15em;color:var(--white);text-decoration:none;}
+.nav-logo span{color:var(--cyan);text-shadow:0 0 20px var(--cyan);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{padding:0.5rem 1.4rem;border:1px solid var(--cyan);color:var(--cyan) !important;font-family:'Share Tech Mono',monospace !important;font-size:0.72rem !important;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.3s !important;position:relative;overflow:hidden;}
+.nav-cta::before{content:'';position:absolute;inset:0;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;z-index:-1;}
+.nav-cta:hover{color:var(--bg) !important;box-shadow:0 0 20px var(--cyan);}
+.nav-cta:hover::before{transform:scaleX(1);}
+.page-hero{padding:140px 5vw 80px;position:relative;overflow:hidden;border-bottom:1px solid var(--border2);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border2) 1px,transparent 1px),linear-gradient(90deg,var(--border2) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);}
+.hero-glow{position:absolute;width:400px;height:400px;border-radius:50%;top:-100px;right:5%;background:radial-gradient(circle,rgba(0,229,255,0.06) 0%,transparent 70%);}
+.page-hero-inner{position:relative;z-index:1;max-width:800px;}
+.back-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;color:var(--gray);text-decoration:none;text-transform:uppercase;margin-bottom:1.5rem;transition:color 0.3s;}
+.back-btn:hover{color:var(--cyan);}
+.page-label{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.35em;color:var(--cyan);text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem;}
+.page-label::before{content:'//';color:var(--purple);}
+.page-hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:700;line-height:1.2;letter-spacing:0.03em;}
+.page-hero h1 .accent{color:var(--cyan);text-shadow:0 0 25px rgba(0,229,255,0.4);}
+.inner{max-width:1080px;margin:0 auto;padding:80px 5vw;}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
+.f-logo{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.15em;color:var(--white);text-decoration:none;}
+.f-logo span{color:var(--cyan);}
+.f-copy{font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--gray);}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s,transform 0.7s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:0.1s}.rd2{transition-delay:0.2s}.rd3{transition-delay:0.3s}
+@media(max-width:768px){.nav-links{display:none;}.inner{padding:50px 5vw;}}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav id="mainNav">
+  <a href="kairos-corporate.html" class="nav-logo">KAIROS<span>_</span></a>
+  <ul class="nav-links">
+    <li><a href="kairos-corporate.html#about">About</a></li>
+    <li><a href="kairos-corporate.html#services">Services</a></li>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="kairos-corporate.html#flow">Flow</a></li>
+    <li><a href="kairos-corporate.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+<style>
+.policy-block{display:grid;grid-template-columns:5rem 1fr;gap:1.5rem;padding:2.2rem 0;border-bottom:1px solid var(--border2);}
+.policy-num{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--cyan);letter-spacing:0.15em;padding-top:0.2rem;}
+.policy-content h3{font-family:'Orbitron',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:0.8rem;color:var(--white);letter-spacing:0.03em;}
+.policy-content p{font-size:0.84rem;color:var(--gray);line-height:2;margin-bottom:0.5rem;}
+.policy-date{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--gray);margin-top:3rem;letter-spacing:0.1em;}
+</style>
+
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="page-hero-inner">
+    <a href="kairos-corporate.html" class="back-btn"> Topに戻る</a>
+    <p class="page-label">Legal</p>
+    <h1>プライバシー<span class="accent">ポリシー</span></h1>
+  </div>
+</section>
+
+<section style="background:var(--bg);position:relative;z-index:2;">
+  <div class="inner">
+    
+    <div class="policy-block reveal rd1">
+      <div class="policy-num">[ 01 ]</div>
+      <div class="policy-content">
+        <h3>個人情報の収集について</h3>
+        <p>当サービス（以下「Kairos」）は、お問い合わせフォームやクラウドソーシングプラットフォームを通じて、氏名・会社名・メールアドレス・ご相談内容などの個人情報をお預かりする場合があります。</p>
+      </div>
+    </div>
+    <div class="policy-block reveal rd2">
+      <div class="policy-num">[ 02 ]</div>
+      <div class="policy-content">
+        <h3>個人情報の利用目的</h3>
+        <p>収集した個人情報は、以下の目的に限り利用します。</p><p>① お問い合わせへの返答・見積もり・提案書の送付</p><p>② 制作業務の遂行および契約履行</p><p>③ サービスに関するご案内（ご本人の同意がある場合のみ）</p>
+      </div>
+    </div>
+    <div class="policy-block reveal rd3">
+      <div class="policy-num">[ 03 ]</div>
+      <div class="policy-content">
+        <h3>第三者への提供</h3>
+        <p>法令に基づく場合を除き、ご本人の同意なく第三者に個人情報を提供することはありません。</p>
+      </div>
+    </div>
+    <div class="policy-block reveal rd1">
+      <div class="policy-num">[ 04 ]</div>
+      <div class="policy-content">
+        <h3>個人情報の管理</h3>
+        <p>収集した個人情報は、不正アクセス・紛失・破壊・改ざん・漏洩などが生じないよう、適切な安全管理措置を講じます。</p>
+      </div>
+    </div>
+    <div class="policy-block reveal rd2">
+      <div class="policy-num">[ 05 ]</div>
+      <div class="policy-content">
+        <h3>Cookie・アクセス解析</h3>
+        <p>当サイトではGoogle Analyticsを使用しており、Cookieを通じてアクセス情報を収集する場合があります。収集される情報は匿名であり、個人を特定するものではありません。Google AnalyticsのCookie使用はブラウザの設定により無効化できます。</p>
+      </div>
+    </div>
+    <div class="policy-block reveal rd3">
+      <div class="policy-num">[ 06 ]</div>
+      <div class="policy-content">
+        <h3>個人情報の開示・訂正・削除</h3>
+        <p>ご本人から個人情報の開示・訂正・削除のご要請があった場合は、合理的な範囲で速やかに対応いたします。お問い合わせフォームよりご連絡ください。</p>
+      </div>
+    </div>
+    <div class="policy-block reveal rd1">
+      <div class="policy-num">[ 07 ]</div>
+      <div class="policy-content">
+        <h3>プライバシーポリシーの変更</h3>
+        <p>本ポリシーは、必要に応じて変更する場合があります。変更後のポリシーは本ページに掲載した時点で効力を生じるものとします。</p>
+      </div>
+    </div>
+    <div class="policy-block reveal rd2">
+      <div class="policy-num">[ 08 ]</div>
+      <div class="policy-content">
+        <h3>お問い合わせ</h3>
+        <p>個人情報の取扱いに関するお問い合わせは、当サイトのお問い合わせフォームよりご連絡ください。</p>
+      </div>
+    </div>
+    <p class="policy-date reveal">// 制定日：2025年1月1日　最終更新：2025年4月1日</p>
+  </div>
+</section>
+
+<footer>
+  <a href="kairos-corporate.html" class="f-logo">KAIROS<span>_</span></a>
+  <p class="f-copy">© 2025 Kairos. All rights reserved.</p>
+</footer>
+<script>
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}animRing();
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+const obs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body></html>

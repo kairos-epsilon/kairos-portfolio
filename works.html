@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Works 制作実績 | Kairos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#020408;--bg2:#050a12;--bg3:#080f1a;
+  --cyan:#00e5ff;--cyan-dim:#00b8d4;
+  --purple:#b347ff;--green:#00ff88;
+  --white:#e8f4f8;--gray:#4a6572;--gray2:#2a3a45;
+  --border:rgba(0,229,255,0.12);--border2:rgba(0,229,255,0.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Noto Sans JP',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden;cursor:none;}
+#cursor{position:fixed;width:8px;height:8px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan);}
+#cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(0,229,255,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.12s ease;}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(to bottom,transparent 0px,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);pointer-events:none;z-index:1000;opacity:0.4;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
+nav.scrolled{background:rgba(2,4,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Orbitron',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:0.15em;color:var(--white);text-decoration:none;}
+.nav-logo span{color:var(--cyan);text-shadow:0 0 20px var(--cyan);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{padding:0.5rem 1.4rem;border:1px solid var(--cyan);color:var(--cyan) !important;font-family:'Share Tech Mono',monospace !important;font-size:0.72rem !important;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.3s !important;position:relative;overflow:hidden;}
+.nav-cta::before{content:'';position:absolute;inset:0;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;z-index:-1;}
+.nav-cta:hover{color:var(--bg) !important;box-shadow:0 0 20px var(--cyan);}
+.nav-cta:hover::before{transform:scaleX(1);}
+.page-hero{padding:140px 5vw 80px;position:relative;overflow:hidden;border-bottom:1px solid var(--border2);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border2) 1px,transparent 1px),linear-gradient(90deg,var(--border2) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);}
+.hero-glow{position:absolute;width:400px;height:400px;border-radius:50%;top:-100px;right:5%;background:radial-gradient(circle,rgba(0,229,255,0.06) 0%,transparent 70%);}
+.page-hero-inner{position:relative;z-index:1;max-width:800px;}
+.back-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;color:var(--gray);text-decoration:none;text-transform:uppercase;margin-bottom:1.5rem;transition:color 0.3s;}
+.back-btn:hover{color:var(--cyan);}
+.page-label{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.35em;color:var(--cyan);text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem;}
+.page-label::before{content:'//';color:var(--purple);}
+.page-hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:700;line-height:1.2;letter-spacing:0.03em;}
+.page-hero h1 .accent{color:var(--cyan);text-shadow:0 0 25px rgba(0,229,255,0.4);}
+.inner{max-width:1080px;margin:0 auto;padding:80px 5vw;}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
+.f-logo{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.15em;color:var(--white);text-decoration:none;}
+.f-logo span{color:var(--cyan);}
+.f-copy{font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--gray);}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s,transform 0.7s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:0.1s}.rd2{transition-delay:0.2s}.rd3{transition-delay:0.3s}
+@media(max-width:768px){.nav-links{display:none;}.inner{padding:50px 5vw;}}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav id="mainNav">
+  <a href="kairos-corporate.html" class="nav-logo">KAIROS<span>_</span></a>
+  <ul class="nav-links">
+    <li><a href="kairos-corporate.html#about">About</a></li>
+    <li><a href="kairos-corporate.html#services">Services</a></li>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="kairos-corporate.html#flow">Flow</a></li>
+    <li><a href="kairos-corporate.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+<style>
+.work-card{position:relative;overflow:hidden;aspect-ratio:16/10;border:1px solid rgba(0,229,255,0.08);cursor:pointer;transition:border-color 0.3s,transform 0.3s;}
+.work-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,229,255,0.1);}
+.work-bg{position:absolute;inset:0;transition:transform 0.6s;}
+.work-card:hover .work-bg{transform:scale(1.05);}
+.work-scan{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0px,transparent 3px,rgba(0,229,255,0.012) 3px,rgba(0,229,255,0.012) 4px);}
+.work-glow{position:absolute;width:140px;height:140px;border-radius:50%;top:5%;right:5%;opacity:0.25;transition:opacity 0.4s;}
+.work-card:hover .work-glow{opacity:0.6;}
+.work-corner{position:absolute;top:0;left:0;width:18px;height:18px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan);opacity:0;transition:opacity 0.3s;}
+.work-corner2{position:absolute;bottom:0;right:0;width:18px;height:18px;border-bottom:2px solid var(--cyan);border-right:2px solid var(--cyan);opacity:0;transition:opacity 0.3s;}
+.work-card:hover .work-corner,.work-card:hover .work-corner2{opacity:1;}
+.work-overlay{position:absolute;inset:0;background:rgba(2,4,8,0.9);display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;opacity:0;transform:translateY(6px);transition:opacity 0.4s,transform 0.4s;}
+.work-card:hover .work-overlay{opacity:1;transform:translateY(0);}
+.work-cat{font-family:'Share Tech Mono',monospace;font-size:0.58rem;color:var(--cyan);letter-spacing:0.2em;margin-bottom:0.3rem;}
+.work-title-c{font-family:'Orbitron',sans-serif;font-size:0.82rem;font-weight:600;margin-bottom:0.25rem;color:var(--white);line-height:1.4;}
+.work-sub-c{font-size:0.68rem;color:var(--gray);line-height:1.6;}
+.work-year{font-family:'Share Tech Mono',monospace;font-size:0.58rem;color:rgba(0,229,255,0.4);margin-top:0.4rem;}
+.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.filter-bar{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:3rem;}
+.filter-btn{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;padding:0.4rem 1rem;border:1px solid var(--border2);background:transparent;color:var(--gray);cursor:pointer;transition:all 0.3s;text-transform:uppercase;}
+.filter-btn:hover,.filter-btn.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,0.05);}
+.works-count{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--gray);margin-bottom:2rem;letter-spacing:0.1em;}
+.work-card.hidden{display:none;}
+@media(max-width:768px){.works-grid{grid-template-columns:1fr;}}
+</style>
+
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="page-hero-inner">
+    <a href="kairos-corporate.html" class="back-btn"> Topに戻る</a>
+    <p class="page-label">Works</p>
+    <h1>制作<span class="accent">実績</span></h1>
+  </div>
+</section>
+
+<section style="background:var(--bg);position:relative;z-index:2;">
+  <div class="inner">
+    <div class="filter-bar"><button class="filter-btn active" data-cat="ALL">ALL</button><button class="filter-btn" data-cat="CORPORATE">CORPORATE</button><button class="filter-btn" data-cat="LP">LP</button><button class="filter-btn" data-cat="SYSTEM">SYSTEM</button><button class="filter-btn" data-cat="EC">EC</button><button class="filter-btn" data-cat="APP">APP</button><button class="filter-btn" data-cat="AI">AI</button></div>
+    <p class="works-count" id="works-count">// Showing 12 projects</p>
+    <div class="works-grid" id="works-grid">
+    <div class="work-card reveal rd1">
+      <div class="work-bg" style="background:linear-gradient(135deg,#020d1a 0%,#051525 50%,#072240 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(0,229,255,0.25),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ CORPORATE ]</span>
+        <p class="work-title-c">M&Aコンサルティング会社 コーポレートサイト</p>
+        <p class="work-sub-c">WordPress / フルスクラッチ設計 / SEO対策</p>
+        <p class="work-year">2024</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd2">
+      <div class="work-bg" style="background:linear-gradient(135deg,#0a0218 0%,#120230 50%,#1a0a45 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(179,71,255,0.25),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ SYSTEM ]</span>
+        <p class="work-title-c">フリーランスマッチングプラットフォーム</p>
+        <p class="work-sub-c">Next.js / Stripe Connect / TypeScript / 会員機能</p>
+        <p class="work-year">2024</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd3">
+      <div class="work-bg" style="background:linear-gradient(135deg,#001a0d 0%,#002a14 50%,#003d1e 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(0,255,136,0.25),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ AI ]</span>
+        <p class="work-title-c">不動産会社向け AI内見予約ボット</p>
+        <p class="work-sub-c">LangChain / LINE Bot / GCP Vertex AI</p>
+        <p class="work-year">2024</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd1">
+      <div class="work-bg" style="background:linear-gradient(135deg,#150010 0%,#220020 50%,#330035 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(179,71,255,0.25),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ LP ]</span>
+        <p class="work-title-c">健康食品ブランド 集客LP（CVR 4.2%達成）</p>
+        <p class="work-sub-c">HTML/CSS / GA4連携 / A/Bテスト</p>
+        <p class="work-year">2024</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd2">
+      <div class="work-bg" style="background:linear-gradient(135deg,#000a15 0%,#001428 50%,#002040 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(0,229,255,0.25),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ APP ]</span>
+        <p class="work-title-c">医療スタッフ向け勤怠管理アプリ</p>
+        <p class="work-sub-c">Flutter / Firebase / 管理画面 / プッシュ通知</p>
+        <p class="work-year">2023</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd3">
+      <div class="work-bg" style="background:linear-gradient(135deg,#0a0800 0%,#1a1200 50%,#2a1e00 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(0,255,136,0.25),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ EC ]</span>
+        <p class="work-title-c">食品ブランド 会員制ECプラットフォーム</p>
+        <p class="work-sub-c">Next.js / Stripe / 会員機能 / 定期購入</p>
+        <p class="work-year">2023</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd1">
+      <div class="work-bg" style="background:linear-gradient(135deg,#020d1a 0%,#051525 50%,#072240 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(0,229,255,0.2),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ CORPORATE ]</span>
+        <p class="work-title-c">IT企業 採用サイト リニューアル</p>
+        <p class="work-sub-c">WordPress / Elementor / 応募フォーム連携</p>
+        <p class="work-year">2024</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd2">
+      <div class="work-bg" style="background:linear-gradient(135deg,#0a0218 0%,#120230 50%,#1a0a45 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(179,71,255,0.2),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ SYSTEM ]</span>
+        <p class="work-title-c">美容室予約・顧客管理システム</p>
+        <p class="work-sub-c">React / Firebase / LINE連携 / 管理画面</p>
+        <p class="work-year">2023</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd3">
+      <div class="work-bg" style="background:linear-gradient(135deg,#001a0d 0%,#002a14 50%,#003d1e 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(0,255,136,0.2),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ AI ]</span>
+        <p class="work-title-c">EC事業者向け AI商品レコメンドエンジン</p>
+        <p class="work-sub-c">LangChain / RAG / Python / API連携</p>
+        <p class="work-year">2024</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd1">
+      <div class="work-bg" style="background:linear-gradient(135deg,#150010 0%,#220020 50%,#330035 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(0,229,255,0.2),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ LP ]</span>
+        <p class="work-title-c">不動産投資セミナー集客LP</p>
+        <p class="work-sub-c">HTML/CSS / WordPress / リタゲ連携</p>
+        <p class="work-year">2023</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd2">
+      <div class="work-bg" style="background:linear-gradient(135deg,#000a15 0%,#001428 50%,#002040 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(179,71,255,0.2),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ SYSTEM ]</span>
+        <p class="work-title-c">マンション管理組合向け 住民ポータル</p>
+        <p class="work-sub-c">Next.js / 認証 / お知らせ機能 / 管理画面</p>
+        <p class="work-year">2024</p>
+      </div>
+    </div>
+    <div class="work-card reveal rd3">
+      <div class="work-bg" style="background:linear-gradient(135deg,#0a0800 0%,#1a1200 50%,#2a1e00 100%);"></div>
+      <div class="work-scan"></div>
+      <div class="work-glow" style="background:radial-gradient(circle,rgba(0,255,136,0.2),transparent 70%);"></div>
+      <div class="work-corner"></div><div class="work-corner2"></div>
+      <div class="work-overlay">
+        <span class="work-cat">[ API ]</span>
+        <p class="work-title-c">基幹システム × Salesforce API連携</p>
+        <p class="work-sub-c">REST API / Webhook / GAS / データ同期</p>
+        <p class="work-year">2023</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="kairos-corporate.html" class="f-logo">KAIROS<span>_</span></a>
+  <p class="f-copy">© 2025 Kairos. All rights reserved.</p>
+</footer>
+<script>
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}animRing();
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+const obs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body></html>
+
+<script>
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.work-card');
+const count = document.getElementById('works-count');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    let visible = 0;
+    cards.forEach(card => {
+      const cardCat = card.querySelector('.work-cat').textContent.replace(/[\[\] ]/g,'');
+      if(cat === 'ALL' || cardCat === cat) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    count.textContent = `// Showing ${visible} project${visible !== 1 ? 's' : ''}`;
+  });
+});
+</script>
