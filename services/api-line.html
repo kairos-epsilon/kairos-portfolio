@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API連携・LINE・外部連携 | Kairos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#020408;--bg2:#050a12;--bg3:#080f1a;
+  --cyan:#00e5ff;--cyan-dim:#00b8d4;--cyan-glow:rgba(0,229,255,0.15);
+  --purple:#b347ff;--purple-dim:#7c3aed;--purple-glow:rgba(179,71,255,0.12);
+  --green:#00ff88;--white:#e8f4f8;--gray:#4a6572;--gray2:#2a3a45;
+  --border:rgba(0,229,255,0.12);--border2:rgba(0,229,255,0.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Noto Sans JP',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden;cursor:none;}
+#cursor{position:fixed;width:8px;height:8px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan);}
+#cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(0,229,255,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.12s ease;}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(to bottom,transparent 0px,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);pointer-events:none;z-index:1000;opacity:0.4;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
+nav.scrolled{background:rgba(2,4,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Orbitron',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:0.15em;color:var(--white);text-decoration:none;}
+.nav-logo span{color:var(--cyan);text-shadow:0 0 20px var(--cyan);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{padding:0.5rem 1.4rem;border:1px solid var(--cyan);color:var(--cyan) !important;font-family:'Share Tech Mono',monospace !important;font-size:0.72rem !important;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.3s !important;position:relative;overflow:hidden;}
+.nav-cta::before{content:'';position:absolute;inset:0;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;z-index:-1;}
+.nav-cta:hover{color:var(--bg) !important;box-shadow:0 0 20px var(--cyan);}
+.nav-cta:hover::before{transform:scaleX(1);}
+/* HERO */
+.svc-hero{min-height:60vh;display:flex;align-items:center;padding:100px 5vw 80px;position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border2) 1px,transparent 1px),linear-gradient(90deg,var(--border2) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);}
+.hero-glow{position:absolute;width:500px;height:500px;border-radius:50%;top:-100px;right:-100px;animation:pulse 8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:0.7}}
+.back-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;color:var(--gray);text-decoration:none;text-transform:uppercase;margin-bottom:1.5rem;transition:color 0.3s;}
+.back-btn:hover{color:var(--cyan);}
+.back-btn::before{content:'←';}
+.svc-num-big{font-family:'Orbitron',sans-serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--cyan);margin-bottom:0.8rem;font-weight:400;}
+.svc-hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:700;line-height:1.15;letter-spacing:0.03em;margin-bottom:1rem;}
+.svc-hero h1 .accent{color:var(--cyan);text-shadow:0 0 30px rgba(0,229,255,0.4);}
+.svc-hero .lead{font-size:0.95rem;color:var(--gray);max-width:560px;line-height:2.1;margin-bottom:2rem;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.hero-tag{font-family:'Share Tech Mono',monospace;font-size:0.65rem;padding:0.35rem 0.9rem;border:1px solid var(--border);color:var(--gray);letter-spacing:0.1em;}
+/* SECTIONS */
+.inner{max-width:1080px;margin:0 auto;padding:100px 5vw;}
+.sec-label{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.35em;color:var(--cyan);text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem;}
+.sec-label::before{content:'//';color:var(--purple);}
+.sec-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:600;line-height:1.25;margin-bottom:2rem;letter-spacing:0.03em;}
+.sec-title .accent{color:var(--cyan);text-shadow:0 0 20px rgba(0,229,255,0.3);}
+/* FEATURES */
+.features{background:var(--bg2);position:relative;}
+.features::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--purple),transparent);}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);border:1px solid var(--border2);}
+.feat-card{background:var(--bg2);padding:2.2rem 1.8rem;transition:background 0.3s;position:relative;overflow:hidden;}
+.feat-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.feat-card:hover{background:rgba(0,229,255,0.02);}
+.feat-card:hover::before{transform:scaleX(1);}
+.feat-icon{font-size:1.8rem;margin-bottom:1.2rem;display:block;}
+.feat-name{font-family:'Orbitron',sans-serif;font-size:0.88rem;font-weight:600;margin-bottom:0.7rem;color:var(--white);}
+.feat-desc{font-size:0.8rem;color:var(--gray);line-height:1.9;}
+/* FLOW */
+.flow-sec{background:var(--bg);}
+.flow-grid{display:grid;gap:0;}
+.f-step{display:grid;grid-template-columns:3.5rem 1fr;gap:1.5rem;padding:1.8rem 0;border-bottom:1px solid var(--border2);align-items:start;}
+.f-num{font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:900;color:rgba(0,229,255,0.2);line-height:1;padding-top:0.2rem;transition:color 0.3s;}
+.f-step:hover .f-num{color:rgba(0,229,255,0.5);text-shadow:0 0 10px rgba(0,229,255,0.3);}
+.f-step h4{font-family:'Orbitron',sans-serif;font-size:0.88rem;font-weight:600;margin-bottom:0.4rem;color:var(--white);}
+.f-step p{font-size:0.8rem;color:var(--gray);line-height:1.9;}
+/* PRICE */
+.price-sec{background:var(--bg3);}
+.price-sec::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple),var(--cyan),transparent);}
+.price-sec{position:relative;}
+.price-box{border:1px solid var(--border);background:var(--bg2);padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.price-range{font-family:'Orbitron',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;color:var(--cyan);text-shadow:0 0 30px rgba(0,229,255,0.4);line-height:1;}
+.price-note{font-size:0.75rem;color:var(--gray);margin-top:0.5rem;font-family:'Share Tech Mono',monospace;letter-spacing:0.1em;}
+.price-includes{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.price-includes li{font-size:0.82rem;color:var(--gray);display:flex;gap:0.7rem;align-items:flex-start;}
+.price-includes li::before{content:'[+]';color:var(--green);font-family:'Share Tech Mono',monospace;font-size:0.65rem;flex-shrink:0;margin-top:0.15rem;}
+/* CTA */
+.cta-sec{background:var(--bg2);text-align:center;}
+.cta-sec .inner{padding:80px 5vw;}
+.cta-sec p{font-size:0.9rem;color:var(--gray);margin-bottom:2rem;}
+.btn-cyber{display:inline-block;padding:0.9rem 2.5rem;background:transparent;border:1px solid var(--cyan);color:var(--cyan);font-family:'Share Tech Mono',monospace;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;position:relative;overflow:hidden;transition:all 0.3s;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);}
+.btn-cyber::before{content:'';position:absolute;inset:0;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;z-index:-1;}
+.btn-cyber:hover{color:var(--bg);box-shadow:0 0 30px rgba(0,229,255,0.4);}
+.btn-cyber:hover::before{transform:scaleX(1);}
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
+.f-logo{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.15em;color:var(--white);text-decoration:none;}
+.f-logo span{color:var(--cyan);}
+.f-copy{font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--gray);}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s,transform 0.7s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:0.1s}.rd2{transition-delay:0.2s}.rd3{transition-delay:0.3s}
+@media(max-width:768px){.feat-grid,.price-box{grid-template-columns:1fr;}.nav-links{display:none;}.inner{padding:70px 5vw;}}
+</style>
+
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+
+<nav id="mainNav">
+  <a href="../kairos-corporate.html" class="nav-logo">KAIROS<span>_</span></a>
+  <ul class="nav-links">
+    <li><a href="../kairos-corporate.html#about">About</a></li>
+    <li><a href="../kairos-corporate.html#services">Services</a></li>
+    <li><a href="../kairos-corporate.html#works">Works</a></li>
+    <li><a href="../kairos-corporate.html#flow">Flow</a></li>
+    <li><a href="../kairos-corporate.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="svc-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow" style="background:radial-gradient(circle,rgba(0,255,136,0.05) 0%,transparent 70%);"></div>
+  <div style="position:relative;z-index:1;max-width:760px;">
+    <a href="../kairos-corporate.html#services" class="back-btn"> Services に戻る</a>
+    <p class="svc-num-big">[ SERVICE 06 ]</p>
+    <h1>API連携・LINE・<br><span class="accent">外部連携</span></h1>
+    <p class="lead">LINE連携・予約Bot・各種API大規模連携・GASによる業務自動化まで。外部サービスとの連携で既存システムの価値を最大化します。</p>
+    <div class="hero-tags"><span class="hero-tag">LINE Bot</span><span class="hero-tag">LINE公式アカウント</span><span class="hero-tag">Webhook</span><span class="hero-tag">GAS</span><span class="hero-tag">REST API</span><span class="hero-tag">Zapier</span><span class="hero-tag">外部連携</span><span class="hero-tag">自動化</span></div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="inner">
+    <p class="sec-label reveal">Features</p>
+    <h2 class="sec-title reveal">できること・<span class="accent">強み</span></h2>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <span class="feat-icon">💬</span>
+        <h3 class="feat-name">LINE公式アカウント連携</h3>
+        <p class="feat-desc">LINE Messaging APIを使ったBot開発。問い合わせ・予約・リマインダー・クーポン配信を自動化。</p>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-icon">📅</span>
+        <h3 class="feat-name">LINE予約システム</h3>
+        <p class="feat-desc">LINEから完結する予約受付・確認・リマインダー通知システムを構築。Googleカレンダー連携も対応。</p>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-icon">🔗</span>
+        <h3 class="feat-name">各種API連携</h3>
+        <p class="feat-desc">Salesforce・HubSpot・kintone・Shopify・Slack・Google Workspace等の大規模API連携に対応。</p>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-icon">⚙️</span>
+        <h3 class="feat-name">GAS業務自動化</h3>
+        <p class="feat-desc">Googleスプレッドシートを使った集計・レポート自動生成・メール自動送信をGASで実装。</p>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-icon">🔄</span>
+        <h3 class="feat-name">Webhook・イベント連携</h3>
+        <p class="feat-desc">外部サービスからのWebhook受信・データ変換・別システムへの転送を設計・実装します。</p>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-icon">📊</span>
+        <h3 class="feat-name">データ連携・ETL</h3>
+        <p class="feat-desc">複数システム間のデータ同期・変換・クレンジングのパイプラインを構築します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow-sec">
+  <div class="inner">
+    <p class="sec-label reveal">Process</p>
+    <h2 class="sec-title reveal">制作・開発の<span class="accent">流れ</span></h2>
+    <div class="flow-grid">
+      <div class="f-step reveal rd1">
+        <div class="f-num">01</div>
+        <div>
+          <h4>連携要件・システム確認</h4>
+          <p>現在のシステム構成・連携したいサービス・自動化したいフローを確認します。</p>
+        </div>
+      </div>
+      <div class="f-step reveal rd2">
+        <div class="f-num">02</div>
+        <div>
+          <h4>API仕様・設計</h4>
+          <p>各サービスのAPI仕様を調査。連携設計・エラーハンドリング方針を決定します。</p>
+        </div>
+      </div>
+      <div class="f-step reveal rd3">
+        <div class="f-num">03</div>
+        <div>
+          <h4>実装・テスト</h4>
+          <p>連携ロジック実装・Webhook設定・テストデータでの動作確認を行います。</p>
+        </div>
+      </div>
+      <div class="f-step reveal rd3">
+        <div class="f-num">04</div>
+        <div>
+          <h4>本番環境・移行</h4>
+          <p>本番環境での設定・既存データ移行・リリースをサポートします。</p>
+        </div>
+      </div>
+      <div class="f-step reveal rd3">
+        <div class="f-num">05</div>
+        <div>
+          <h4>運用・監視</h4>
+          <p>連携後の動作監視・エラー通知設定・定期メンテナンスにも対応します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="price-sec">
+  <div class="inner">
+    <p class="sec-label reveal">Pricing</p>
+    <h2 class="sec-title reveal">料金の<span class="accent">目安</span></h2>
+    <div class="price-box reveal">
+      <div>
+        <div class="price-range">¥80,000〜</div>
+        <p class="price-note">// 連携サービス数・複雑度によって変動</p>
+      </div>
+      <ul class="price-includes"><li>API仕様調査・連携設計</li><li>LINE Bot・Webhook実装</li><li>GAS・自動化スクリプト開発</li><li>本番環境設定・テスト</li><li>運用マニュアル作成</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="inner">
+    <p class="sec-label" style="justify-content:center;">Contact</p>
+    <h2 class="sec-title" style="text-align:center;">API連携・外部連携のご相談、<br><span class="accent">まずは相談を。</span></h2>
+    <p>お見積もり・ご相談は無料です。48時間以内にご返信します。</p>
+    <a href="../kairos-corporate.html#contact" class="btn-cyber">お問い合わせはこちら →</a>
+  </div>
+</section>
+
+<footer>
+  <a href="../kairos-corporate.html" class="f-logo">KAIROS<span>_</span></a>
+  <p class="f-copy">© 2025 Kairos. All rights reserved.</p>
+</footer>
+
+
+<script>
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}animRing();
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
