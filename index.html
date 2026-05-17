@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos Web Production | Webディレクション・制作実績</title>
+<meta name="description" content="KairosはWebディレクターとして、LP・コーポレートサイト・ECサイト・システム開発まで幅広く対応するWeb制作チームです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0f0f0f;
+  --dark: #1a1a1a;
+  --gray-dark: #444;
+  --gray: #888;
+  --gray-light: #bbb;
+  --border: #e8e8e8;
+  --bg: #fafafa;
+  --white: #ffffff;
+  --accent: #c4714a;
+  --accent-light: #f0e8e3;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 60px;
+  display: flex; align-items: center;
+  padding: 0 48px;
+  justify-content: space-between;
+}
+.header-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--black); text-decoration: none;
+}
+.header-logo span { color: var(--accent); }
+nav { display: flex; gap: 32px; align-items: center; }
+nav a {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gray); text-decoration: none; transition: color 0.2s;
+}
+nav a:hover { color: var(--black); }
+.nav-contact {
+  border: 1px solid var(--black);
+  padding: 7px 18px; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--black) !important; transition: all 0.2s !important;
+}
+.nav-contact:hover { background: var(--black); color: var(--white) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { width: 20px; height: 1px; background: var(--black); display: block; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.hero-left {
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px 80px 48px;
+  border-right: 1px solid var(--border);
+}
+.hero-eyebrow {
+  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--accent);
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 4.5vw, 64px);
+  font-weight: 400; line-height: 1.2;
+  margin-bottom: 32px;
+  animation: fadeUp 0.9s ease both;
+}
+.hero-title em { font-style: italic; color: var(--accent); }
+.hero-desc {
+  font-size: 14px; line-height: 2.2; color: var(--gray-dark);
+  max-width: 420px; margin-bottom: 48px;
+  animation: fadeUp 0.9s 0.15s ease both;
+}
+.hero-cta {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: fadeUp 0.9s 0.3s ease both;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--black); color: var(--white);
+  padding: 14px 36px; font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  text-decoration: none; transition: background 0.25s;
+}
+.btn-primary:hover { background: var(--accent); }
+.btn-secondary {
+  display: inline-block;
+  border: 1px solid var(--border);
+  color: var(--gray-dark);
+  padding: 14px 36px; font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  text-decoration: none; transition: all 0.25s;
+}
+.btn-secondary:hover { border-color: var(--black); color: var(--black); }
+.hero-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.hero-stat-block {
+  display: flex; flex-direction: column;
+  justify-content: center; padding: 48px;
+  border-bottom: 1px solid var(--border);
+  animation: fadeIn 1s 0.4s ease both;
+}
+.hero-stat-block:last-child { border-bottom: none; background: var(--bg); }
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px; font-weight: 400;
+  line-height: 1; color: var(--black);
+  margin-bottom: 8px;
+}
+.stat-number span { font-size: 28px; color: var(--accent); }
+.stat-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); }
+.stat-desc { font-size: 12px; color: var(--gray-dark); margin-top: 12px; line-height: 1.8; }
+
+/* ── MARQUEE ── */
+.marquee-wrap { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 0; overflow: hidden; background: var(--bg); }
+.marquee-track { display: flex; white-space: nowrap; animation: marquee 28s linear infinite; }
+.marquee-track span { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; padding: 0 36px; color: var(--gray); }
+.marquee-track .dot { color: var(--accent); font-size: 16px; padding: 0 16px; }
+
+/* ── SECTION ── */
+.section { padding: 96px 48px; }
+.section-header { margin-bottom: 56px; }
+.section-eyebrow {
+  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400; line-height: 1.2;
+}
+.section-title em { font-style: italic; color: var(--accent); }
+
+/* ── SERVICES (カテゴリ) ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+.service-card {
+  background: var(--white);
+  padding: 52px 48px;
+  text-decoration: none; color: inherit;
+  display: block; position: relative;
+  transition: background 0.25s;
+  overflow: hidden;
+}
+.service-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+.service-card:hover { background: var(--bg); }
+.service-card:hover::after { width: 100%; }
+.service-card:hover .service-arrow { transform: translate(4px, -4px); }
+.service-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px; font-weight: 400;
+  color: var(--border); line-height: 1;
+  margin-bottom: 28px;
+  transition: color 0.25s;
+}
+.service-card:hover .service-num { color: var(--accent-light); }
+.service-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 400;
+  margin-bottom: 8px;
+}
+.service-name-ja { font-size: 13px; color: var(--gray); margin-bottom: 20px; letter-spacing: 0.06em; }
+.service-desc { font-size: 12px; line-height: 2; color: var(--gray-dark); max-width: 320px; }
+.service-count {
+  margin-top: 24px;
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent);
+}
+.service-arrow {
+  position: absolute; top: 48px; right: 48px;
+  font-size: 20px; color: var(--gray-light);
+  transition: transform 0.3s;
+}
+
+/* ── ABOUT ── */
+.about { background: var(--black); color: var(--white); }
+.about-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.about .section-eyebrow { color: var(--accent); }
+.about .section-eyebrow::before { background: var(--accent); }
+.about .section-title { color: var(--white); }
+.about-body { font-size: 13px; line-height: 2.4; color: rgba(255,255,255,0.6); margin-top: 24px; }
+.about-right { display: flex; flex-direction: column; gap: 2px; }
+.about-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 28px 32px;
+  display: flex; align-items: flex-start; gap: 20px;
+}
+.about-item-icon { font-size: 20px; margin-top: 2px; flex-shrink: 0; }
+.about-item-title { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.about-item-desc { font-size: 11px; line-height: 1.9; color: rgba(255,255,255,0.5); }
+
+/* ── FLOW ── */
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: var(--border);
+}
+.flow-item {
+  background: var(--white);
+  padding: 40px 36px;
+  position: relative;
+}
+.flow-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 400;
+  color: var(--accent-light); line-height: 1;
+  margin-bottom: 20px;
+}
+.flow-title { font-size: 14px; font-weight: 500; margin-bottom: 10px; }
+.flow-desc { font-size: 12px; line-height: 2; color: var(--gray-dark); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black); color: var(--white);
+  padding: 64px 48px 40px;
+}
+.footer-inner {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 48px; align-items: end;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 0.06em; margin-bottom: 12px;
+}
+.footer-logo span { color: var(--accent); }
+.footer-tagline { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.8; }
+.footer-nav { display: flex; gap: 28px; flex-wrap: wrap; }
+.footer-nav a {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; }
+
+/* モバイルメニュー */
+.mobile-menu {
+  position: fixed; inset: 0; background: var(--white); z-index: 150;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+  transform: translateX(100%); transition: transform 0.35s ease;
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu a {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 400;
+  color: var(--black); text-decoration: none;
+}
+.mobile-close {
+  position: absolute; top: 18px; right: 24px;
+  background: none; border: none; font-size: 24px; cursor: pointer; color: var(--gray);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  header { padding: 0 24px; }
+  nav { display: none; }
+  .hamburger { display: flex; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 64px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+  .hero-right { grid-template-rows: auto auto; }
+  .hero-stat-block { padding: 40px 24px; }
+  .stat-number { font-size: 48px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .flow-grid { grid-template-columns: 1fr; }
+  .section { padding: 72px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="header-logo">Kairos <span>Web Production</span></a>
+  <nav>
+    <a href="lp.html">LP制作</a>
+    <a href="corporate.html">コーポレート</a>
+    <a href="ec.html">EC・実装</a>
+    <a href="system.html">システム開発</a>
+    <a href="#contact" class="nav-contact">Contact</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="lp.html" onclick="toggleMenu()">LP制作</a>
+  <a href="corporate.html" onclick="toggleMenu()">コーポレート</a>
+  <a href="ec.html" onclick="toggleMenu()">EC・実装</a>
+  <a href="system.html" onclick="toggleMenu()">システム開発</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Web Production Portfolio</p>
+    <h1 class="hero-title">戦略から実装まで、<br><em>一気通貫で。</em></h1>
+    <p class="hero-desc">KairosはWebディレクターとして、LP・コーポレートサイト・ECサイト・システム開発まで、クライアントの目的に合わせた最適なWeb制作を提供します。</p>
+    <div class="hero-cta">
+      <a href="lp.html" class="btn-primary">実績を見る</a>
+      <a href="#services" class="btn-secondary">制作分野</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-block">
+      <div class="stat-number">20<span>+</span></div>
+      <div class="stat-label">Works</div>
+      <div class="stat-desc">LP・コーポレート・EC・システム開発まで<br>幅広いジャンルの制作実績</div>
+    </div>
+    <div class="hero-stat-block">
+      <div class="stat-number">4<span>分野</span></div>
+      <div class="stat-label">Categories</div>
+      <div class="stat-desc">LP制作・コーポレートサイト・EC構築<br>・システム・アプリ開発に対応</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>LP Design</span><span class="dot">·</span>
+    <span>Corporate Site</span><span class="dot">·</span>
+    <span>EC Construction</span><span class="dot">·</span>
+    <span>WordPress</span><span class="dot">·</span>
+    <span>System Development</span><span class="dot">·</span>
+    <span>Responsive Design</span><span class="dot">·</span>
+    <span>Web Direction</span><span class="dot">·</span>
+    <span>LP Design</span><span class="dot">·</span>
+    <span>Corporate Site</span><span class="dot">·</span>
+    <span>EC Construction</span><span class="dot">·</span>
+    <span>WordPress</span><span class="dot">·</span>
+    <span>System Development</span><span class="dot">·</span>
+    <span>Responsive Design</span><span class="dot">·</span>
+    <span>Web Direction</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-header">
+    <p class="section-eyebrow">Services</p>
+    <h2 class="section-title">制作<em>分野</em></h2>
+  </div>
+  <div class="services-grid">
+    <a href="lp.html" class="service-card">
+      <span class="service-arrow">↗</span>
+      <div class="service-num">01</div>
+      <h3 class="service-name">Landing Page</h3>
+      <p class="service-name-ja">LP制作</p>
+      <p class="service-desc">採用・集客・ブランディングを目的としたランディングページ。業種に合わせたデザインと成果を意識した導線設計を提供します。</p>
+      <p class="service-count">17 Works →</p>
+    </a>
+    <a href="corporate.html" class="service-card">
+      <span class="service-arrow">↗</span>
+      <div class="service-num">02</div>
+      <h3 class="service-name">Corporate Site</h3>
+      <p class="service-name-ja">コーポレートサイト</p>
+      <p class="service-desc">企業・店舗の信頼感を高めるコーポレートサイト。ブランドイメージに合わせたデザインと、更新しやすい構成で制作します。</p>
+      <p class="service-count">1 Works →</p>
+    </a>
+    <a href="ec.html" class="service-card">
+      <span class="service-arrow">↗</span>
+      <div class="service-num">03</div>
+      <h3 class="service-name">EC & Implementation</h3>
+      <p class="service-name-ja">EC・フロントエンド実装</p>
+      <p class="service-desc">ECサイトのUI/UX設計・フロントエンド実装。商品一覧・詳細・カート導線まで、購買体験にこだわった構築が可能です。</p>
+      <p class="service-count">1 Works →</p>
+    </a>
+    <a href="system.html" class="service-card">
+      <span class="service-arrow">↗</span>
+      <div class="service-num">04</div>
+      <h3 class="service-name">System Development</h3>
+      <p class="service-name-ja">システム・アプリ開発</p>
+      <p class="service-desc">予約管理・会員・決済システムなど複雑な要件にも対応。Next.js・Supabase等のモダンスタックで開発します。</p>
+      <p class="service-count">1 Works →</p>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about">
+  <div class="about-inner">
+    <div>
+      <div class="section-header" style="margin-bottom:0;">
+        <p class="section-eyebrow">About Kairos</p>
+        <h2 class="section-title" style="color:white;">Kairosが<br><em>選ばれる理由</em></h2>
+      </div>
+      <p class="about-body">Kairosは、Webディレクターを中心とした制作チームです。クライアントとの丁寧なコミュニケーションを起点に、要件定義から設計・実装・納品まで一貫して対応します。<br><br>単なる「作る」だけでなく、「目的を達成する」ための提案を大切にしています。</p>
+    </div>
+    <div class="about-right">
+      <div class="about-item">
+        <div class="about-item-icon">🎯</div>
+        <div>
+          <p class="about-item-title">目的から逆算する設計</p>
+          <p class="about-item-desc">集客・採用・ブランディングなど、目的に合わせた構成・デザインを提案します。</p>
+        </div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-icon">⚡</div>
+        <div>
+          <p class="about-item-title">LP〜システム開発まで一気通貫</p>
+          <p class="about-item-desc">シンプルなLPから複雑なシステム開発まで、同じチームで対応可能です。</p>
+        </div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-icon">💬</div>
+        <div>
+          <p class="about-item-title">丁寧なコミュニケーション</p>
+          <p class="about-item-desc">制作中の不安をなくすため、進捗共有・修正対応を迅速に行います。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="section" style="background: var(--bg);">
+  <div class="section-header">
+    <p class="section-eyebrow">Flow</p>
+    <h2 class="section-title">制作の<em>流れ</em></h2>
+  </div>
+  <div class="flow-grid">
+    <div class="flow-item">
+      <div class="flow-num">01</div>
+      <h3 class="flow-title">ヒアリング</h3>
+      <p class="flow-desc">サービス内容・ターゲット・目的・ご予算をお聞きします。まずはお気軽にご相談ください。</p>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">02</div>
+      <h3 class="flow-title">構成・設計</h3>
+      <p class="flow-desc">目的から逆算したページ構成・情報設計を行います。ワイヤーフレームで方向性をご確認いただきます。</p>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">03</div>
+      <h3 class="flow-title">デザイン制作</h3>
+      <p class="flow-desc">ターゲットとブランドイメージに合わせたデザインを制作。修正対応もスピーディに行います。</p>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">04</div>
+      <h3 class="flow-title">コーディング・実装</h3>
+      <p class="flow-desc">HTML/CSS/JSでの実装、またはWordPress・各種CMSへの組み込みに対応します。</p>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">05</div>
+      <h3 class="flow-title">確認・修正</h3>
+      <p class="flow-desc">公開前に動作確認・表示確認を実施。細かな調整も丁寧に対応します。</p>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">06</div>
+      <h3 class="flow-title">納品</h3>
+      <p class="flow-desc">HTML一式・サーバーアップロード・WordPress設置など、ご希望の形式で納品します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Kairos <span>Web Production</span></div>
+      <p class="footer-tagline">戦略から実装まで、一気通貫で。<br>Web制作・ディレクションチーム</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="lp.html">LP制作</a>
+      <a href="corporate.html">コーポレート</a>
+      <a href="ec.html">EC・実装</a>
+      <a href="system.html">システム開発</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Kairos Web Production. All Rights Reserved.</span>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+</script>
+</body>
+</html>

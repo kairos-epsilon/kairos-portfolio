@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>システム・アプリ開発実績 | Kairos Web Production</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0f0f0f;--gray-dark:#444;--gray:#888;--border:#e8e8e8;--bg:#fafafa;--white:#ffffff;--accent:#c4714a;--accent-light:#f0e8e3;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--white);color:var(--black);overflow-x:hidden;}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 48px;justify-content:space-between;}
+.header-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:0.06em;color:var(--black);text-decoration:none;}
+.header-logo span{color:var(--accent);}
+nav{display:flex;gap:32px;align-items:center;}
+nav a{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.2s;}
+nav a:hover,nav a.active{color:var(--black);}
+.nav-contact{border:1px solid var(--black);padding:7px 18px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--black)!important;transition:all 0.2s!important;}
+.nav-contact:hover{background:var(--black);color:var(--white)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.hamburger span{width:20px;height:1px;background:var(--black);display:block;}
+.page-hero{padding:120px 48px 64px;border-bottom:1px solid var(--border);background:var(--bg);}
+.breadcrumb{font-size:11px;letter-spacing:0.12em;color:var(--gray);margin-bottom:20px;}
+.breadcrumb a{color:var(--gray);text-decoration:none;}
+.breadcrumb a:hover{color:var(--black);}
+.page-eyebrow{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.page-eyebrow::before{content:'';width:24px;height:1px;background:var(--accent);}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,60px);font-weight:400;line-height:1.2;margin-bottom:20px;}
+.page-title em{font-style:italic;color:var(--accent);}
+.page-desc{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:560px;}
+.works-section{padding:64px 48px 96px;}
+
+.work-detail{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:2px;background:var(--border);margin-bottom:2px;
+}
+.detail-thumb{overflow:hidden;position:relative;min-height:440px;background:var(--bg);}
+.detail-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s;}
+.detail-thumb:hover img{transform:scale(1.03);}
+.detail-body{background:var(--white);padding:56px 52px;display:flex;flex-direction:column;justify-content:center;}
+.work-tag{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.work-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;margin-bottom:8px;line-height:1.3;}
+.work-subtitle{font-size:12px;color:var(--gray);margin-bottom:24px;letter-spacing:0.06em;}
+.work-desc{font-size:12px;line-height:2.2;color:var(--gray-dark);margin-bottom:28px;}
+
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-bottom:28px;}
+.spec-item{background:var(--bg);padding:16px 20px;}
+.spec-label{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.spec-value{font-size:12px;color:var(--gray-dark);line-height:1.7;}
+
+.work-tech{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;}
+.tech-tag{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);padding:3px 10px;color:var(--gray);}
+.view-btn{display:inline-block;background:var(--black);color:var(--white);padding:13px 32px;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;transition:background 0.25s;align-self:flex-start;}
+.view-btn:hover{background:var(--accent);}
+
+/* 対応可能システム一覧 */
+.capabilities{background:var(--black);padding:72px 48px;}
+.cap-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:var(--white);margin-bottom:8px;}
+.cap-title em{font-style:italic;color:var(--accent);}
+.cap-sub{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:48px;}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.08);}
+.cap-item{background:rgba(255,255,255,0.03);padding:32px 28px;border:1px solid rgba(255,255,255,0.06);}
+.cap-icon{font-size:24px;margin-bottom:16px;}
+.cap-name{font-size:13px;font-weight:500;color:var(--white);margin-bottom:8px;}
+.cap-desc{font-size:11px;line-height:1.9;color:rgba(255,255,255,0.45);}
+
+footer{background:var(--black);color:var(--white);padding:48px;border-top:1px solid rgba(255,255,255,0.08);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:0.06em;}
+.footer-logo span{color:var(--accent);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.06em;}
+.footer-nav{display:flex;gap:24px;}
+.footer-nav a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-nav a:hover{color:var(--white);}
+.mobile-menu{position:fixed;inset:0;background:var(--white);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transform:translateX(100%);transition:transform 0.35s ease;}
+.mobile-menu.open{transform:translateX(0);}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--black);text-decoration:none;}
+.mobile-close{position:absolute;top:18px;right:24px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--gray);}
+@media(max-width:960px){header{padding:0 24px;}nav{display:none;}.hamburger{display:flex;}.page-hero{padding:100px 24px 48px;}.works-section{padding:40px 24px 72px;}.work-detail{grid-template-columns:1fr;}.detail-thumb{min-height:260px;}.detail-body{padding:36px 28px;}.spec-grid{grid-template-columns:1fr;}.capabilities{padding:56px 24px;}.cap-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;gap:20px;text-align:center;}.footer-nav{flex-wrap:wrap;justify-content:center;}footer{padding:40px 24px;}}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="header-logo">Kairos <span>Web Production</span></a>
+  <nav>
+    <a href="lp.html">LP制作</a>
+    <a href="corporate.html">コーポレート</a>
+    <a href="ec.html">EC・実装</a>
+    <a href="system.html" class="active">システム開発</a>
+    <a href="index.html#contact" class="nav-contact">Contact</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="lp.html" onclick="toggleMenu()">LP制作</a>
+  <a href="corporate.html" onclick="toggleMenu()">コーポレート</a>
+  <a href="ec.html" onclick="toggleMenu()">EC・実装</a>
+  <a href="system.html" onclick="toggleMenu()">システム開発</a>
+</div>
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">Home</a> / システム開発</p>
+  <p class="page-eyebrow">System Development</p>
+  <h1 class="page-title">システム・アプリ<em>開発</em>実績</h1>
+  <p class="page-desc">予約管理・会員・決済システムなど複雑な要件にも対応します。Next.js・Supabase等のモダンスタックで、スケーラブルなシステムを構築します。</p>
+</div>
+<section class="works-section">
+  <div class="work-detail">
+    <div class="detail-thumb">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&q=80&auto=format&fit=crop" alt="ネイルサロン予約管理アプリ" loading="lazy">
+    </div>
+    <div class="detail-body">
+      <p class="work-tag">Web Application</p>
+      <h3 class="work-title">ネイルサロン予約管理システム</h3>
+      <p class="work-subtitle">principal-booking — Next.js + Supabase</p>
+      <p class="work-desc">ネイルサロン向けの予約管理Webアプリケーション。顧客・スタッフ・メニュー管理から予約の登録・変更・キャンセルまで一元管理できるシステム。管理者ダッシュボードとロール管理機能を実装。</p>
+      <div class="spec-grid">
+        <div class="spec-item">
+          <p class="spec-label">Frontend</p>
+          <p class="spec-value">Next.js 14<br>TypeScript<br>Tailwind CSS</p>
+        </div>
+        <div class="spec-item">
+          <p class="spec-label">Backend / DB</p>
+          <p class="spec-value">Supabase<br>PostgreSQL<br>Prisma ORM</p>
+        </div>
+        <div class="spec-item">
+          <p class="spec-label">Hosting</p>
+          <p class="spec-value">Vercel<br>自動デプロイ対応</p>
+        </div>
+        <div class="spec-item">
+          <p class="spec-label">機能</p>
+          <p class="spec-value">予約管理<br>顧客管理<br>ロール管理</p>
+        </div>
+      </div>
+      <div class="work-tech">
+        <span class="tech-tag">Next.js</span>
+        <span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">Supabase</span>
+        <span class="tech-tag">Prisma</span>
+        <span class="tech-tag">Vercel</span>
+        <span class="tech-tag">PostgreSQL</span>
+      </div>
+      <a href="https://principal-booking-886q.vercel.app" target="_blank" rel="noopener" class="view-btn">View App →</a>
+    </div>
+  </div>
+</section>
+
+<div class="capabilities">
+  <h2 class="cap-title">対応可能な<em>システム</em></h2>
+  <p class="cap-sub">以下のようなシステム・アプリ開発に対応しています。要件に応じてご相談ください。</p>
+  <div class="cap-grid">
+    <div class="cap-item">
+      <div class="cap-icon">📅</div>
+      <p class="cap-name">予約・スケジュール管理</p>
+      <p class="cap-desc">サロン・クリニック・施設向けの予約管理システム。カレンダー連携・リマインドメール対応。</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-icon">👤</div>
+      <p class="cap-name">会員・ログイン機能</p>
+      <p class="cap-desc">会員登録・ログイン・マイページ・ロール管理を含む会員システムの構築。</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-icon">💳</div>
+      <p class="cap-name">決済・サブスクリプション</p>
+      <p class="cap-desc">Stripe連携による単発決済・月額課金・サブスクリプションモデルの実装。</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-icon">💬</div>
+      <p class="cap-name">リアルタイム通信</p>
+      <p class="cap-desc">チャット・通知機能などリアルタイムで動作するコミュニケーション機能。</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-icon">🔗</div>
+      <p class="cap-name">LINE・外部API連携</p>
+      <p class="cap-desc">LINE公式アカウント・各種外部API・Webhook連携によるシステム拡張。</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-icon">🛠</div>
+      <p class="cap-name">管理画面・ダッシュボード</p>
+      <p class="cap-desc">データの登録・編集・集計が行える管理者向けダッシュボードの構築。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-logo">Kairos <span>Web Production</span></div>
+    <nav class="footer-nav">
+      <a href="lp.html">LP制作</a>
+      <a href="corporate.html">コーポレート</a>
+      <a href="ec.html">EC・実装</a>
+      <a href="system.html">システム開発</a>
+    </nav>
+    <span class="footer-copy">© 2025 Kairos Web Production.</span>
+  </div>
+</footer>
+<script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>
+</body>
+</html>
