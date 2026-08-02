@@ -105,7 +105,7 @@ footer{background:var(--black);color:var(--white);padding:48px;border-top:1px so
   <p class="breadcrumb"><a href="index.html">Home</a> / システム開発</p>
   <p class="page-eyebrow">System Development</p>
   <h1 class="page-title">システム・アプリ<em>開発</em>実績</h1>
-  <p class="page-desc">予約管理・会員・決済システムなど複雑な要件にも対応します。Next.js・Supabase等のモダンスタックで、スケーラブルなシステムを構築します。</p>
+  <p class="page-desc">予約管理・会員・決済システムなど複雑な要件にも対応します。Next.js・FastAPI・Supabase・Docker等のモダンスタックで、スケーラブルなシステムを構築します。</p>
 </div>
 <section class="works-section">
 
@@ -185,6 +185,46 @@ footer{background:var(--black);color:var(--white);padding:48px;border-top:1px so
         <span class="tech-tag">HTML/CSS</span>
       </div>
       <a href="https://ai-karute-demo.vercel.app" target="_blank" rel="noopener" class="view-btn">View Demo →</a>
+    </div>
+  </div>
+
+  <!-- 追加：実績管理システム Kairos Hub -->
+  <div class="work-detail">
+    <div class="detail-thumb">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop" alt="実績管理システム Kairos Hub" loading="lazy">
+    </div>
+    <div class="detail-body">
+      <p class="work-tag">Full-stack Web Application</p>
+      <h3 class="work-title">実績管理システム「Kairos Hub」</h3>
+      <p class="work-subtitle">kairos-hub — Next.js + FastAPI + Docker</p>
+      <p class="work-desc">制作実績を一元管理・検索するために自社開発したフルスタックWebアプリケーション。案件情報をURL・GitHubリンク・使用技術タグ・説明文付きで登録し、公開一覧・キーワード検索・タグ絞り込みで横断的に参照できる。JWT認証による管理者ログイン、GitHubリポジトリのREADME自動取得、公開/非公開の制御などを実装。Docker化とGitHub ActionsによるCI/CD（Lint・テスト・ビルド）まで整備している。</p>
+      <div class="spec-grid">
+        <div class="spec-item">
+          <p class="spec-label">Frontend</p>
+          <p class="spec-value">Next.js（App Router）<br>TypeScript<br>Tailwind CSS</p>
+        </div>
+        <div class="spec-item">
+          <p class="spec-label">Backend / DB</p>
+          <p class="spec-value">FastAPI（Python）<br>PostgreSQL<br>JWT認証</p>
+        </div>
+        <div class="spec-item">
+          <p class="spec-label">Infra / CI</p>
+          <p class="spec-value">Docker / Compose<br>GitHub Actions<br>AWS ECS対応設計</p>
+        </div>
+        <div class="spec-item">
+          <p class="spec-label">機能</p>
+          <p class="spec-value">実績検索・タグ管理<br>GitHub連携<br>管理者ダッシュボード</p>
+        </div>
+      </div>
+      <div class="work-tech">
+        <span class="tech-tag">Next.js</span>
+        <span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">FastAPI</span>
+        <span class="tech-tag">PostgreSQL</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">GitHub Actions</span>
+      </div>
+      <a href="https://github.com/kairos-epsilon/kairos-hub" target="_blank" rel="noopener" class="view-btn">View Code →</a>
     </div>
   </div>
 
