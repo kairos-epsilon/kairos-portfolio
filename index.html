@@ -159,8 +159,20 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   display: flex; align-items: center;
   overflow: hidden; background: var(--bg-base);
 }
-.hero-canvas {
+.hero-video-bg {
   position: absolute; inset: 0; z-index: 0;
+  overflow: hidden;
+}
+.hero-video-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(250,250,250,0.82);
+}
+.hero-video-bg video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.hero-canvas {
+  position: absolute; inset: 0; z-index: 1;
 }
 .hero-canvas canvas { width: 100%; height: 100%; }
 .hero-content {
@@ -391,6 +403,18 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   transition: all 0.8s var(--ease-out-expo);
 }
 .approach-closing.visible { opacity: 1; transform: translateY(0); }
+.approach-with-image {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 64px;
+  align-items: center;
+  text-align: left;
+}
+.approach-image-side img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+}
 
 /* ═══════════════════════════════════════
    WORKS PREVIEW
@@ -503,6 +527,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   transition: transform 0.7s var(--ease-out-expo);
 }
 .service-panel:hover .service-panel-img img { transform: scale(1.04); }
+.service-panel-img video {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.7s var(--ease-out-expo);
+}
+.service-panel:hover .service-panel-img video { transform: scale(1.04); }
 .service-panel-img-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(10,10,10,0.5) 0%, transparent 60%);
@@ -754,6 +783,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .hamburger { display: flex; }
   .hero-stats { display: none; }
   .approach-steps { grid-template-columns: 1fr; gap: 24px; }
+  .approach-with-image { grid-template-columns: 1fr; }
+  .approach-image-side { order: -1; }
   .works-grid { grid-template-columns: 1fr 1fr; }
   .about-inner { grid-template-columns: 1fr; gap: 48px; }
   .flow-timeline { grid-template-columns: 1fr; gap: 32px; }
@@ -805,6 +836,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
+  <div class="hero-video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="assets/hero-bg.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-canvas">
     <canvas id="particleCanvas"></canvas>
   </div>
@@ -838,27 +874,32 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 <!-- ═══ APPROACH ═══ -->
 <section class="section approach" id="approach">
-  <div class="approach-inner">
-    <div class="eyebrow reveal">Approach</div>
-    <p class="approach-title reveal" id="approachTitle"></p>
-    <div class="approach-steps" id="approachSteps">
-      <div class="approach-step">
-        <div class="approach-step-num">01</div>
-        <h3 class="approach-step-title">目的から逆算する</h3>
-        <p class="approach-step-desc">集客・採用・ブランディング。ゴールに応じた構成設計から始めます。</p>
+  <div class="approach-inner approach-with-image">
+    <div class="approach-text-side">
+      <div class="eyebrow reveal">Approach</div>
+      <p class="approach-title reveal" id="approachTitle"></p>
+      <div class="approach-steps" id="approachSteps">
+        <div class="approach-step">
+          <div class="approach-step-num">01</div>
+          <h3 class="approach-step-title">目的から逆算する</h3>
+          <p class="approach-step-desc">集客・採用・ブランディング。ゴールに応じた構成設計から始めます。</p>
+        </div>
+        <div class="approach-step">
+          <div class="approach-step-num">02</div>
+          <h3 class="approach-step-title">デザインで伝える</h3>
+          <p class="approach-step-desc">ターゲットに響くビジュアルと導線で、成果につながるページを設計します。</p>
+        </div>
+        <div class="approach-step">
+          <div class="approach-step-num">03</div>
+          <h3 class="approach-step-title">技術で実現する</h3>
+          <p class="approach-step-desc">モダンな技術スタックで、表現力と保守性を両立した実装を提供します。</p>
+        </div>
       </div>
-      <div class="approach-step">
-        <div class="approach-step-num">02</div>
-        <h3 class="approach-step-title">デザインで伝える</h3>
-        <p class="approach-step-desc">ターゲットに響くビジュアルと導線で、成果につながるページを設計します。</p>
-      </div>
-      <div class="approach-step">
-        <div class="approach-step-num">03</div>
-        <h3 class="approach-step-title">技術で実現する</h3>
-        <p class="approach-step-desc">モダンな技術スタックで、表現力と保守性を両立した実装を提供します。</p>
-      </div>
+      <p class="approach-closing" id="approachClosing">そこまで一貫して対応するのが、Kairosの仕事です。</p>
     </div>
-    <p class="approach-closing" id="approachClosing">そこまで一貫して対応するのが、Kairosの仕事です。</p>
+    <div class="approach-image-side reveal">
+      <img src="assets/approach.png" alt="制作プロセス">
+    </div>
   </div>
 </section>
 
@@ -875,7 +916,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     <div class="works-grid">
       <a href="https://kairos-epsilon.github.io/recruit-driver-lp/" target="_blank" rel="noopener" class="work-card reveal">
         <div class="work-card-img">
-          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80&auto=format&fit=crop" alt="ドライバー採用LP" loading="lazy">
+          <img src="assets/work-driver.png" alt="ドライバー採用LP" loading="lazy">
           <div class="work-card-overlay"><span>View Site →</span></div>
         </div>
         <div class="work-card-body">
@@ -885,7 +926,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       </a>
       <a href="https://kairos-epsilon.github.io/beauty-lp/" target="_blank" rel="noopener" class="work-card reveal reveal-delay-1">
         <div class="work-card-img">
-          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop" alt="Beauty Salon LP" loading="lazy">
+          <img src="assets/work-beauty.png" alt="Beauty Salon LP" loading="lazy">
           <div class="work-card-overlay"><span>View Site →</span></div>
         </div>
         <div class="work-card-body">
@@ -895,7 +936,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       </a>
       <a href="https://kairos-epsilon.github.io/gadget-lp/" target="_blank" rel="noopener" class="work-card reveal reveal-delay-2">
         <div class="work-card-img">
-          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80&auto=format&fit=crop" alt="Gadget LP" loading="lazy">
+          <img src="assets/work-gadget.png" alt="Gadget LP" loading="lazy">
           <div class="work-card-overlay"><span>View Site →</span></div>
         </div>
         <div class="work-card-body">
@@ -917,7 +958,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     <div class="services-track" id="servicesTrack">
       <a href="lp.html" class="service-panel">
         <div class="service-panel-img">
-          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80&auto=format&fit=crop" alt="LP制作" loading="lazy">
+          <video autoplay muted loop playsinline>
+            <source src="assets/service-lp.mp4" type="video/mp4">
+          </video>
           <div class="service-panel-img-overlay"></div>
         </div>
         <div class="service-panel-body">
@@ -930,7 +973,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       </a>
       <a href="corporate.html" class="service-panel">
         <div class="service-panel-img">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop" alt="コーポレートサイト" loading="lazy">
+          <video autoplay muted loop playsinline>
+            <source src="assets/service-corporate.mp4" type="video/mp4">
+          </video>
           <div class="service-panel-img-overlay"></div>
         </div>
         <div class="service-panel-body">
@@ -943,7 +988,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       </a>
       <a href="ec.html" class="service-panel">
         <div class="service-panel-img">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&auto=format&fit=crop" alt="EC実装" loading="lazy">
+          <video autoplay muted loop playsinline>
+            <source src="assets/service-ec.mp4" type="video/mp4">
+          </video>
           <div class="service-panel-img-overlay"></div>
         </div>
         <div class="service-panel-body">
@@ -956,7 +1003,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       </a>
       <a href="system.html" class="service-panel">
         <div class="service-panel-img">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80&auto=format&fit=crop" alt="システム開発" loading="lazy">
+          <video autoplay muted loop playsinline>
+            <source src="assets/service-system.mp4" type="video/mp4">
+          </video>
           <div class="service-panel-img-overlay"></div>
         </div>
         <div class="service-panel-body">
@@ -984,6 +1033,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       <div class="eyebrow">About Kairos</div>
       <h2 class="section-heading">Kairosが<br><em>選ばれる理由</em></h2>
       <p class="about-body">Kairosは、Webディレクターを中心とした制作チームです。クライアントとの丁寧なコミュニケーションを起点に、要件定義から設計・実装・納品まで一貫して対応します。<br><br>単なる「作る」だけでなく、「目的を達成する」ための提案を大切にしています。</p>
+      <div class="about-image reveal" style="margin-top: 32px;">
+        <img src="assets/about.png" alt="Kairos制作環境" style="width:100%; border-radius: var(--radius-md); opacity: 0.85;">
+      </div>
     </div>
     <div class="about-features">
       <div class="about-feature">
@@ -1058,7 +1110,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 </section>
 
 <!-- ═══ CTA ═══ -->
-<section class="cta-band reveal">
+<section class="cta-band reveal" style="background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)), url('assets/cta-bg.jpg') center/cover fixed no-repeat;">
   <p class="cta-band-title">プロジェクトの<em>ご相談</em>はこちら</p>
   <p class="cta-band-desc">まずはお気軽にお問い合わせください。ヒアリングは無料です。</p>
   <a href="#contact" class="btn-cta">お問い合わせ <span class="arrow">→</span></a>
