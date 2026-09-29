@@ -710,6 +710,33 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   margin-top: 12px; font-size: 12px;
   color: rgba(255,255,255,0.35); line-height: 1.9;
 }
+.footer-line {
+  margin-top: 24px;
+  display: inline-flex; align-items: center; gap: 16px;
+  padding: 12px 20px 12px 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.03);
+  transition: background 0.3s, border-color 0.3s;
+}
+.footer-line:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: var(--accent);
+}
+.footer-line img {
+  width: 88px; height: 88px;
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.footer-line span {
+  font-size: 11px; line-height: 1.8;
+  color: rgba(255,255,255,0.45);
+}
+.footer-line strong {
+  display: block;
+  font-size: 13px; font-weight: 500;
+  color: var(--text-inverse);
+}
 .footer-nav { display: flex; gap: 28px; flex-wrap: wrap; }
 .footer-nav a {
   font-size: 11px; font-weight: 500;
@@ -817,7 +844,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     <a href="corporate.html">コーポレート</a>
     <a href="ec.html">EC・実装</a>
     <a href="system.html">システム開発</a>
-    <a href="#contact" class="nav-contact-btn">Contact <span class="arrow">→</span></a>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="nav-contact-btn">Contact <span class="arrow">→</span></a>
   </nav>
   <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く">
     <span></span><span></span><span></span>
@@ -831,7 +858,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   <a href="corporate.html" onclick="toggleMenu()">コーポレート</a>
   <a href="ec.html" onclick="toggleMenu()">EC・実装</a>
   <a href="system.html" onclick="toggleMenu()">システム開発</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" onclick="toggleMenu()">Contact</a>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -1113,7 +1140,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 <section class="cta-band reveal" style="background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)), url('assets/cta-bg.jpg') center/cover fixed no-repeat;">
   <p class="cta-band-title">プロジェクトの<em>ご相談</em>はこちら</p>
   <p class="cta-band-desc">まずはお気軽にお問い合わせください。ヒアリングは無料です。</p>
-  <a href="#contact" class="btn-cta">お問い合わせ <span class="arrow">→</span></a>
+  <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="btn-cta">LINEで相談する <span class="arrow">→</span></a>
 </section>
 
 <!-- ═══ FOOTER ═══ -->
@@ -1122,12 +1149,20 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     <div>
       <div class="footer-brand">Kairos <span>Web Production</span></div>
       <p class="footer-tagline">戦略から実装まで、一気通貫で。<br>Web制作・ディレクションチーム</p>
+      <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="footer-line">
+        <img src="assets/line-qr.png" alt="Kairos公式LINEのQRコード" width="88" height="88" loading="lazy">
+        <span>
+          <strong>公式LINEで相談する</strong>
+          QRコードを読み取るか、タップして友だち追加
+        </span>
+      </a>
     </div>
     <nav class="footer-nav">
       <a href="lp.html">LP制作</a>
       <a href="corporate.html">コーポレート</a>
       <a href="ec.html">EC・実装</a>
       <a href="system.html">システム開発</a>
+      <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener">LINE</a>
     </nav>
   </div>
   <div class="footer-bottom">
