@@ -59,6 +59,12 @@ nav a:hover,nav a.active{color:var(--black);}
 .work-tech{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;}
 .tech-tag{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);padding:3px 10px;color:var(--gray);}
 .feat-note{font-size:11px;color:var(--gray);line-height:1.9;padding:16px;background:var(--bg);border-left:2px solid var(--accent);}
+.work-subtitle{font-size:12px;color:var(--gray);margin:-6px 0 20px;letter-spacing:0.06em;}
+.point-list{list-style:none;margin-bottom:24px;}
+.point-list li{font-size:12px;line-height:1.8;color:var(--gray-dark);padding:6px 0 6px 18px;position:relative;border-bottom:1px solid var(--border);}
+.point-list li:last-child{border-bottom:none;}
+.point-list li::before{content:'—';position:absolute;left:0;color:var(--accent);}
+.divider{height:2px;background:var(--border);margin:0 0 2px;}
 
 footer{background:var(--black);color:var(--white);padding:48px;}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
@@ -105,6 +111,35 @@ footer{background:var(--black);color:var(--white);padding:48px;}
   ※ 掲載のデモサイトは実際の販売を行わないポートフォリオ用サンプルです。同等のUI設計・構築をご依頼いただけます。
 </div>
 <section class="works-section">
+  <!-- Amber Room Coffee -->
+  <a href="https://kairos-epsilon.github.io/amber-room-coffee-demo/" target="_blank" rel="noopener" class="work-featured">
+    <div class="feat-thumb">
+      <img src="assets/work-amber-room.png" alt="Amber Room Coffee ECフロントエンドデモ" loading="lazy">
+      <div class="work-overlay"><span>View Demo →</span></div>
+    </div>
+    <div class="feat-body">
+      <p class="work-tag">EC Demo / Frontend Implementation</p>
+      <h3 class="work-title">Amber Room Coffee</h3>
+      <p class="work-subtitle">自家焙煎コーヒーショップ（架空）のECフロントエンド実装デモ</p>
+      <p class="work-desc">商品一覧から購入完了までのEC体験を、サーバーなしのフロントエンドだけで実装したデモです。絞り込み・並べ替え・検索、商品ごとのオプション選択と価格の即時反映、カート、クーポン、送料無料までの進捗表示、入力チェック付きの注文フォームまでを作り込みました。</p>
+      <ul class="point-list">
+        <li>カテゴリ・焙煎度・価格・在庫で絞り込み。条件はURLにも反映され、共有・再読み込みしても保持</li>
+        <li>容量やひき方を選ぶと価格が即時に変わる商品詳細。カートは再訪しても保持</li>
+        <li>数量変更・削除の取り消し、クーポン（AMBER10）、送料無料までの進捗バー</li>
+        <li>エラー表示つきの注文フォーム。キーボード操作・スクリーンリーダー・モバイルにも対応</li>
+      </ul>
+      <div class="work-tech">
+        <span class="tech-tag">HTML/CSS</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">localStorage</span>
+        <span class="tech-tag">Responsive</span>
+        <span class="tech-tag">a11y</span>
+      </div>
+    </div>
+  </a>
+
+  <div class="divider"></div>
+
   <a href="https://kairos-epsilon.github.io/cotie-ec-demo/" target="_blank" rel="noopener" class="work-featured">
     <div class="feat-thumb">
       <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80&auto=format&fit=crop" alt="Cotie ECデモサイト" loading="lazy">
