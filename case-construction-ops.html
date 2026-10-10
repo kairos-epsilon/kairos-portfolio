@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>施工管理会社向け 社内業務システム | Kairos Web Production</title>
+<meta name="description" content="施工管理会社の案件管理・日報・見積・請求までを一つにまとめた社内業務Webアプリの開発事例。同業他社3社で稼働中。守秘のため社名・画面は伏せ、構成と工夫をご紹介します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0f0f0f;--gray-dark:#444;--gray:#888;--border:#e8e8e8;--bg:#fafafa;--white:#fff;--accent:#c4714a;--accent-light:#f0e8e3;
+ --ui-ink:#1f2937;--ui-mute:#6b7280;--ui-line:#e5e7eb;--ui-bg:#f4f6f8;--c-survey:#3b82f6;--c-work:#c4714a;--c-done:#16a34a;--c-warn:#d97706}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--white);color:var(--black);overflow-x:hidden}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 48px;justify-content:space-between}
+.header-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em;color:var(--black);text-decoration:none}
+.header-logo span{color:var(--accent)}
+nav{display:flex;gap:32px;align-items:center}
+nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s}
+nav a:hover,nav a.active{color:var(--black)}
+.nav-contact{border:1px solid var(--black);padding:7px 18px;font-size:10px;letter-spacing:.14em;color:var(--black)!important}
+.nav-contact:hover{background:var(--black);color:var(--white)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:20px;height:1px;background:var(--black);display:block}
+.mobile-menu{position:fixed;inset:0;background:var(--white);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transform:translateX(100%);transition:transform .35s ease}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:28px;color:var(--black);text-decoration:none}
+.mobile-close{position:absolute;top:18px;right:24px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--gray)}
+
+.page-hero{padding:120px 48px 64px;border-bottom:1px solid var(--border);background:var(--bg)}
+.breadcrumb{font-size:11px;letter-spacing:.12em;color:var(--gray);margin-bottom:20px}
+.breadcrumb a{color:var(--gray);text-decoration:none}.breadcrumb a:hover{color:var(--black)}
+.eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.page-title{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(30px,4.6vw,52px);font-weight:400;line-height:1.35;margin-bottom:20px}
+.page-title em{font-style:italic;color:var(--accent)}
+.page-desc{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:640px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 48px}
+section.blk{padding:80px 0;border-bottom:1px solid var(--border)}
+.h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(24px,3vw,32px);font-weight:400;line-height:1.4;margin-bottom:12px}
+.h2 em{font-style:italic;color:var(--accent)}
+.lead{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:700px;margin-bottom:40px}
+
+/* 数字 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);margin:0 0 0}
+.stat{background:var(--white);padding:28px 24px}
+.stat b{display:block;font-family:'Playfair Display',serif;font-size:36px;font-weight:400;line-height:1.1;margin-bottom:6px}
+.stat span{font-size:11px;letter-spacing:.06em;color:var(--gray)}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.spec-item{background:var(--bg);padding:18px 22px}
+.spec-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.spec-value{font-size:12px;color:var(--gray-dark);line-height:1.8}
+
+/* 課題→解決 */
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
+.ps>div{background:var(--white);padding:36px 36px}
+.ps h3{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;font-weight:500}
+.ps ul{list-style:none}
+.ps li{font-size:12px;line-height:2;color:var(--gray-dark);padding:10px 0 10px 18px;border-bottom:1px solid var(--border);position:relative}
+.ps li:last-child{border-bottom:none}
+.ps li::before{content:'';position:absolute;left:0;top:20px;width:6px;height:1px;background:var(--accent)}
+
+/* フロー */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;margin-top:8px}
+.step{padding:0 10px;text-align:center;position:relative}
+.step .dot{width:44px;height:44px;border-radius:50%;background:var(--black);color:#fff;display:grid;place-items:center;margin:0 auto 14px;font-family:'Playfair Display',serif;font-size:15px;position:relative;z-index:1}
+.step:not(:last-child)::after{content:'';position:absolute;top:22px;left:calc(50% + 28px);right:calc(-50% + 28px);height:1px;background:var(--border)}
+.step h4{font-size:12px;font-weight:500;margin-bottom:6px}
+.step p{font-size:11px;line-height:1.8;color:var(--gray)}
+
+/* 機能ブロック */
+.feat{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;padding:56px 0;border-top:1px solid var(--border)}
+.feat:first-of-type{border-top:none}
+.feat.rev{grid-template-columns:1.1fr .9fr}.feat.rev .feat-text{order:2}
+.feat-num{font-family:'Playfair Display',serif;font-size:13px;color:var(--accent);letter-spacing:.14em;margin-bottom:10px}
+.feat-text h3{font-size:19px;font-weight:500;line-height:1.6;margin-bottom:14px}
+.feat-text p{font-size:12px;line-height:2.1;color:var(--gray-dark);margin-bottom:14px}
+.feat-text ul{list-style:none}
+.feat-text li{font-size:12px;line-height:1.9;color:var(--gray-dark);padding:4px 0 4px 16px;position:relative}
+.feat-text li::before{content:'';position:absolute;left:0;top:14px;width:6px;height:1px;background:var(--accent)}
+
+/* ---- モック（架空データ・説明用に作り直した画面） ---- */
+.mock{background:var(--ui-bg);border:1px solid var(--ui-line);border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.08);overflow:hidden;font-family:'Noto Sans JP',sans-serif;color:var(--ui-ink);position:relative}
+.mock-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#fff;border-bottom:1px solid var(--ui-line)}
+.mock-bar i{width:9px;height:9px;border-radius:50%;background:#e5e7eb}
+.mock-bar span{margin-left:10px;font-size:10px;color:var(--ui-mute);letter-spacing:.04em;font-weight:400}
+.mock-tag{position:absolute;right:10px;bottom:8px;font-size:9px;letter-spacing:.14em;color:#9ca3af;background:rgba(255,255,255,.85);padding:2px 8px;border-radius:99px}
+.mock-body{padding:14px 14px 34px;font-size:11px;font-weight:400}
+/* ボード */
+.board{display:grid;grid-template-columns:132px repeat(7,1fr);font-size:10px;border:1px solid var(--ui-line);border-radius:6px;background:#fff;overflow:hidden}
+.board>div{padding:8px 6px;border-bottom:1px solid var(--ui-line);border-right:1px solid var(--ui-line);min-height:40px;position:relative}
+.board .hd{background:#f9fafb;color:var(--ui-mute);text-align:center;min-height:30px;padding:7px 2px}
+.board .nm{font-weight:500;line-height:1.5}.board .nm small{display:block;color:var(--ui-mute);font-weight:400}
+.chip{position:absolute;left:3px;right:3px;top:9px;border-radius:4px;padding:4px 6px;color:#fff;font-size:9px;line-height:1.3;white-space:nowrap;overflow:hidden;z-index:1}
+.chip.s{background:var(--c-survey)}.chip.w{background:var(--c-work)}.chip.d{background:var(--c-done)}.chip.m{background:#fff;color:var(--c-warn);border:1px dashed var(--c-warn)}
+.span2{right:calc(-100% - 1px)}.span3{right:calc(-200% - 2px)}
+.legend{display:flex;gap:14px;margin-top:10px;font-size:10px;color:var(--ui-mute)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+/* 日報→請求 */
+.rowcards{display:grid;gap:8px}
+.rc{background:#fff;border:1px solid var(--ui-line);border-radius:8px;padding:10px 12px;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+.rc b{font-weight:500;font-size:11px}.rc small{display:block;color:var(--ui-mute);font-size:10px;margin-top:2px}
+.pill{font-size:9px;padding:3px 9px;border-radius:99px;font-weight:500;white-space:nowrap}
+.pill.ok{background:#dcfce7;color:#166534}.pill.wait{background:#fef3c7;color:#92400e}.pill.diff{background:#fee2e2;color:#991b1b}
+.ico{width:28px;height:28px;border-radius:6px;background:var(--accent-light);color:var(--accent);display:grid;place-items:center;font-size:12px;font-weight:700}
+.arrow-d{text-align:center;color:var(--ui-mute);font-size:11px;line-height:1}
+/* 請求書 */
+.inv{background:#fff;border:1px solid var(--ui-line);border-radius:6px;padding:16px}
+.inv-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.inv-h h5{font-size:13px;font-weight:700;letter-spacing:.2em}
+.inv table{width:100%;border-collapse:collapse;font-size:10px}
+.inv th{background:#f9fafb;color:var(--ui-mute);font-weight:500;text-align:left;padding:6px 8px;border-bottom:1px solid var(--ui-line)}
+.inv td{padding:6px 8px;border-bottom:1px solid #f3f4f6}
+.inv td.r,.inv th.r{text-align:right;font-variant-numeric:tabular-nums}
+.inv tfoot td{font-weight:700;border-bottom:none;padding-top:10px}
+.exp{display:flex;gap:6px;margin-top:10px}
+.btn-m{font-size:9px;border:1px solid var(--ui-line);background:#fff;border-radius:5px;padding:4px 10px;color:var(--ui-ink)}
+.btn-m.p{background:var(--ui-ink);color:#fff;border-color:var(--ui-ink)}
+/* 権限 */
+.mx{width:100%;border-collapse:collapse;font-size:10px;background:#fff;border:1px solid var(--ui-line);border-radius:6px;overflow:hidden}
+.mx th,.mx td{padding:8px 8px;border-bottom:1px solid var(--ui-line);text-align:center}
+.mx th{background:#f9fafb;color:var(--ui-mute);font-weight:500}
+.mx td:first-child,.mx th:first-child{text-align:left;font-weight:500}
+.mx .y{color:var(--c-done);font-weight:700}.mx .n{color:#d1d5db}.mx .p{color:var(--c-warn);font-size:9px}
+
+/* 設計の工夫 */
+.craft{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border)}
+.craft>div{background:var(--white);padding:32px 34px}
+.craft h4{font-size:14px;font-weight:500;line-height:1.7;margin-bottom:10px}
+.craft h4 span{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:400}
+.craft p{font-size:12px;line-height:2.1;color:var(--gray-dark)}
+.tech-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:22px}
+.tech-tag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);padding:4px 11px;color:var(--gray)}
+
+/* 守秘の注記 */
+.note{background:var(--black);color:#fff;padding:64px 0}
+.note .h2{color:#fff}.note p{font-size:12px;line-height:2.1;color:rgba(255,255,255,.55);max-width:660px}
+.note-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.08);margin-top:32px}
+.note-grid div{background:rgba(255,255,255,.03);padding:24px 24px}
+.note-grid b{display:block;font-size:12px;font-weight:500;margin-bottom:8px}
+.note-grid span{font-size:11px;line-height:1.9;color:rgba(255,255,255,.45)}
+.cta{padding:72px 0;text-align:center}
+.cta p{font-size:13px;line-height:2.1;color:var(--gray-dark);margin-bottom:24px}
+.btn{display:inline-block;background:var(--black);color:#fff;padding:14px 36px;font-size:11px;letter-spacing:.16em;text-decoration:none;transition:background .25s}
+.btn:hover{background:var(--accent)}
+footer{background:var(--black);color:#fff;padding:48px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em}.footer-logo span{color:var(--accent)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.25)}
+.footer-nav{display:flex;gap:24px}.footer-nav a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none}.footer-nav a:hover{color:#fff}
+
+.live-pill{display:inline-flex;align-items:center;gap:10px;background:var(--black);color:#fff;font-size:12px;letter-spacing:.08em;padding:9px 20px 9px 16px;border-radius:99px;margin-bottom:24px;font-weight:500}
+.live-pill i{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.adopt{background:var(--black);color:#fff;padding:72px 0}
+.adopt .wrap{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+.adopt-num{font-family:'Playfair Display',serif;font-size:clamp(110px,16vw,190px);line-height:.9;color:var(--accent);font-weight:400;display:flex;align-items:baseline;gap:8px}
+.adopt-num small{font-family:'Noto Sans JP',sans-serif;font-size:clamp(22px,3vw,34px);color:#fff;font-weight:500}
+.adopt h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(24px,3.2vw,38px);font-weight:400;line-height:1.5;margin-bottom:16px}
+.adopt h2 em{font-style:italic;color:var(--accent)}
+.adopt p{font-size:13px;line-height:2.1;color:rgba(255,255,255,.62);max-width:560px}
+.adopt-dots{display:flex;gap:10px;margin-top:22px}
+.adopt-dots span{font-size:11px;letter-spacing:.1em;border:1px solid rgba(255,255,255,.25);padding:7px 16px;border-radius:99px;color:rgba(255,255,255,.85)}
+@media(max-width:960px){
+ header{padding:0 24px}nav{display:none}.hamburger{display:flex}
+ .page-hero{padding:100px 24px 48px}.wrap{padding:0 24px}section.blk{padding:56px 0}
+ .stats{grid-template-columns:1fr 1fr}.spec-grid{grid-template-columns:1fr}.ps{grid-template-columns:1fr}.ps>div{padding:28px 24px}
+ .adopt{padding:56px 0}.adopt .wrap{grid-template-columns:1fr;gap:24px}.adopt-dots{flex-wrap:wrap}.flow{grid-template-columns:1fr;gap:20px}.step{display:grid;grid-template-columns:44px 1fr;gap:0 16px;text-align:left;padding:0}.step .dot{margin:0;grid-row:span 2}.step:not(:last-child)::after{display:none}
+ .feat,.feat.rev{grid-template-columns:1fr;gap:28px;padding:40px 0}.feat.rev .feat-text{order:0}
+ .craft{grid-template-columns:1fr}.craft>div{padding:26px 24px}.note-grid{grid-template-columns:1fr}
+ .board{grid-template-columns:96px repeat(7,minmax(34px,1fr))}
+ .footer-bottom{flex-direction:column;gap:20px;text-align:center}.footer-nav{flex-wrap:wrap;justify-content:center}footer{padding:40px 24px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="header-logo">Kairos <span>Web Production</span></a>
+  <nav>
+    <a href="lp.html">LP制作</a>
+    <a href="corporate.html">コーポレート</a>
+    <a href="ec.html">EC・実装</a>
+    <a href="system.html" class="active">システム開発</a>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="nav-contact">Contact</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="閉じる">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="lp.html" onclick="toggleMenu()">LP制作</a>
+  <a href="corporate.html" onclick="toggleMenu()">コーポレート</a>
+  <a href="ec.html" onclick="toggleMenu()">EC・実装</a>
+  <a href="system.html" onclick="toggleMenu()">システム開発</a>
+</div>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">Home</a> / <a href="system.html">システム開発</a> / 施工管理会社向け社内業務システム</p>
+  <div class="live-pill"><i></i>同業他社 3社で実際に稼働中</div>
+  <p class="eyebrow">Case Study / Internal Business System</p>
+  <h1 class="page-title">案件も、日報も、請求も。<br>施工管理会社の<em>社内処理</em>を一つに。</h1>
+  <p class="page-desc">施工管理会社の内部処理を、案件の受付から請求書の発行まで一気通貫で担う業務Webアプリ。同業他社3社で実際に稼働しています。守秘のため社名・製品名・実画面は伏せ、構成と設計の工夫を、作り直した説明用の画面とともにご紹介します。</p>
+</div>
+
+<section class="adopt" aria-label="導入実績">
+  <div class="wrap">
+    <div class="adopt-num">3<small>社</small></div>
+    <div>
+      <h2>同業他社<em>3社</em>が、<br>同じシステムを日々の業務で使っています。</h2>
+      <p>特定の1社のために作って終わりではなく、同じ業界の複数の会社が、実際の案件・日報・請求にこのシステムを使っています。現場の声を取り込みながら改善を重ねた、「実際に使われている」システムです。</p>
+      <div class="adopt-dots"><span>実運用中</span><span>同業他社に導入</span><span>改善を継続</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" style="padding-top:56px">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>118</b><span>画面（ページ）</span></div>
+      <div class="stat"><b>430</b><span>DBマイグレーション</span></div>
+      <div class="stat"><b>290+</b><span>機能仕様書（1機能＝1ファイル）</span></div>
+      <div class="stat"><b>130+</b><span>品質チェック／テストのスクリプト</span></div>
+    </div>
+    <div class="spec-grid" style="margin-top:2px">
+      <div class="spec-item"><p class="spec-label">Client</p><p class="spec-value">施工管理会社（社名非公開）／同業他社3社でも稼働中</p></div>
+      <div class="spec-item"><p class="spec-label">Type</p><p class="spec-value">社内業務Webアプリ（マルチテナント／PWA対応）</p></div>
+      <div class="spec-item"><p class="spec-label">Scope</p><p class="spec-value">要件ヒアリング〜設計・実装・運用改善</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="wrap">
+    <p class="eyebrow">Challenge &amp; Solution</p>
+    <h2 class="h2">バラバラだった業務を、<em>一本の流れ</em>に。</h2>
+    <p class="lead">施工管理の仕事は、連絡・現地調査・工事・日報・見積・請求と、人も書類も多岐にわたります。それぞれが別のツールやExcelに散らばると、転記ミスと確認の手間が積み重なります。</p>
+    <div class="ps">
+      <div>
+        <h3>Before</h3>
+        <ul>
+          <li>案件の依頼がLINEやSlackに流れ、案件表への手入力が必要</li>
+          <li>日程・担当がバラバラで、誰がいつ現場に入るか一目で分からない</li>
+          <li>日報の承認から請求書作成まで、転記と目視確認の繰り返し</li>
+          <li>取引先ごとの単価・書式の違いで、請求書づくりが属人化</li>
+        </ul>
+      </div>
+      <div>
+        <h3>After</h3>
+        <ul>
+          <li>メッセージから案件候補をAIが整理し、確認して登録するだけに</li>
+          <li>日程ボードで案件・担当・工程を一覧。変更はその場で反映</li>
+          <li>承認された日報が、そのまま請求の材料に。差分は画面で警告</li>
+          <li>単価マスタと請求エンジンで、見積書・請求書をPDF/Excelで出力</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" style="background:var(--bg)">
+  <div class="wrap">
+    <p class="eyebrow">Workflow</p>
+    <h2 class="h2">受付から請求まで、<em>一直線</em>。</h2>
+    <p class="lead">一度入れたデータを、次の工程でそのまま使う。この「転記しない」流れが設計の背骨です。</p>
+    <div class="flow">
+      <div class="step"><div class="dot">1</div><h4>案件の受付</h4><p>LINE/Slackの投稿から<br>AIが案件候補を作成</p></div>
+      <div class="step"><div class="dot">2</div><h4>日程の調整</h4><p>ボードで現調・工事を<br>配置し担当を割当</p></div>
+      <div class="step"><div class="dot">3</div><h4>現場の実施</h4><p>職員が日報を入力<br>写真・数量を記録</p></div>
+      <div class="step"><div class="dot">4</div><h4>承認</h4><p>管理者がまとめて承認<br>差分は自動で指摘</p></div>
+      <div class="step"><div class="dot">5</div><h4>見積・請求</h4><p>単価マスタから<br>明細を自動で組立</p></div>
+      <div class="step"><div class="dot">6</div><h4>出力・送付</h4><p>PDF/Excelで出力<br>月ごとにまとめて管理</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="wrap">
+    <p class="eyebrow">Highlights</p>
+    <h2 class="h2">現場の判断を<em>止めない</em>画面設計。</h2>
+    <p class="lead">主要な機能を、説明用に作り直した画面でご紹介します（表示内容はすべて架空のダミーデータです）。</p>
+
+    <!-- 1 ボード -->
+    <div class="feat">
+      <div class="feat-text">
+        <div class="feat-num">01 — SCHEDULE BOARD</div>
+        <h3>誰が・どの現場に・いつ入るかが、一画面で分かる日程ボード</h3>
+        <p>案件ごとの現地調査・工事・完工を色分けして一覧表示。担当者や施工会社の単位で絞り込め、日程の変更や予定の取り消し時には、その場で確認を促します。</p>
+        <ul>
+          <li>工程の色がそのままステータスになり、状況が直感的に分かる</li>
+          <li>メモ予定や印（マーク）で、現場の注意点を共有</li>
+          <li>取引先ごとに、見える予定・見えない予定を制御</li>
+        </ul>
+      </div>
+      <div class="mock" aria-label="日程ボードのイメージ">
+        <div class="mock-bar"><i></i><i></i><i></i><span>案件ボード（イメージ）</span></div>
+        <div class="mock-body">
+          <div class="board">
+            <div class="hd"></div><div class="hd">月</div><div class="hd">火</div><div class="hd">水</div><div class="hd">木</div><div class="hd">金</div><div class="hd">土</div><div class="hd">日</div>
+            <div class="nm">〇〇市 A様邸<small>担当：山田</small></div><div><span class="chip s">現調</span></div><div></div><div><span class="chip w span2">工事</span></div><div></div><div><span class="chip d">完工</span></div><div></div><div></div>
+            <div class="nm">△△町 Bビル<small>担当：佐藤</small></div><div></div><div><span class="chip s">現調</span></div><div></div><div></div><div><span class="chip w span2">工事</span></div><div></div><div></div>
+            <div class="nm">□□区 C様邸<small>担当：鈴木</small></div><div><span class="chip w span3">工事</span></div><div></div><div></div><div><span class="chip m">要確認</span></div><div></div><div></div><div></div>
+            <div class="nm">◇◇市 D店舗<small>担当：山田</small></div><div></div><div></div><div><span class="chip s">現調</span></div><div></div><div></div><div><span class="chip w">工事</span></div><div></div>
+          </div>
+          <div class="legend"><span><i style="background:var(--c-survey)"></i>現地調査</span><span><i style="background:var(--c-work)"></i>工事</span><span><i style="background:var(--c-done)"></i>完工</span><span><i style="background:#fff;border:1px dashed var(--c-warn)"></i>要確認</span></div>
+        </div>
+        <span class="mock-tag">ILLUSTRATION・架空データ</span>
+      </div>
+    </div>
+
+    <!-- 2 日報承認 -->
+    <div class="feat rev">
+      <div class="mock" aria-label="日報承認のイメージ">
+        <div class="mock-bar"><i></i><i></i><i></i><span>日報の承認（イメージ）</span></div>
+        <div class="mock-body">
+          <div class="rowcards">
+            <div class="rc"><div class="ico">日</div><div><b>〇〇市 A様邸 ／ 工事</b><small>山田 ・ 数量：一致 ・ 写真 6枚</small></div><span class="pill ok">承認済み</span></div>
+            <div class="arrow-d">▼ 請求の材料に自動で反映</div>
+            <div class="rc"><div class="ico">日</div><div><b>△△町 Bビル ／ 現調</b><small>佐藤 ・ 数量：一致 ・ 写真 3枚</small></div><span class="pill wait">承認待ち</span></div>
+            <div class="rc"><div class="ico">日</div><div><b>□□区 C様邸 ／ 工事</b><small>鈴木 ・ 数量：見積と差分あり</small></div><span class="pill diff">差分を確認</span></div>
+          </div>
+          <div class="exp"><span class="btn-m p">選択した日報を承認</span><span class="btn-m">差分だけ表示</span></div>
+        </div>
+        <span class="mock-tag">ILLUSTRATION・架空データ</span>
+      </div>
+      <div class="feat-text">
+        <div class="feat-num">02 — DAILY REPORT</div>
+        <h3>日報の承認が、そのまま請求につながる</h3>
+        <p>現場で入力された日報を、管理者が承認画面でまとめて処理。見積との数量の食い違いは自動で指摘するので、見るべき案件だけに集中できます。</p>
+        <ul>
+          <li>工程ごとに入力項目と「承認不要」の可否を設定</li>
+          <li>承認のタイミングと請求への反映ルールを明文化</li>
+          <li>差分の判定を「数量・単位の食い違い」に絞り、確認の的を絞る</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3 見積・請求 -->
+    <div class="feat">
+      <div class="feat-text">
+        <div class="feat-num">03 — ESTIMATE &amp; INVOICE</div>
+        <h3>取引先ごとの単価で、見積書・請求書を自動で組み立てる</h3>
+        <p>単価マスタ・契約・日報から明細を自動生成し、PDFとExcelで出力。販売店ごとの宛名や書式の違い、キャンセル料や材料費の手入力にも対応しています。</p>
+        <ul>
+          <li>請求エンジンが「自社→取引先」「施工店→自社」の両方向を扱う</li>
+          <li>月ごとの確定・確定解除・まとめて送付に対応</li>
+          <li>「請求できるのに出ていない」取りこぼしを毎朝自動で点検</li>
+        </ul>
+      </div>
+      <div class="mock" aria-label="請求書のイメージ">
+        <div class="mock-bar"><i></i><i></i><i></i><span>請求書プレビュー（イメージ）</span></div>
+        <div class="mock-body">
+          <div class="inv">
+            <div class="inv-h"><div><h5>請 求 書</h5><div style="font-size:9px;color:var(--ui-mute);margin-top:4px">○○販売株式会社 御中 ／ 2026年9月分</div></div><div style="font-size:9px;color:var(--ui-mute);text-align:right">No. 000-0000<br>発行日 2026/09/30</div></div>
+            <table>
+              <thead><tr><th>案件</th><th>項目</th><th class="r">数量</th><th class="r">単価</th><th class="r">金額</th></tr></thead>
+              <tbody>
+                <tr><td>〇〇市 A様邸</td><td>設置工事 A</td><td class="r">1</td><td class="r">48,000</td><td class="r">48,000</td></tr>
+                <tr><td>〇〇市 A様邸</td><td>配線工事</td><td class="r">2</td><td class="r">12,500</td><td class="r">25,000</td></tr>
+                <tr><td>△△町 Bビル</td><td>現地調査</td><td class="r">1</td><td class="r">13,000</td><td class="r">13,000</td></tr>
+                <tr><td>□□区 C様邸</td><td>設置工事 B</td><td class="r">1</td><td class="r">62,000</td><td class="r">62,000</td></tr>
+              </tbody>
+              <tfoot><tr><td colspan="4">合計（税抜）</td><td class="r">148,000</td></tr></tfoot>
+            </table>
+            <div class="exp"><span class="btn-m p">PDFで出力</span><span class="btn-m">Excelで出力</span><span class="btn-m">確定</span></div>
+          </div>
+        </div>
+        <span class="mock-tag">ILLUSTRATION・架空データ</span>
+      </div>
+    </div>
+
+    <!-- 4 権限 -->
+    <div class="feat rev">
+      <div class="mock" aria-label="権限設計のイメージ">
+        <div class="mock-bar"><i></i><i></i><i></i><span>権限と表示範囲（イメージ）</span></div>
+        <div class="mock-body">
+          <table class="mx">
+            <thead><tr><th>画面・情報</th><th>管理者</th><th>マネージャー</th><th>一般社員</th><th>取引先</th></tr></thead>
+            <tbody>
+              <tr><td>案件ボード</td><td class="y">●</td><td class="y">●</td><td class="y">●</td><td class="p">自社分のみ</td></tr>
+              <tr><td>日報の入力</td><td class="y">●</td><td class="y">●</td><td class="y">●</td><td class="y">●</td></tr>
+              <tr><td>日報の承認</td><td class="y">●</td><td class="y">●</td><td class="n">—</td><td class="n">—</td></tr>
+              <tr><td>単価・請求・見積金額</td><td class="y">●</td><td class="n">—</td><td class="n">—</td><td class="p">自社分のみ</td></tr>
+              <tr><td>社員管理・シフト</td><td class="y">●</td><td class="y">●</td><td class="n">—</td><td class="n">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="mock-tag">ILLUSTRATION・架空データ</span>
+      </div>
+      <div class="feat-text">
+        <div class="feat-num">04 — ROLES &amp; VISIBILITY</div>
+        <h3>役割ごとに「見える範囲」を厳密にコントロール</h3>
+        <p>管理者・マネージャー・一般社員・取引先で、見える画面と金額情報を切り分け。画面のメニューを隠すだけでなく、URLを直接開かれてもデータ側で遮断します。</p>
+        <ul>
+          <li>金額情報は管理者のみ。担当者には作業に必要な情報だけを表示</li>
+          <li>取引先には、自社に関係する案件・予定だけを表示</li>
+          <li>操作履歴（監査ログ）を残し、後から追跡可能</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" style="background:var(--bg)">
+  <div class="wrap">
+    <p class="eyebrow">Engineering</p>
+    <h2 class="h2">長く使い続けられる<em>土台</em>づくり。</h2>
+    <p class="lead">機能を足し続けても壊れないこと。運用コストが跳ねないこと。業務システムに欠かせない「地味な品質」に力を入れています。</p>
+    <div class="craft">
+      <div><h4><span>Security</span>認可は「画面」ではなく「データ」で守る</h4><p>データベースの行レベルセキュリティ（RLS）を、会社と組織の二段で適用。認可情報は改ざんできない領域に保存し、アクセス権の判定をアプリ側の表示だけに頼りません。</p></div>
+      <div><h4><span>Consistency</span>請求ロジックを一箇所に集約</h4><p>請求の計算は「請求エンジン」に一本化。工事日・請求月・単価の優先順位などの規則を明文化し、テストスクリプトで繰り返し検証できるようにしています。</p></div>
+      <div><h4><span>Automation</span>機械的な見張りで、人のミスを拾う</h4><p>請求の取りこぼし検知、権限の抜け漏れ、DB移行の番号整合性など、130本を超えるチェックを自動化。変更のたびに「壊していないか」をコマンドで確かめられます。</p></div>
+      <div><h4><span>Cost</span>運用コストまで設計に含める</h4><p>常駐ポーリングの許可リスト化や、プラットフォームの制約を文書化するなど、月額費用が想定外に膨らまない設計を徹底。計測にもとづいて通信量を削減しました。</p></div>
+      <div><h4><span>Integration</span>既存の業務ツールとつなぐ</h4><p>LINE・Slackでの通知と案件取込、既存の施工管理サービスからのデータ移行と日次同期に対応。現場が使い慣れた導線を残したまま移行できます。</p></div>
+      <div><h4><span>Documentation</span>仕様と意思決定を文書で残す</h4><p>機能仕様は1機能1ファイルで管理し、意思決定とエラーの記録、再発防止策も蓄積。担当者が替わっても、経緯をたどって改修できる体制です。</p></div>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag">Next.js (App Router)</span><span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Supabase / PostgreSQL</span><span class="tech-tag">Row Level Security</span><span class="tech-tag">Vercel</span><span class="tech-tag">PWA</span><span class="tech-tag">LINE Messaging API</span><span class="tech-tag">Slack</span><span class="tech-tag">Claude API</span><span class="tech-tag">PDF / Excel出力</span>
+    </div>
+  </div>
+</section>
+
+<section class="note">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--accent)">Confidentiality</p>
+    <h2 class="h2">守秘義務を守りながら、実力をお見せします。</h2>
+    <p>本システムは実際の業務で稼働している社内システムのため、実画面・顧客データ・社名は公開していません。ご興味をお持ちの方には、守秘の範囲内で、ご相談の場で構成や設計の詳細をご説明します。</p>
+    <div class="note-grid">
+      <div><b>実画面は非公開</b><span>画面はすべて説明用に作り直した架空のイメージで、実データは含まれません。</span></div>
+      <div><b>社名・製品名は非表示</b><span>クライアント名・製品名・取引先名は、掲載しておりません。</span></div>
+      <div><b>詳細はご相談時に</b><span>貴社の業務に近い部分を、守秘の範囲でご説明できます。</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <p>業務の流れに合わせた社内システムの開発・改修を承ります。<br>まずは現在の業務をお聞かせください。</p>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="btn">LINEで相談する →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-logo">Kairos <span>Web Production</span></div>
+    <nav class="footer-nav">
+      <a href="lp.html">LP制作</a><a href="corporate.html">コーポレート</a><a href="ec.html">EC・実装</a><a href="system.html">システム開発</a>
+    </nav>
+    <span class="footer-copy">© 2025 Kairos Web Production.</span>
+  </div>
+</footer>
+<script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>
+</body>
+</html>

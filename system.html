@@ -52,6 +52,9 @@ nav a:hover,nav a.active{color:var(--black);}
 
 .work-tech{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;}
 .tech-tag{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);padding:3px 10px;color:var(--gray);}
+.live-pill{position:absolute;top:16px;left:16px;z-index:2;display:inline-flex;align-items:center;gap:10px;background:var(--black);color:#fff;font-size:12px;letter-spacing:.08em;padding:9px 20px 9px 16px;border-radius:99px;font-weight:500}
+.live-pill i{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
 .view-btn{display:inline-block;background:var(--black);color:var(--white);padding:13px 32px;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;transition:background 0.25s;align-self:flex-start;}
 .view-btn:hover{background:var(--accent);}
 
@@ -108,6 +111,39 @@ footer{background:var(--black);color:var(--white);padding:48px;border-top:1px so
   <p class="page-desc">予約管理・会員・決済システムなど複雑な要件にも対応します。Next.js・FastAPI・Supabase・Docker等のモダンスタックで、スケーラブルなシステムを構築します。</p>
 </div>
 <section class="works-section">
+
+  <!-- 匿名事例：施工管理会社向け 社内業務システム -->
+  <div class="work-detail">
+    <div class="detail-thumb">
+      <img src="assets/work-ops-board.png" alt="施工管理向け業務システムの日程ボード（説明用に作り直したイメージ）" loading="lazy">
+      <div class="live-pill"><i></i>同業他社3社で稼働中</div>
+    </div>
+    <div class="detail-body">
+      <p class="work-tag">Internal Business System / Case Study</p>
+      <h3 class="work-title">施工管理会社向け 社内業務システム</h3>
+      <p class="work-subtitle">Next.js + Supabase — 守秘のため社名・実画面は非公開</p>
+      <p class="work-desc">施工管理会社の案件管理・日程・日報・見積・請求までを一つにまとめた社内業務Webアプリ。同業他社3社で実際に稼働中。守秘のため、実画面ではなく作り直した説明用の画面と設計の工夫でご紹介しています。</p>
+      <div class="spec-grid">
+        <div class="spec-item">
+          <p class="spec-label">Frontend</p>
+          <p class="spec-value">Next.js (App Router)<br>TypeScript</p>
+        </div>
+        <div class="spec-item">
+          <p class="spec-label">Backend</p>
+          <p class="spec-value">Supabase<br>(PostgreSQL + RLS)</p>
+        </div>
+        <div class="spec-item">
+          <p class="spec-label">Integration</p>
+          <p class="spec-value">LINE<br>Slack<br>Claude API</p>
+        </div>
+        <div class="spec-item">
+          <p class="spec-label">Output</p>
+          <p class="spec-value">PDF<br>Excel</p>
+        </div>
+      </div>
+      <a href="case-construction-ops.html" class="view-btn">事例を見る</a>
+    </div>
+  </div>
 
   <!-- 既存：ネイルサロン予約管理システム -->
   <div class="work-detail">
