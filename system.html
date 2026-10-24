@@ -82,6 +82,12 @@ footer{background:var(--black);color:var(--white);padding:48px;border-top:1px so
 .mobile-menu a{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--black);text-decoration:none;}
 .mobile-close{position:absolute;top:18px;right:24px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--gray);}
 @media(max-width:960px){header{padding:0 24px;}nav{display:none;}.hamburger{display:flex;}.page-hero{padding:100px 24px 48px;}.works-section{padding:40px 24px 72px;}.work-detail{grid-template-columns:1fr;}.detail-thumb{min-height:260px;}.detail-body{padding:36px 28px;}.spec-grid{grid-template-columns:1fr;}.capabilities{padding:56px 24px;}.cap-grid{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;gap:20px;text-align:center;}.footer-nav{flex-wrap:wrap;justify-content:center;}footer{padding:40px 24px;}}
+
+.work-badge{display:inline-block;align-self:flex-start;font-size:10px;font-weight:500;letter-spacing:0.1em;padding:3px 12px;border-radius:99px;margin-bottom:10px;border:1px solid;line-height:1.6;}
+.work-badge.is-deliv{background:var(--accent);color:#fff;border-color:var(--accent);}
+.work-badge.is-sample{background:transparent;color:var(--gray);border-color:#bbb;}
+.work-badge.is-own{background:var(--black);color:#fff;border-color:var(--black);}
+.work-note{font-size:11px;line-height:1.9;color:var(--gray);margin:-4px 0 16px;}
 </style>
 </head>
 <body>
@@ -116,13 +122,14 @@ footer{background:var(--black);color:var(--white);padding:48px;border-top:1px so
   <div class="work-detail">
     <div class="detail-thumb">
       <img src="assets/work-ops-board.png" alt="施工管理向け業務システムの日程ボード（説明用に作り直したイメージ）" loading="lazy">
-      <div class="live-pill"><i></i>同業他社3社で稼働中</div>
+      <div class="live-pill"><i></i>現在、同業3社で利用中</div>
     </div>
     <div class="detail-body">
+      <span class="work-badge is-deliv">納品実績</span>
       <p class="work-tag">Internal Business System / Case Study</p>
       <h3 class="work-title">施工管理会社向け 社内業務システム</h3>
       <p class="work-subtitle">Next.js + Supabase — 守秘のため社名・実画面は非公開</p>
-      <p class="work-desc">施工管理会社の案件管理・日程・日報・見積・請求までを一つにまとめた社内業務Webアプリ。同業他社3社で実際に稼働中。守秘のため、実画面ではなく作り直した説明用の画面と設計の工夫でご紹介しています。</p>
+      <p class="work-desc">施工管理会社の案件管理・日程・日報・見積・請求までを一つにまとめた社内業務Webアプリ。現在、同業3社で利用されている業務システムです。守秘のため、実画面ではなく作り直した説明用の画面と設計の工夫でご紹介しています。</p>
       <div class="spec-grid">
         <div class="spec-item">
           <p class="spec-label">Frontend</p>
@@ -151,6 +158,7 @@ footer{background:var(--black);color:var(--white);padding:48px;border-top:1px so
       <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&q=80&auto=format&fit=crop" alt="ネイルサロン予約管理アプリ" loading="lazy">
     </div>
     <div class="detail-body">
+      <span class="work-badge is-sample">制作サンプル</span>
       <p class="work-tag">Web Application</p>
       <h3 class="work-title">ネイルサロン予約管理システム</h3>
       <p class="work-subtitle">principal-booking — Next.js + Supabase</p>
@@ -191,6 +199,7 @@ footer{background:var(--black);color:var(--white);padding:48px;border-top:1px so
       <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900&q=80&auto=format&fit=crop" alt="AIまつげカルテ生成デモ" loading="lazy">
     </div>
     <div class="detail-body">
+      <span class="work-badge is-sample">制作サンプル</span>
       <p class="work-tag">AI Web Application</p>
       <h3 class="work-title">AIまつげカルテ生成デモ</h3>
       <p class="work-subtitle">ai-karute-demo — Claude API + Vercel Serverless</p>
@@ -230,6 +239,7 @@ footer{background:var(--black);color:var(--white);padding:48px;border-top:1px so
       <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop" alt="実績管理システム Kairos Hub" loading="lazy">
     </div>
     <div class="detail-body">
+      <span class="work-badge is-own">自社開発・運用中</span>
       <p class="work-tag">Full-stack Web Application</p>
       <h3 class="work-title">実績管理システム「Kairos Hub」</h3>
       <p class="work-subtitle">kairos-hub — Next.js + FastAPI + Docker</p>
@@ -312,7 +322,7 @@ footer{background:var(--black);color:var(--white);padding:48px;border-top:1px so
       <a href="ec.html">EC・実装</a>
       <a href="system.html">システム開発</a>
     </nav>
-    <span class="footer-copy">© 2025 Kairos Web Production.</span>
+    <span class="footer-copy">掲載は許可を得たもの、または自社制作のものです。<br>© 2025 Kairos Web Production.</span>
   </div>
 </footer>
 <script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>

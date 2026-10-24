@@ -473,6 +473,14 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   color: white; font-size: 11px; font-weight: 500;
   letter-spacing: 0.14em; text-transform: uppercase;
 }
+.work-card-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 1;
+  padding: 3px 12px; border-radius: var(--radius-full);
+  background: rgba(255,255,255,0.92); color: var(--text-muted);
+  border: 1px solid #bbb;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.1em; line-height: 1.6;
+}
+.footer-note { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; line-height: 1.8; }
 .work-card-body { padding: 20px 24px 28px; }
 .work-card-tag {
   font-size: 10px; font-weight: 600;
@@ -1114,7 +1122,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   <div class="hero-content">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
-      Web Production Portfolio
+      Web制作・保守運用
     </div>
     <h1 class="hero-title">
       <span class="line-mask"><span>戦略から実装まで、</span></span>
@@ -1128,8 +1136,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   </div>
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="hero-stat-num">20<sup>+</sup></div>
-      <div class="hero-stat-label">Total Works</div>
+      <div class="hero-stat-num">5<sup>件</sup></div>
+      <div class="hero-stat-label">納品・運用実績</div>
     </div>
     <div class="hero-stat">
       <div class="hero-stat-num">4</div>
@@ -1184,6 +1192,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       <a href="https://kairos-epsilon.github.io/recruit-driver-lp/" target="_blank" rel="noopener" class="work-card reveal">
         <div class="work-card-img">
           <img src="assets/work-driver.png" alt="ドライバー採用LP" loading="lazy">
+          <span class="work-card-badge">制作サンプル</span>
           <div class="work-card-overlay"><span>View Site →</span></div>
         </div>
         <div class="work-card-body">
@@ -1194,6 +1203,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       <a href="https://kairos-epsilon.github.io/beauty-lp/" target="_blank" rel="noopener" class="work-card reveal reveal-delay-1">
         <div class="work-card-img">
           <img src="assets/work-beauty.png" alt="Beauty Salon LP" loading="lazy">
+          <span class="work-card-badge">制作サンプル</span>
           <div class="work-card-overlay"><span>View Site →</span></div>
         </div>
         <div class="work-card-body">
@@ -1204,6 +1214,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       <a href="https://kairos-epsilon.github.io/gadget-lp/" target="_blank" rel="noopener" class="work-card reveal reveal-delay-2">
         <div class="work-card-img">
           <img src="assets/work-gadget.png" alt="Gadget LP" loading="lazy">
+          <span class="work-card-badge">制作サンプル</span>
           <div class="work-card-overlay"><span>View Site →</span></div>
         </div>
         <div class="work-card-body">
@@ -1235,7 +1246,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
           <h3 class="service-panel-name">Landing Page</h3>
           <p class="service-panel-name-ja">LP制作</p>
           <p class="service-panel-desc">採用・集客・ブランディングを目的としたランディングページ。業種に合わせたデザインと成果を意識した導線設計を提供します。</p>
-          <span class="service-panel-link">21 Works <span class="arrow">→</span></span>
+          <span class="service-panel-link">納品1・サンプル20 <span class="arrow">→</span></span>
         </div>
       </a>
       <a href="corporate.html" class="service-panel">
@@ -1250,7 +1261,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
           <h3 class="service-panel-name">Corporate Site</h3>
           <p class="service-panel-name-ja">コーポレートサイト</p>
           <p class="service-panel-desc">企業・店舗の信頼感を高めるコーポレートサイト。ブランドイメージに合わせたデザインと更新しやすい構成で制作します。</p>
-          <span class="service-panel-link">3 Works <span class="arrow">→</span></span>
+          <span class="service-panel-link">納品・運用3 <span class="arrow">→</span></span>
         </div>
       </a>
       <a href="ec.html" class="service-panel">
@@ -1265,7 +1276,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
           <h3 class="service-panel-name">EC &amp; Implementation</h3>
           <p class="service-panel-name-ja">EC・フロントエンド実装</p>
           <p class="service-panel-desc">ECサイトのUI/UX設計・フロントエンド実装。商品一覧・詳細・カート導線まで購買体験にこだわった構築が可能です。</p>
-          <span class="service-panel-link">2 Works <span class="arrow">→</span></span>
+          <span class="service-panel-link">サンプル2 <span class="arrow">→</span></span>
         </div>
       </a>
       <a href="system.html" class="service-panel">
@@ -1280,7 +1291,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
           <h3 class="service-panel-name">System Development</h3>
           <p class="service-panel-name-ja">システム・アプリ開発</p>
           <p class="service-panel-desc">予約管理・会員・決済システムなど複雑な要件にも対応。Next.js・Supabase等のモダンスタックで開発します。</p>
-          <span class="service-panel-link">4 Works <span class="arrow">→</span></span>
+          <span class="service-panel-link">納品1・サンプル2・自社開発1 <span class="arrow">→</span></span>
         </div>
       </a>
     </div>
@@ -1595,6 +1606,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     </nav>
   </div>
   <div class="footer-bottom">
+    <span class="footer-note">掲載は許可を得たもの、または自社制作のものです。</span>
     <span class="footer-copy">&copy; 2026 Kairos Web Production. All Rights Reserved.</span>
   </div>
 </footer>
