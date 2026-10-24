@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ページが見つかりません｜Kairos</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-base: #fafafa;
+  --text-primary: #0f0f0f;
+  --text-secondary: #555;
+  --accent: #c4714a;
+  --accent-hover: #d4825b;
+  --radius-full: 9999px;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Noto Sans JP', 'Inter', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  text-align: center;
+}
+.code {
+  font-family: var(--font-display);
+  font-size: clamp(72px, 18vw, 140px);
+  line-height: 1;
+  color: var(--accent);
+}
+h1 { margin-top: 16px; font-size: clamp(20px, 4vw, 26px); font-weight: 500; }
+p { margin-top: 12px; color: var(--text-secondary); font-size: 15px; line-height: 1.8; }
+a.btn {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 32px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background .2s;
+}
+a.btn:hover { background: var(--accent-hover); }
+</style>
+</head>
+<body>
+<main>
+  <div class="code">404</div>
+  <h1>ページが見つかりません</h1>
+  <p>お探しのページは移動または削除された可能性があります。</p>
+  <a class="btn" href="/">トップへ戻る</a>
+</main>
+</body>
+</html>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kairos-epsilon.github.io/kairos-portfolio/sitemap.xml
+Sitemap: https://kairos-web.jp/sitemap.xml
