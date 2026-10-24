@@ -91,6 +91,12 @@ footer{background:var(--black);color:var(--white);padding:48px;}
   .footer-bottom{flex-direction:column;gap:20px;text-align:center;}
   .footer-nav{flex-wrap:wrap;justify-content:center;}
 }
+
+.work-badge{display:inline-block;align-self:flex-start;font-size:10px;font-weight:500;letter-spacing:0.1em;padding:3px 12px;border-radius:99px;margin-bottom:10px;border:1px solid;line-height:1.6;}
+.work-badge.is-deliv{background:var(--accent);color:#fff;border-color:var(--accent);}
+.work-badge.is-sample{background:transparent;color:var(--gray);border-color:#bbb;}
+.work-badge.is-own{background:var(--black);color:#fff;border-color:var(--black);}
+.work-note{font-size:11px;line-height:1.9;color:var(--gray);margin:-4px 0 16px;}
 </style>
 </head>
 <body>
@@ -130,9 +136,11 @@ footer{background:var(--black);color:var(--white);padding:48px;}
       <div class="feat-overlay"><span>View Site →</span></div>
     </div>
     <div class="feat-body">
+      <span class="work-badge is-deliv">運用実績</span>
       <p class="work-tag">Corporate Site / AI・DX支援</p>
       <h3 class="work-title">Wy-at.Technologies合同会社</h3>
       <p class="work-subtitle">名古屋のAI顧問・DX導入支援｜コーポレートサイト</p>
+      <p class="work-note">制作メンバーが手がけた運用中サイトです。</p>
       <p class="work-desc">名古屋を拠点にDX・AI導入支援、外部CTO・技術顧問、現場に伺うアプリ開発、M&amp;AのIT面のデューデリジェンスを提供するテクノロジーパートナーのコーポレートサイト。『技術で、経営の次の一手を。』を軸に、課題整理から導入・定着までの流れや強みをわかりやすく設計しました。</p>
       <ul class="point-list">
         <li>業務見直し→定着→経営判断という3段階のアプローチを、一目で伝える構成</li>
@@ -158,6 +166,7 @@ footer{background:var(--black);color:var(--white);padding:48px;}
       <div class="feat-overlay"><span>View Site →</span></div>
     </div>
     <div class="feat-body">
+      <span class="work-badge is-deliv">納品実績</span>
       <p class="work-tag">Corporate Site / 教育・サロン講座</p>
       <h3 class="work-title">Re.funfun</h3>
       <p class="work-subtitle">実践型講座（よもぎ蒸し・あたまほぐし・経理）ブランドサイト</p>
@@ -189,6 +198,7 @@ footer{background:var(--black);color:var(--white);padding:48px;}
       <div class="feat-overlay"><span>View Site →</span></div>
     </div>
     <div class="feat-body">
+      <span class="work-badge is-deliv">納品実績</span>
       <p class="work-tag">Service Site / 教育・スクール</p>
       <h3 class="work-title">Writefulアカデミー</h3>
       <p class="work-subtitle">ライティングスクール サービスサイト</p>
@@ -220,7 +230,7 @@ footer{background:var(--black);color:var(--white);padding:48px;}
       <a href="ec.html">EC・実装</a>
       <a href="system.html">システム開発</a>
     </nav>
-    <span class="footer-copy">© 2025 Kairos Web Production.</span>
+    <span class="footer-copy">掲載は許可を得たもの、または自社制作のものです。<br>© 2025 Kairos Web Production.</span>
   </div>
 </footer>
 <script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>

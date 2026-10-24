@@ -140,6 +140,12 @@ footer { background: var(--black); color: var(--white); padding: 48px; }
 @media (max-width: 600px) {
   .works-grid { grid-template-columns: 1fr; }
 }
+
+.work-badge{display:inline-block;align-self:flex-start;font-size:10px;font-weight:500;letter-spacing:0.1em;padding:3px 12px;border-radius:99px;margin-bottom:10px;border:1px solid;line-height:1.6;}
+.work-badge.is-deliv{background:var(--accent);color:#fff;border-color:var(--accent);}
+.work-badge.is-sample{background:transparent;color:var(--gray);border-color:#bbb;}
+.work-badge.is-own{background:var(--black);color:#fff;border-color:var(--black);}
+.work-note{font-size:11px;line-height:1.9;color:var(--gray);margin:-4px 0 16px;}
 </style>
 </head>
 <body>
@@ -193,33 +199,33 @@ footer { background: var(--black); color: var(--white); padding: 48px; }
       <a href="ec.html">EC・実装</a>
       <a href="system.html">システム開発</a>
     </nav>
-    <span class="footer-copy">© 2025 Kairos Web Production.</span>
+    <span class="footer-copy">掲載は許可を得たもの、または自社制作のものです。<br>© 2025 Kairos Web Production.</span>
   </div>
 </footer>
 
 <script>
 const works = [
-  { tag: '採用', title: 'ドライバー採用LP', desc: '物流会社のドライバー採用を目的としたLP。社員インタビュー・1日の流れ・募集要項など応募導線を意識した構成。', url: 'https://kairos-epsilon.github.io/recruit-driver-lp/', img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80&auto=format&fit=crop' },
-  { tag: '集客', title: 'Logistics Company LP', desc: '物流・運送会社向けコーポレートLP。信頼感と実績を前面に打ち出した構成。', url: 'https://kairos-epsilon.github.io/logistics-lp/', img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80&auto=format&fit=crop' },
-  { tag: '集客', title: 'Café Landing Page', desc: 'ナチュラルテイストのカフェ向けLP。スムーズスクロールアニメーションで世界観を演出。', url: 'https://kairos-epsilon.github.io/cafe-lp/', img: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80&auto=format&fit=crop' },
-  { tag: '集客', title: 'Beauty Salon LP', desc: 'エレガントな美容サロン向けLP。高級感のあるデザインでブランドイメージを訴求。', url: 'https://kairos-epsilon.github.io/beauty-lp/', img: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop' },
-  { tag: '集客', title: 'Fitness Gym LP', desc: 'パーソナルジム向けLP。ダークネイビーを基調とした高級感のあるモダンデザイン。', url: 'https://kairos-epsilon.github.io/fitness-lp/', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80&auto=format&fit=crop' },
-  { tag: '集客', title: '不動産売却LP', desc: '不動産売却サービス向けLP。安心感と実績を訴求する構成で問い合わせ導線を設計。', url: 'https://kairos-epsilon.github.io/real-estate-sale-lp/', img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: 'リフォームLP', desc: 'リフォーム会社向けLP。施工事例・ビフォーアフターを活かした説得力のある構成。', url: 'https://kairos-epsilon.github.io/reform-lp/', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: 'ブランド買取LP', desc: 'ブランド買取サービス向けLP。即日査定・高価買取を前面に出した訴求構成。', url: 'https://kairos-epsilon.github.io/brand-purchase-lp/', img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: '骨董品買取LP', desc: '骨董品・古美術品の買取サービス向けLP。品格と信頼感を重視したデザイン。', url: 'https://kairos-epsilon.github.io/lp-kottohin/', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: '結婚相談所LP', desc: '結婚相談所向け集客LP。温かみのあるデザインで入会動機を高める導線設計。', url: 'https://kairos-epsilon.github.io/lp-encourage/', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: '税理士事務所LP', desc: '税理士向けサービスLP。専門性と信頼感を訴求するクリーンなデザイン。', url: 'https://kairos-epsilon.github.io/tax-accountant-lp/', img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: '保険コンサルLP', desc: '保険コンサルタント向けLP。安心感と相談しやすさを演出する構成。', url: 'https://kairos-epsilon.github.io/insurance-consulting-lp/', img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: 'プライベートツアーLP', desc: '旅行・プライベートツアー向けLP。非日常感を演出するビジュアル重視の構成。', url: 'https://kairos-epsilon.github.io/private-tour-lp/', img: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80&auto=format&fit=crop' },
-  { tag: '集客', title: '建築・設計事務所LP', desc: '建築・設計事務所向けLP。施工実績を大きく見せるビジュアル重視の構成。', url: 'https://kairos-epsilon.github.io/architecture-lp-demo/', img: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: '動画配信サービスLP', desc: '動画配信プラットフォーム向けLP。鮮やかなビジュアルで登録を促す構成。', url: 'https://kairos-epsilon.github.io/tver-lp/', img: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&q=80&auto=format&fit=crop' },
-  { tag: '集客', title: 'DIGOUT 古着フェスLP', desc: '屋外古着フェス・ストリートイベント向けLP。ダークトーンのビジュアルとストリートカルチャーの世界観を表現したイベントLPサンプル。', url: 'https://kairos-epsilon.github.io/stash-proposal-v2/', img: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: 'AXON PRO ガジェットLP', desc: 'スマートウォッチのクラウドファンディング向けLP。ミリタリー×テクノロジー×ラグジュアリーをテーマにした男性向けガジェットLPサンプル。', url: 'https://kairos-epsilon.github.io/gadget-lp/', img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80&auto=format&fit=crop' },
-  { tag: 'サービス', title: 'NipponEstate 海外不動産LP（英語）', desc: '外国人向け日本不動産購入サービスの英語LP。多言語対応・海外CLターゲットのインバウンドサービス訴求サンプル。', url: 'https://kairos-epsilon.github.io/foreign-realestate-lp-en/', img: 'https://images.unsplash.com/photo-1580041065738-e72023775cdc?w=800&auto=format&fit=crop&q=80' },
-  { tag: '集客', title: '炭火焼鳥 燈 飲食店LP', desc: '神戸三宮の炭火焼鳥店LP。ダークトーン・職人・こだわりをテーマにした飲食店集客サイトサンプル。', url: 'https://kairos-epsilon.github.io/yakitori-lp/', img: 'https://images.unsplash.com/photo-1767974968707-db3d448d4ef3?w=800&auto=format&fit=crop&q=80' },
-  { tag: '集客', title: '麺屋 暁 ラーメン店LP', desc: '福岡博多の本格ラーメン店LP。豚骨・職人仕込みをテーマにしたスタイリッシュな飲食店集客サイトサンプル。', url: 'https://kairos-epsilon.github.io/ramen-lp/', img: 'https://images.unsplash.com/photo-1545830017-ce4a33ec44ce?w=1200&auto=format&fit=crop&q=80' },
-  { tag: 'サービス', title: 'CLUB NOIR プレミアムクラブLP', desc: '六本木のプレミアムクラブ向けLP。ダーク・ラグジュアリーをテーマにした夜間サービス業Webサイトサンプル。', url: 'https://kairos-epsilon.github.io/club-lp/', img: 'https://images.unsplash.com/photo-1572299448190-d7a84f6e6bc9?w=800&auto=format&fit=crop&q=80' },
+  { kind: 'sample', tag: '採用', title: 'ドライバー採用LP', desc: '物流会社のドライバー採用を目的としたLP。社員インタビュー・1日の流れ・募集要項など応募導線を意識した構成。', url: 'https://kairos-epsilon.github.io/recruit-driver-lp/', img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: '集客', title: 'Logistics Company LP', desc: '物流・運送会社向けコーポレートLP。信頼感と実績を前面に打ち出した構成。', url: 'https://kairos-epsilon.github.io/logistics-lp/', img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: '集客', title: 'Café Landing Page', desc: 'ナチュラルテイストのカフェ向けLP。スムーズスクロールアニメーションで世界観を演出。', url: 'https://kairos-epsilon.github.io/cafe-lp/', img: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: '集客', title: 'Beauty Salon LP', desc: 'エレガントな美容サロン向けLP。高級感のあるデザインでブランドイメージを訴求。', url: 'https://kairos-epsilon.github.io/beauty-lp/', img: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: '集客', title: 'Fitness Gym LP', desc: 'パーソナルジム向けLP。ダークネイビーを基調とした高級感のあるモダンデザイン。', url: 'https://kairos-epsilon.github.io/fitness-lp/', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: '集客', title: '不動産売却LP', desc: '不動産売却サービス向けLP。安心感と実績を訴求する構成で問い合わせ導線を設計。', url: 'https://kairos-epsilon.github.io/real-estate-sale-lp/', img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: 'サービス', title: 'リフォームLP', desc: 'リフォーム会社向けLP。施工事例・ビフォーアフターを活かした説得力のある構成。', url: 'https://kairos-epsilon.github.io/reform-lp/', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: 'サービス', title: 'ブランド買取LP', desc: 'ブランド買取サービス向けLP。即日査定・高価買取を前面に出した訴求構成。', url: 'https://kairos-epsilon.github.io/brand-purchase-lp/', img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'deliv', tag: 'サービス', title: '骨董品買取 比較LP', desc: '骨董品・古美術品の買取業者を比較するLP。品格と信頼感を重視したデザイン。', url: 'https://kairos-epsilon.github.io/lp-kottohin/', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: 'サービス', title: '結婚相談所LP', desc: '結婚相談所向け集客LP。温かみのあるデザインで入会動機を高める導線設計。', url: 'https://kairos-epsilon.github.io/lp-encourage/', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: 'サービス', title: '税理士事務所LP', desc: '税理士向けサービスLP。専門性と信頼感を訴求するクリーンなデザイン。', url: 'https://kairos-epsilon.github.io/tax-accountant-lp/', img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: 'サービス', title: '保険コンサルLP', desc: '保険コンサルタント向けLP。安心感と相談しやすさを演出する構成。', url: 'https://kairos-epsilon.github.io/insurance-consulting-lp/', img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: 'サービス', title: 'プライベートツアーLP', desc: '旅行・プライベートツアー向けLP。非日常感を演出するビジュアル重視の構成。', url: 'https://kairos-epsilon.github.io/private-tour-lp/', img: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: '集客', title: '建築・設計事務所LP', desc: '建築・設計事務所向けLP。施工実績を大きく見せるビジュアル重視の構成。', url: 'https://kairos-epsilon.github.io/architecture-lp-demo/', img: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: 'サービス', title: '動画配信サービスLP', desc: '動画配信プラットフォーム向けLP。鮮やかなビジュアルで登録を促す構成。', url: 'https://kairos-epsilon.github.io/tver-lp/', img: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: '集客', title: 'DIGOUT 古着フェスLP', desc: '屋外古着フェス・ストリートイベント向けLP。ダークトーンのビジュアルとストリートカルチャーの世界観を表現したイベントLPサンプル。', url: 'https://kairos-epsilon.github.io/stash-proposal-v2/', img: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: 'サービス', title: 'AXON PRO ガジェットLP', desc: 'スマートウォッチのクラウドファンディング向けLP。ミリタリー×テクノロジー×ラグジュアリーをテーマにした男性向けガジェットLPサンプル。', url: 'https://kairos-epsilon.github.io/gadget-lp/', img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80&auto=format&fit=crop' },
+  { kind: 'sample', tag: 'サービス', title: 'NipponEstate 海外不動産LP（英語）', desc: '外国人向け日本不動産購入サービスの英語LP。多言語対応・海外CLターゲットのインバウンドサービス訴求サンプル。', url: 'https://kairos-epsilon.github.io/foreign-realestate-lp-en/', img: 'https://images.unsplash.com/photo-1580041065738-e72023775cdc?w=800&auto=format&fit=crop&q=80' },
+  { kind: 'sample', tag: '集客', title: '炭火焼鳥 燈 飲食店LP', desc: '神戸三宮の炭火焼鳥店LP。ダークトーン・職人・こだわりをテーマにした飲食店集客サイトサンプル。', url: 'https://kairos-epsilon.github.io/yakitori-lp/', img: 'https://images.unsplash.com/photo-1767974968707-db3d448d4ef3?w=800&auto=format&fit=crop&q=80' },
+  { kind: 'sample', tag: '集客', title: '麺屋 暁 ラーメン店LP', desc: '福岡博多の本格ラーメン店LP。豚骨・職人仕込みをテーマにしたスタイリッシュな飲食店集客サイトサンプル。', url: 'https://kairos-epsilon.github.io/ramen-lp/', img: 'https://images.unsplash.com/photo-1545830017-ce4a33ec44ce?w=1200&auto=format&fit=crop&q=80' },
+  { kind: 'sample', tag: 'サービス', title: 'CLUB NOIR プレミアムクラブLP', desc: '六本木のプレミアムクラブ向けLP。ダーク・ラグジュアリーをテーマにした夜間サービス業Webサイトサンプル。', url: 'https://kairos-epsilon.github.io/club-lp/', img: 'https://images.unsplash.com/photo-1572299448190-d7a84f6e6bc9?w=800&auto=format&fit=crop&q=80' },
 ];
 
 let currentFilter = 'all';
@@ -234,6 +240,7 @@ function renderWorks(filter) {
         <div class="work-overlay"><span>View Site →</span></div>
       </div>
       <div class="work-info">
+        <span class="work-badge is-${w.kind}">${w.kind === 'deliv' ? '納品実績' : '制作サンプル'}</span>
         <p class="work-tag">${w.tag}</p>
         <h3 class="work-title">${w.title}</h3>
         <p class="work-desc">${w.desc}</p>
