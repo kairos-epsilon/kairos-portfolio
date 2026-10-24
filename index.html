@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Kairos Web Production","url":"https://kairos-epsilon.github.io/kairos-portfolio/","description":"Web制作・ディレクションチーム"}
+{"@context":"https://schema.org","@type":"Organization","name":"Kairos Web Production","alternateName":"Kairos","url":"https://kairos-epsilon.github.io/kairos-portfolio/","description":"Web制作・ディレクションチーム","founder":{"@type":"Person","name":"渋江 義久"},"foundingDate":"2026-03","address":{"@type":"PostalAddress","addressRegion":"愛知県","addressLocality":"海部郡蟹江町","addressCountry":"JP"}}
 </script>
 <style>
 /* ═══════════════════════════════════════
@@ -704,6 +704,134 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 
 /* ═══════════════════════════════════════
+   MESSAGE / PRICING / COMPANY
+   ═══════════════════════════════════════ */
+.message { background: var(--bg-surface); }
+.message-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: 64px; align-items: start;
+}
+.message-body p {
+  font-size: 14px; line-height: 2.3; color: var(--text-secondary);
+}
+.message-body p + p { margin-top: 1.6em; }
+.message-sign {
+  margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--text-muted); line-height: 1.9;
+}
+.message-sign strong {
+  display: block; margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+
+.pricing { background: var(--bg-surface); }
+.pricing-lead {
+  margin-top: 20px; max-width: 640px;
+  font-size: 14px; line-height: 2.1; color: var(--text-secondary);
+}
+.pricing-group-title {
+  margin-top: 56px;
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  font-size: 15px; font-weight: 500; letter-spacing: 0.04em;
+}
+.pricing-group-title small { font-size: 12px; font-weight: 400; color: var(--text-muted); letter-spacing: 0; }
+.price-table {
+  margin-top: 20px;
+  border-top: 1px solid var(--text-primary);
+}
+.price-row {
+  display: grid; grid-template-columns: 1.3fr 0.9fr 2.2fr auto;
+  gap: 24px; align-items: center;
+  padding: 24px 4px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.price-row:hover { background: var(--bg-base); }
+.price-name { font-size: 14px; font-weight: 500; line-height: 1.7; }
+.price-name small { display: block; font-size: 11px; font-weight: 400; color: var(--text-muted); }
+.price-amount {
+  font-family: var(--font-display);
+  font-size: 24px; line-height: 1.3; white-space: nowrap;
+}
+.price-amount small { font-family: var(--font-body); font-size: 12px; color: var(--text-muted); margin-left: 2px; }
+.price-amount .plus { font-size: 16px; color: var(--accent); margin-right: 2px; }
+.price-desc { font-size: 12px; line-height: 2; color: var(--text-secondary); }
+.price-link {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  color: var(--accent); white-space: nowrap;
+  border-bottom: 1px solid currentColor; padding-bottom: 2px;
+}
+.price-link-none { min-width: 1px; }
+
+.maint-grid {
+  margin-top: 20px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.maint-card {
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px 24px 22px;
+}
+.maint-card .price-name { font-size: 13px; }
+.maint-card .price-amount { margin-top: 10px; font-size: 20px; }
+.maint-card .price-desc { margin-top: 10px; }
+.maint-lead { margin-top: 12px; font-size: 12px; line-height: 2; color: var(--text-muted); }
+
+.pricing-notes {
+  margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid var(--border);
+  list-style: none;
+  font-size: 12px; line-height: 2.1; color: var(--text-muted);
+}
+.pricing-notes li::before { content: '※'; margin-right: 6px; }
+.pricing-cta { margin-top: 32px; }
+.pricing-cta .btn-cta { background: var(--text-primary); }
+
+@media (max-width: 960px) {
+  .price-row { grid-template-columns: 1fr auto; gap: 8px 16px; padding: 22px 4px; }
+  .price-row .price-desc { grid-column: 1 / -1; }
+  .price-row .price-link, .price-row .price-link-none { grid-column: 1 / -1; justify-self: start; }
+  .price-row .price-link-none { display: none; }
+  .maint-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .price-table { border-top: 0; display: grid; gap: 12px; }
+  .price-row {
+    background: var(--bg-base);
+    border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 20px;
+  }
+  .price-row:hover { background: var(--bg-base); }
+  .price-amount { font-size: 22px; }
+}
+
+.company { background: var(--bg-base); }
+.company-table {
+  margin-top: 48px; max-width: 860px;
+  border-top: 1px solid var(--border);
+}
+.company-row {
+  display: grid; grid-template-columns: 200px 1fr; gap: 24px;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px; line-height: 2;
+}
+.company-row dt { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); }
+.company-row dd { color: var(--text-primary); }
+.company-row dd a { color: var(--accent); border-bottom: 1px solid currentColor; }
+@media (max-width: 960px) {
+  .message-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 600px) {
+  .company-row { grid-template-columns: 1fr; gap: 4px; padding: 18px 4px; }
+}
+
+/* ═══════════════════════════════════════
    INQUIRY FORM
    ═══════════════════════════════════════ */
 .inquiry {
@@ -779,6 +907,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .form-submit-row .btn-cta { cursor: pointer; border: 0; font-family: inherit; }
 .form-submit-row .btn-cta:disabled { opacity: 0.55; cursor: progress; transform: none; }
+.form-consent { grid-column: 1 / -1; font-size: 12px; line-height: 1.9; color: var(--text-muted); }
+.form-consent a { color: var(--accent); border-bottom: 1px solid currentColor; }
 .form-status { font-size: 13px; line-height: 1.8; }
 .form-status.ok { color: #2e7d4f; }
 .form-status.err { color: #b3402a; }
@@ -907,9 +1037,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* ═══════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════ */
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .header-nav { display: none; }
   .hamburger { display: flex; }
+}
+@media (max-width: 960px) {
   .hero-stats { display: none; }
   .approach-steps { grid-template-columns: 1fr; gap: 24px; }
   .approach-with-image { grid-template-columns: 1fr; }
@@ -946,6 +1078,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     <a href="corporate.html">コーポレート</a>
     <a href="ec.html">EC・実装</a>
     <a href="system.html">システム開発</a>
+    <a href="#pricing">料金</a>
+    <a href="#company">運営者情報</a>
     <a href="#contact" class="nav-contact-btn">Contact <span class="arrow">→</span></a>
   </nav>
   <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く">
@@ -960,6 +1094,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   <a href="corporate.html" onclick="toggleMenu()">コーポレート</a>
   <a href="ec.html" onclick="toggleMenu()">EC・実装</a>
   <a href="system.html" onclick="toggleMenu()">システム開発</a>
+  <a href="#pricing" onclick="toggleMenu()">料金</a>
+  <a href="#company" onclick="toggleMenu()">運営者情報</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
@@ -1161,7 +1297,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     <div>
       <div class="eyebrow">About Kairos</div>
       <h2 class="section-heading">Kairosが<br><em>選ばれる理由</em></h2>
-      <p class="about-body">Kairosは、Webディレクターを中心とした制作チームです。クライアントとの丁寧なコミュニケーションを起点に、要件定義から設計・実装・納品まで一貫して対応します。<br><br>単なる「作る」だけでなく、「目的を達成する」ための提案を大切にしています。</p>
+      <p class="about-body">Kairosは、代表の渋江を中心とした制作チームです。クライアントとの丁寧なコミュニケーションを起点に、要件定義から設計・実装・納品まで一貫して対応します。<br><br>単なる「作る」だけでなく、「目的を達成する」ための提案を大切にしています。</p>
       <div class="about-image reveal" style="margin-top: 32px;">
         <img src="assets/about.png" alt="Kairos制作環境" style="width:100%; border-radius: var(--radius-md); opacity: 0.85;">
       </div>
@@ -1188,6 +1324,26 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
           <p class="about-feature-desc">進捗共有・修正対応を迅速に行い、制作中の不安をなくします。</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MESSAGE ═══ -->
+<section class="section message" id="message">
+  <div class="message-inner">
+    <div class="reveal">
+      <div class="eyebrow">Message</div>
+      <h2 class="section-heading">代表<em>挨拶</em></h2>
+    </div>
+    <div class="message-body reveal reveal-delay-1">
+      <p>はじめまして。Kairos代表の渋江義久です。</p>
+      <p>私は普段、運送会社でトラックのハンドルを握りながら、Web制作の仕事をしています。</p>
+      <p>物流の現場にいると、どんな会社にも「紙とFAXと電話で回している業務」「ホームページはあるが、作ってから誰も触れていない」といった、小さな困りごとがあることがよく分かります。大きなシステムを入れるほどではないが、放っておくと毎日の手間と機会損失になるものです。</p>
+      <p>Kairosは、そうした中小企業・個人事業主の方のために、ホームページやLP、予約・管理画面などの業務システムを作る制作チームです。WordPressに頼らず、お客様の業務に合わせて管理画面まで含めて設計できることが強みです。</p>
+      <p>そして、私たちが大切にしているのは、作って終わりにしないことです。ホームページは公開してからが本番だと考えています。更新、修正、トラブル対応、改善のご相談まで、顔の見える関係でお付き合いできるよう、保守・運用を前提にご提案します。</p>
+      <p>屋号の「Kairos(カイロス)」は、ギリシャ語で「ちょうどよい時機」を意味します。事業にとって、動くべきタイミングで、必要な形の仕組みを用意すること。それが私たちの役割です。</p>
+      <p>「何から相談すればいいか分からない」という段階でも構いません。まずはお気軽にお声がけください。</p>
+      <div class="message-sign">Kairos 代表<strong>渋江 義久</strong></div>
     </div>
   </div>
 </section>
@@ -1235,6 +1391,115 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
         <p class="flow-desc">HTML一式・サーバーアップロードなど希望の形式で納品。</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="section pricing" id="pricing">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Pricing</div>
+    <h2 class="section-heading reveal">料金<em>表</em></h2>
+    <p class="pricing-lead reveal">表示は目安です。ヒアリングのうえ、内容と金額を明記したお見積りをお出しします。すべて税込表記です。</p>
+
+    <h3 class="pricing-group-title reveal">制作<small>初期費用・税込</small></h3>
+    <div class="price-table reveal">
+      <div class="price-row">
+        <p class="price-name">LP（1ページ）</p>
+        <p class="price-amount">50,000円<small>〜</small></p>
+        <p class="price-desc">構成案、デザイン、コーディング、スマホ対応、問い合わせ導線の設置</p>
+        <a href="lp.html" class="price-link">実績を見る →</a>
+      </div>
+      <div class="price-row">
+        <p class="price-name">コーポレートサイト<small>5ページ程度</small></p>
+        <p class="price-amount">150,000円<small>〜</small></p>
+        <p class="price-desc">会社案内・サービス紹介などの基本ページ、スマホ対応、基本的なSEO設定、問い合わせ導線</p>
+        <a href="corporate.html" class="price-link">実績を見る →</a>
+      </div>
+      <div class="price-row">
+        <p class="price-name">管理画面<small>お知らせ・実績などを自分で更新</small></p>
+        <p class="price-amount"><span class="plus">+</span>50,000円<small>〜</small></p>
+        <p class="price-desc">WordPressを使わない独自の管理画面。更新したい項目に合わせて設計</p>
+        <a href="corporate.html" class="price-link">実績を見る →</a>
+      </div>
+      <div class="price-row">
+        <p class="price-name">ネットショップ・EC</p>
+        <p class="price-amount">300,000円<small>〜</small></p>
+        <p class="price-desc">商品管理、カート、決済連携（Stripeなど）</p>
+        <a href="ec.html" class="price-link">実績を見る →</a>
+      </div>
+      <div class="price-row">
+        <p class="price-name">予約・会員・業務管理システム</p>
+        <p class="price-amount">300,000円<small>〜</small></p>
+        <p class="price-desc">要件に合わせた設計・開発。規模により個別お見積り</p>
+        <a href="system.html" class="price-link">実績を見る →</a>
+      </div>
+      <div class="price-row">
+        <p class="price-name">LINE連携<small>予約通知・LINE上のWebアプリなど</small></p>
+        <p class="price-amount"><span class="plus">+</span>100,000円<small>〜</small></p>
+        <p class="price-desc">LINE公式アカウントと連携した通知・フォーム・機能</p>
+        <span class="price-link-none"></span>
+      </div>
+      <div class="price-row">
+        <p class="price-name">AI機能の組み込み</p>
+        <p class="price-amount"><span class="plus">+</span>150,000円<small>〜</small></p>
+        <p class="price-desc">要件に合わせたAI機能の設計・実装</p>
+        <a href="system.html" class="price-link">実績を見る →</a>
+      </div>
+      <div class="price-row">
+        <p class="price-name">既存サイトの修正・ページ追加</p>
+        <p class="price-amount">10,000円<small>〜</small></p>
+        <p class="price-desc">内容により変動します。まずはご相談ください</p>
+        <span class="price-link-none"></span>
+      </div>
+    </div>
+
+    <h3 class="pricing-group-title reveal">保守・運用<small>月額・税込／最低契約期間6か月</small></h3>
+    <p class="maint-lead reveal">ホームページは公開してからが本番です。作って終わりにしないために、保守・運用のプランをご用意しています。</p>
+    <div class="maint-grid reveal">
+      <div class="maint-card">
+        <p class="price-name">ライト</p>
+        <p class="price-amount">5,000円<small>/月〜</small></p>
+        <p class="price-desc">稼働監視、軽微な修正（月1回程度）、トラブル時の初動対応</p>
+      </div>
+      <div class="maint-card">
+        <p class="price-name">スタンダード</p>
+        <p class="price-amount">15,000円<small>/月〜</small></p>
+        <p class="price-desc">更新代行（月数回）、バックアップ、アクセス・改善のご相談</p>
+      </div>
+      <div class="maint-card">
+        <p class="price-name">システム保守</p>
+        <p class="price-amount">30,000円<small>/月〜</small></p>
+        <p class="price-desc">業務システムの障害対応、軽微な機能調整、サーバー管理</p>
+      </div>
+    </div>
+
+    <ul class="pricing-notes reveal">
+      <li>表示は目安です。要件・ページ数・機能により変動します。</li>
+      <li>上記は最低価格です。詳細はご相談のうえ、個別にお見積りします。</li>
+      <li>消費税：Kairosは免税事業者のため、表示価格に消費税の別途加算はありません。</li>
+      <li>保守プランは最低契約期間6か月です。</li>
+    </ul>
+    <div class="pricing-cta reveal">
+      <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="btn-cta">LINEで相談する <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPANY ═══ -->
+<section class="section company" id="company">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Company</div>
+    <h2 class="section-heading reveal">運営者<em>情報</em></h2>
+    <dl class="company-table reveal">
+      <div class="company-row"><dt>屋号</dt><dd>Kairos（カイロス）</dd></div>
+      <div class="company-row"><dt>代表者</dt><dd>渋江 義久</dd></div>
+      <div class="company-row"><dt>事業形態</dt><dd>個人事業</dd></div>
+      <div class="company-row"><dt>所在地</dt><dd>愛知県海部郡蟹江町</dd></div>
+      <div class="company-row"><dt>開業</dt><dd>2026年3月</dd></div>
+      <div class="company-row"><dt>事業内容</dt><dd>Webサイト制作（LP・コーポレートサイト・ECサイト）、業務システム・管理画面の開発、公開後の保守・運用</dd></div>
+      <div class="company-row"><dt>お問い合わせ</dt><dd><a href="#contact">お問い合わせフォーム</a> ／ <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener">公式LINE</a></dd></div>
+      <div class="company-row"><dt>関連ページ</dt><dd><a href="privacy.html">プライバシーポリシー</a></dd></div>
+    </dl>
   </div>
 </section>
 
@@ -1292,6 +1557,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
         <label for="f-message">お問い合わせ内容<span class="req">必須</span></label>
         <textarea id="f-message" name="message" required placeholder="ご依頼の背景、ご希望の時期やご予算の目安など、わかる範囲でお書きください。"></textarea>
       </div>
+      <p class="form-consent">送信すると、<a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意したものとして取り扱います。</p>
       <div class="form-submit-row">
         <button type="submit" class="btn-cta" id="inquiry-submit">送信する <span class="arrow">→</span></button>
         <p class="form-status" id="inquiry-status" role="status" aria-live="polite"></p>
@@ -1319,11 +1585,14 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
       <a href="corporate.html">コーポレート</a>
       <a href="ec.html">EC・実装</a>
       <a href="system.html">システム開発</a>
+      <a href="#pricing">料金</a>
+      <a href="#company">運営者情報</a>
+      <a href="privacy.html">プライバシーポリシー</a>
       <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener">LINE</a>
     </nav>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">&copy; 2025 Kairos Web Production. All Rights Reserved.</span>
+    <span class="footer-copy">&copy; 2026 Kairos Web Production. All Rights Reserved.</span>
   </div>
 </footer>
 
