@@ -686,6 +686,108 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .cta-band .btn-cta:hover {
   background: var(--accent-hover);
 }
+.cta-band-actions {
+  margin-top: 36px;
+  display: flex; justify-content: center; align-items: center;
+  gap: 16px; flex-wrap: wrap;
+}
+.cta-band-actions .btn-cta { margin-top: 0; }
+.cta-band .btn-cta-outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: none;
+}
+.cta-band .btn-cta-outline:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+/* ═══════════════════════════════════════
+   INQUIRY FORM
+   ═══════════════════════════════════════ */
+.inquiry {
+  background: var(--bg-base);
+  padding: 96px clamp(24px, 4vw, 56px);
+  scroll-margin-top: 72px;
+}
+.inquiry-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 64px; align-items: start;
+}
+.inquiry-label {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent);
+}
+.inquiry-title {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 400; line-height: 1.4;
+}
+.inquiry-title em { font-style: italic; color: var(--accent); }
+.inquiry-desc {
+  margin-top: 20px; font-size: 14px;
+  line-height: 2; color: var(--text-secondary);
+}
+.inquiry-note {
+  margin-top: 28px; padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px; line-height: 1.9; color: var(--text-muted);
+}
+.inquiry-form {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 44px);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.form-field { display: flex; flex-direction: column; gap: 8px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+.form-field .req { color: var(--accent); margin-left: 6px; font-size: 11px; }
+.form-field .opt { color: var(--text-muted); margin-left: 6px; font-size: 11px; font-weight: 400; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font: inherit; font-size: 14px; color: var(--text-primary);
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.form-field textarea { min-height: 180px; resize: vertical; line-height: 1.8; }
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none; background: var(--bg-surface);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.form-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-submit-row {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.form-submit-row .btn-cta { cursor: pointer; border: 0; font-family: inherit; }
+.form-submit-row .btn-cta:disabled { opacity: 0.55; cursor: progress; transform: none; }
+.form-status { font-size: 13px; line-height: 1.8; }
+.form-status.ok { color: #2e7d4f; }
+.form-status.err { color: #b3402a; }
+@media (max-width: 960px) {
+  .inquiry-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 600px) {
+  .inquiry-form { grid-template-columns: 1fr; }
+}
 
 /* ═══════════════════════════════════════
    FOOTER
@@ -844,7 +946,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     <a href="corporate.html">コーポレート</a>
     <a href="ec.html">EC・実装</a>
     <a href="system.html">システム開発</a>
-    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="nav-contact-btn">Contact <span class="arrow">→</span></a>
+    <a href="#contact" class="nav-contact-btn">Contact <span class="arrow">→</span></a>
   </nav>
   <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く">
     <span></span><span></span><span></span>
@@ -858,7 +960,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   <a href="corporate.html" onclick="toggleMenu()">コーポレート</a>
   <a href="ec.html" onclick="toggleMenu()">EC・実装</a>
   <a href="system.html" onclick="toggleMenu()">システム開発</a>
-  <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -1140,11 +1242,66 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 <section class="cta-band reveal" style="background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)), url('assets/cta-bg.jpg') center/cover fixed no-repeat;">
   <p class="cta-band-title">プロジェクトの<em>ご相談</em>はこちら</p>
   <p class="cta-band-desc">まずはお気軽にお問い合わせください。ヒアリングは無料です。</p>
-  <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="btn-cta">LINEで相談する <span class="arrow">→</span></a>
+  <div class="cta-band-actions">
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="btn-cta">LINEで相談する <span class="arrow">→</span></a>
+    <a href="#contact" class="btn-cta btn-cta-outline">フォームで問い合わせる <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ═══ INQUIRY FORM ═══ -->
+<section class="inquiry" id="contact">
+  <div class="inquiry-inner">
+    <div class="reveal">
+      <p class="inquiry-label">Contact</p>
+      <h2 class="inquiry-title">お問い合わせ<em>フォーム</em></h2>
+      <p class="inquiry-desc">法人・団体のご担当者さま、お見積りやご依頼前のご相談はこちらからどうぞ。内容を確認のうえ、通常2営業日以内にメールでご連絡します。</p>
+      <p class="inquiry-note">お急ぎの場合や、気軽なご相談は公式LINEでも承っています。<br>ご入力いただいた内容は、お問い合わせへの対応以外には使用しません。</p>
+    </div>
+    <form class="inquiry-form reveal reveal-delay-1" id="inquiry-form" novalidate>
+      <input type="hidden" name="access_key" value="56478001-e0e2-450a-81ef-6cdd5461c6bb">
+      <input type="hidden" name="subject" value="【Kairos】Webサイトからお問い合わせ">
+      <input type="hidden" name="from_name" value="Kairos ポートフォリオサイト">
+      <div class="form-honeypot" aria-hidden="true">
+        <label for="f-botcheck">このフィールドは空のままにしてください</label>
+        <input type="checkbox" name="botcheck" id="f-botcheck" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="form-field">
+        <label for="f-company">会社名・団体名<span class="opt">任意</span></label>
+        <input type="text" id="f-company" name="company" autocomplete="organization">
+      </div>
+      <div class="form-field">
+        <label for="f-name">お名前<span class="req">必須</span></label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required>
+      </div>
+      <div class="form-field">
+        <label for="f-email">メールアドレス<span class="req">必須</span></label>
+        <input type="email" id="f-email" name="email" autocomplete="email" required>
+      </div>
+      <div class="form-field">
+        <label for="f-type">ご相談の種類<span class="opt">任意</span></label>
+        <select id="f-type" name="type">
+          <option value="">選択してください</option>
+          <option>LP制作</option>
+          <option>コーポレートサイト</option>
+          <option>EC・実装</option>
+          <option>システム開発</option>
+          <option>その他・まだ決まっていない</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label for="f-message">お問い合わせ内容<span class="req">必須</span></label>
+        <textarea id="f-message" name="message" required placeholder="ご依頼の背景、ご希望の時期やご予算の目安など、わかる範囲でお書きください。"></textarea>
+      </div>
+      <div class="form-submit-row">
+        <button type="submit" class="btn-cta" id="inquiry-submit">送信する <span class="arrow">→</span></button>
+        <p class="form-status" id="inquiry-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
 </section>
 
 <!-- ═══ FOOTER ═══ -->
-<footer class="footer" id="contact">
+<footer class="footer">
   <div class="footer-inner">
     <div>
       <div class="footer-brand">Kairos <span>Web Production</span></div>
@@ -1340,6 +1497,53 @@ function toggleMenu() {
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+
+/* ── Inquiry form (Web3Forms) ── */
+(function() {
+  const form = document.getElementById('inquiry-form');
+  if (!form) return;
+  const btn = document.getElementById('inquiry-submit');
+  const status = document.getElementById('inquiry-status');
+
+  const setStatus = (msg, kind) => {
+    status.textContent = msg;
+    status.className = 'form-status' + (kind ? ' ' + kind : '');
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !email || !message) {
+      setStatus('お名前・メールアドレス・お問い合わせ内容は必須です。', 'err');
+      return;
+    }
+    if (!form.email.checkValidity()) {
+      setStatus('メールアドレスの形式をご確認ください。', 'err');
+      return;
+    }
+
+    btn.disabled = true;
+    setStatus('送信しています…');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || 'send failed');
+      form.reset();
+      setStatus('送信しました。内容を確認のうえ、メールでご連絡します。', 'ok');
+    } catch (err) {
+      setStatus('送信できませんでした。お手数ですが、時間をおいて再度お試しいただくか、公式LINEからご連絡ください。', 'err');
+    } finally {
+      btn.disabled = false;
+    }
+  });
 })();
 </script>
 </body>
