@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ドメイン変更時は下の <loc> の先頭 URL（https://kairos-epsilon.github.io/kairos-portfolio/）を一括置換 -->
+<!-- ドメイン変更時は下の <loc> の先頭 URL（https://kairos-web.jp/）を一括置換 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kairos-epsilon.github.io/kairos-portfolio/</loc>
+    <loc>https://kairos-web.jp/</loc>
   </url>
   <url>
-    <loc>https://kairos-epsilon.github.io/kairos-portfolio/lp.html</loc>
+    <loc>https://kairos-web.jp/lp.html</loc>
   </url>
   <url>
-    <loc>https://kairos-epsilon.github.io/kairos-portfolio/corporate.html</loc>
+    <loc>https://kairos-web.jp/corporate.html</loc>
   </url>
   <url>
-    <loc>https://kairos-epsilon.github.io/kairos-portfolio/ec.html</loc>
+    <loc>https://kairos-web.jp/ec.html</loc>
   </url>
   <url>
-    <loc>https://kairos-epsilon.github.io/kairos-portfolio/system.html</loc>
+    <loc>https://kairos-web.jp/system.html</loc>
   </url>
   <url>
-    <loc>https://kairos-epsilon.github.io/kairos-portfolio/case-construction-ops.html</loc>
+    <loc>https://kairos-web.jp/case-construction-ops.html</loc>
   </url>
   <url>
-    <loc>https://kairos-epsilon.github.io/kairos-portfolio/privacy.html</loc>
+    <loc>https://kairos-web.jp/privacy.html</loc>
   </url>
 </urlset>
