@@ -114,6 +114,9 @@ footer{background:var(--black);color:var(--white);padding:48px;}
 .work-badge.is-deliv{background:var(--accent);color:#fff;border-color:var(--accent);}
 .work-badge.is-sample{background:transparent;color:var(--gray);border-color:#bbb;}
 .work-badge.is-own{background:var(--black);color:#fff;border-color:var(--black);}
+.work-links{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.work-sitelink{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-dark);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;}
+.work-sitelink:hover{color:var(--accent);border-color:var(--accent);}
 .work-note{font-size:11px;line-height:1.9;color:var(--gray);margin:-4px 0 16px;}
 </style>
 </head>
@@ -178,11 +181,11 @@ footer{background:var(--black);color:var(--white);padding:48px;}
   <div class="divider"></div>
 
   <!-- Re.funfun -->
-  <a href="https://www.re-funfun.com/" target="_blank" rel="noopener" class="work-featured">
-    <div class="feat-thumb">
+  <div class="work-featured">
+    <a href="https://www.re-funfun.com/" target="_blank" rel="noopener" class="feat-thumb" aria-label="Re.funfun のサイトを見る（新しいタブ）">
       <img src="assets/work-refunfun.png" alt="Re.funfun 講座ブランドサイト" loading="lazy">
       <div class="feat-overlay"><span>View Site →</span></div>
-    </div>
+    </a>
     <div class="feat-body">
       <span class="work-badge is-deliv">納品実績</span>
       <p class="work-tag">Corporate Site / 教育・サロン講座</p>
@@ -204,8 +207,12 @@ footer{background:var(--black);color:var(--white);padding:48px;}
         <span class="tech-tag">管理画面</span>
         <span class="tech-tag">LINE導線</span>
       </div>
+      <div class="work-links">
+        <a href="case-refunfun.html" class="view-btn">事例を詳しく見る →</a>
+        <a href="https://www.re-funfun.com/" target="_blank" rel="noopener" class="work-sitelink">View Site →</a>
+      </div>
     </div>
-  </a>
+  </div>
 
   <div class="divider"></div>
 
