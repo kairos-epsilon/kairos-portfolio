@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHPバージョン診断｜2026年10月の脆弱性に更新が必要か判定（無料）｜Kairos</title>
+<meta name="description" content="2026年10月に公表されたPHPの脆弱性（PHP2shell）について、使っているPHPのバージョンを入力すると、更新が必要かを判定する無料の診断。IPAの注意喚起にもとづきます。">
+<link rel="canonical" href="https://kairos-web.jp/tools/php-check.html">
+<link rel="alternate" type="application/rss+xml" title="Kairos ブログ" href="/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Kairos">
+<meta property="og:title" content="PHPバージョン診断｜2026年10月の脆弱性に更新が必要か判定（無料）｜Kairos">
+<meta property="og:description" content="2026年10月に公表されたPHPの脆弱性（PHP2shell）について、使っているPHPのバージョンを入力すると、更新が必要かを判定する無料の診断。IPAの注意喚起にもとづきます。">
+<meta property="og:url" content="https://kairos-web.jp/tools/php-check.html">
+<meta property="og:image" content="https://kairos-web.jp/assets/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PHPバージョン診断｜2026年10月の脆弱性に更新が必要か判定（無料）｜Kairos">
+<meta name="twitter:description" content="2026年10月に公表されたPHPの脆弱性（PHP2shell）について、使っているPHPのバージョンを入力すると、更新が必要かを判定する無料の診断。IPAの注意喚起にもとづきます。">
+<meta name="twitter:image" content="https://kairos-web.jp/assets/ogp.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"PHPバージョン診断","url":"https://kairos-web.jp/tools/php-check.html","description":"2026年10月に公表されたPHPの脆弱性（PHP2shell）について、使っているPHPのバージョンを入力すると、更新が必要かを判定する無料の診断。IPAの注意喚起にもとづきます。","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"publisher":{"@id":"https://kairos-web.jp/#business"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kairos-web.jp/"},{"@type":"ListItem","position":2,"name":"無料診断","item":"https://kairos-web.jp/tools/"},{"@type":"ListItem","position":3,"name":"PHPバージョン診断","item":"https://kairos-web.jp/tools/php-check.html"}]}
+</script>
+<style>
+.tool{max-width:760px}
+.tool .q{border:0;border-bottom:1px solid var(--border);padding:22px 0;margin:0}
+.tool .q legend{font-size:14px;font-weight:500;line-height:1.8;padding:0}
+.tool .q .why{font-size:11px;color:var(--gray);line-height:1.9;margin-top:4px}
+.tool .q label{display:inline-flex;align-items:center;gap:6px;margin:10px 20px 0 0;font-size:13px;color:var(--gray-dark);cursor:pointer}
+.tool .q.miss{background:#fbf0ea;outline:1px solid var(--accent)}
+.tool input[type=text]{font-family:inherit;font-size:14px;padding:12px 14px;border:1px solid var(--border);width:100%;max-width:320px;background:#fff}
+.tool button.btn{border:0;cursor:pointer;font-family:inherit}
+.tool .actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.tool .err{font-size:12px;color:#b3401b;margin-top:12px;min-height:1.2em}
+.result{display:none;background:var(--bg);padding:34px 32px;margin-top:36px;max-width:760px}
+.result.show{display:block}
+.result h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(20px,2.6vw,26px);font-weight:400;line-height:1.6;margin-bottom:10px}
+.result .badge{display:inline-block;font-size:10px;letter-spacing:.14em;padding:3px 12px;border:1px solid;border-radius:99px;margin-bottom:14px}
+.result .badge.ok{color:#2f7a4d;border-color:#2f7a4d}.result .badge.mid{color:#a9751a;border-color:#a9751a}.result .badge.ng{color:#b3401b;border-color:#b3401b}
+.result p{font-size:13px;line-height:2.1;color:var(--gray-dark);margin-top:12px}
+.result ul{margin:14px 0 0 1.2em}.result li{font-size:13px;line-height:2.1;color:var(--gray-dark);margin-top:8px}
+.result li b{color:var(--black);font-weight:500}
+.result .cta-box{border-top:1px solid var(--border);margin-top:28px;padding-top:24px}
+.result .note{font-size:11px;color:var(--gray);line-height:2;margin-top:18px}
+.tcards{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:28px;max-width:860px}
+.tcards a{background:var(--white);padding:30px 28px;text-decoration:none;color:inherit;display:block}
+.tcards a:hover{background:var(--bg)}
+.tcards h3{font-size:15px;font-weight:500;line-height:1.7;margin-bottom:8px}.tcards p{font-size:12px;line-height:2;color:var(--gray-dark)}
+.tcards span{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+@media(max-width:960px){.tcards{grid-template-columns:1fr}.result{padding:26px 20px}}
+</style>
+<style>
+:root{--black:#0f0f0f;--gray-dark:#444;--gray:#888;--border:#e8e8e8;--bg:#fafafa;--white:#fff;--accent:#c4714a;--accent-light:#f0e8e3}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--white);color:var(--black);overflow-x:hidden}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 48px;justify-content:space-between}
+.header-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em;color:var(--black);text-decoration:none}
+.header-logo span{color:var(--accent)}
+nav{display:flex;gap:32px;align-items:center}
+nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s}
+nav a:hover,nav a.active{color:var(--black)}
+.nav-contact{border:1px solid var(--black);padding:7px 18px;font-size:10px;letter-spacing:.14em;color:var(--black)!important}
+.nav-contact:hover{background:var(--black);color:var(--white)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:20px;height:1px;background:var(--black);display:block}
+.mobile-menu{position:fixed;inset:0;background:var(--white);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transform:translateX(100%);transition:transform .35s ease}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:28px;color:var(--black);text-decoration:none}
+.mobile-close{position:absolute;top:18px;right:24px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--gray)}
+
+.page-hero{padding:120px 48px 64px;border-bottom:1px solid var(--border);background:var(--bg)}
+.breadcrumb{font-size:11px;letter-spacing:.12em;color:var(--gray);margin-bottom:20px}
+.breadcrumb a{color:var(--gray);text-decoration:none}.breadcrumb a:hover{color:var(--black)}
+.eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.page-title{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(26px,4vw,44px);font-weight:400;line-height:1.45;margin-bottom:20px}
+.page-desc{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:640px}
+.work-badge{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.1em;padding:3px 12px;border-radius:99px;margin-bottom:16px;border:1px solid;line-height:1.6}
+.work-badge.is-deliv{background:var(--accent);color:#fff;border-color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 48px}
+section.blk{padding:80px 0;border-bottom:1px solid var(--border)}
+.h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(22px,3vw,30px);font-weight:400;line-height:1.5;margin-bottom:12px}
+.h2 em{font-style:italic;color:var(--accent)}
+.lead{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:700px}
+.shot{border:1px solid var(--border);background:var(--bg);overflow:hidden}
+.shot img{width:100%;height:auto;display:block}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:2px}
+.spec-item{background:var(--bg);padding:18px 22px}
+.spec-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.spec-value{font-size:12px;color:var(--gray-dark);line-height:1.8}
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:28px}
+.ps>div{background:var(--white);padding:36px}
+.ps h3{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:500}
+.ps p{font-size:12px;line-height:2.1;color:var(--gray-dark)}
+.craft{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:28px}
+.craft>div{background:var(--white);padding:32px 34px}
+.craft h4{font-size:14px;font-weight:500;line-height:1.7;margin-bottom:10px}
+.craft h4 span{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:400}
+.craft p{font-size:12px;line-height:2.1;color:var(--gray-dark)}
+.tech-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:22px}
+.tech-tag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);padding:4px 11px;color:var(--gray)}
+.btn{display:inline-block;background:var(--black);color:#fff;padding:14px 36px;font-size:11px;letter-spacing:.16em;text-decoration:none;transition:background .25s}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--black);border:1px solid var(--black)}
+.btn.ghost:hover{background:var(--black);color:#fff}
+.site-link{margin-top:28px}
+.credit{font-size:11px;line-height:2;color:var(--gray);margin-top:20px}
+.cta{padding:72px 0;text-align:center}
+.cta p{font-size:13px;line-height:2.1;color:var(--gray-dark);margin-bottom:24px}
+.cta .sub{font-size:11px;color:var(--gray);margin:20px 0 0}
+.cta .sub a{color:var(--gray-dark)}
+footer{background:var(--black);color:#fff;padding:48px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em}.footer-logo span{color:var(--accent)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.25)}
+.footer-nav{display:flex;gap:24px}.footer-nav a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none}.footer-nav a:hover{color:#fff}
+@media(max-width:960px){
+ header{padding:0 24px}nav{display:none}.hamburger{display:flex}
+ .page-hero{padding:100px 24px 48px}.wrap{padding:0 24px}section.blk{padding:56px 0}
+ .spec-grid{grid-template-columns:1fr}.ps{grid-template-columns:1fr}.ps>div{padding:28px 24px}
+ .craft{grid-template-columns:1fr}.craft>div{padding:26px 24px}
+ .footer-bottom{flex-direction:column;gap:20px;text-align:center}.footer-nav{flex-wrap:wrap;justify-content:center}footer{padding:40px 24px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.prose p{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:760px;margin-top:16px}.prose h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(20px,2.6vw,26px);font-weight:400;line-height:1.6;margin-top:48px;max-width:760px}.prose h3{font-size:15px;font-weight:500;line-height:1.8;margin-top:32px;max-width:760px}.prose ul,.prose ol{margin:16px 0 0 1.2em;max-width:760px}.prose li{font-size:13px;line-height:2.2;color:var(--gray-dark)}.prose a,.src a,.lead a,.note a{color:var(--accent)}.prose blockquote{border-left:2px solid var(--accent);padding:4px 0 4px 18px;margin:20px 0 0;max-width:760px}.prose table{width:100%;max-width:760px;border-collapse:collapse;margin-top:24px;font-size:12px}.prose th,.prose td{border-bottom:1px solid var(--border);padding:12px 10px;text-align:left;line-height:1.9;color:var(--gray-dark)}.prose th{font-weight:500;color:var(--black)}.meta{font-size:11px;color:var(--gray);margin-top:20px;letter-spacing:.06em}.src li{font-size:12px;line-height:2.1;color:var(--gray-dark);margin-left:1.2em}.faq details{border-bottom:1px solid var(--border);padding:18px 0}.faq summary{cursor:pointer;font-size:14px;font-weight:500;line-height:1.8}.faq details p{font-size:12px;line-height:2.1;color:var(--gray-dark);margin-top:10px}.note{font-size:11px;color:var(--gray);line-height:2;margin-top:16px}.plist{list-style:none;margin:28px 0 0;padding:0;max-width:860px}.plist li{border-bottom:1px solid var(--border);padding:22px 0}.plist a.t{font-size:16px;font-weight:500;line-height:1.7;color:var(--black);text-decoration:none}.plist a.t:hover{color:var(--accent)}.plist .m{font-size:10px;letter-spacing:.12em;color:var(--gray);margin-bottom:6px}.plist .m b{color:var(--accent);font-weight:500;margin-left:10px}.plist p{font-size:12px;line-height:2;color:var(--gray-dark);margin-top:6px}.pin{background:var(--bg);padding:22px 24px;margin-top:28px;max-width:860px}.pin .m{font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:6px}</style>
+<!-- Google tag (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0D5FE87BBJ"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
+</script>
+<!-- Microsoft Clarity -->
+<script>
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z6cmrb2gry");
+</script>
+</head>
+<body>
+<header>
+  <a href="/index.html" class="header-logo">Kairos <span>Web Production</span></a>
+  <nav>
+    <a href="/lp.html">LP制作</a>
+    <a href="/corporate.html">コーポレート</a>
+    <a href="/ec.html">EC・実装</a>
+    <a href="/system.html">システム開発</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/tools/">無料診断</a>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="nav-contact">Contact</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="閉じる">✕</button>
+  <a href="/index.html" onclick="toggleMenu()">Home</a>
+  <a href="/lp.html" onclick="toggleMenu()">LP制作</a>
+  <a href="/corporate.html" onclick="toggleMenu()">コーポレート</a>
+  <a href="/ec.html" onclick="toggleMenu()">EC・実装</a>
+  <a href="/system.html" onclick="toggleMenu()">システム開発</a>
+    <a href="/blog/" onclick="toggleMenu()">ブログ</a>
+    <a href="/tools/" onclick="toggleMenu()">無料診断</a>
+</div>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="/index.html">Home</a> / <a href="/tools/">無料診断</a> / PHPバージョン診断</p>
+  <p class="eyebrow">Free Check</p>
+  <h1 class="page-title">PHPバージョン診断</h1>
+  <p class="page-desc">バージョンを入れると、更新が必要かを判定します（無料・1分・登録不要）。</p>
+</div>
+
+<section class="blk">
+  <div class="wrap tool">
+    <p class="lead">2026年10月、PHP の重大な脆弱性（PHP2shell）が公表されました。自分のホームページが使っているPHPのバージョンを入れると、更新が必要かを、すぐに判定します。</p>
+    <p class="note">入力内容は、この端末の中だけで処理され、送信されません。登録も不要です。</p>
+    <div style="margin-top:28px">
+      <label for="php-in" style="display:block;font-size:13px;font-weight:500;margin-bottom:10px">PHP のバージョン（例：8.3.30）</label>
+      <input type="text" id="php-in" placeholder="8.3.30" inputmode="decimal" autocomplete="off">
+    </div>
+    <div class="actions"><button type="button" class="btn" id="php-run">判定する</button></div>
+    <p class="err" id="php-err" role="alert"></p>
+    <div class="result" id="php-result" aria-live="polite"></div>
+    <h2 class="h2" style="margin-top:56px;font-size:20px">PHP のバージョンの調べ方</h2>
+    <ul style="margin:14px 0 0 1.2em;max-width:760px">
+      <li style="font-size:13px;line-height:2.2;color:var(--gray-dark)">制作を依頼した会社や、サーバー会社に、「PHPのバージョンを教えてください」と聞くのが確実です。</li>
+      <li style="font-size:13px;line-height:2.2;color:var(--gray-dark)">WordPress の場合は、管理画面の「ツール」→「サイトヘルス」→「情報」→「サーバー」で見られます。</li>
+      <li style="font-size:13px;line-height:2.2;color:var(--gray-dark)">サーバーの管理画面に、PHPの設定（バージョン）の項目がある場合もあります。</li>
+    </ul>
+    <p class="note" style="margin-top:32px">Kairos は、ホームページの制作と、公開後の保守・運用を一貫して担当しています。この診断は、「公開後に守る」ことの、最初の一歩として作りました。背景は、<a href="/column-security.html">ホームページのセキュリティ、何を確認すればいい？</a>で解説しています。ほかの項目も確認したい方は、<a href="/tools/security-check.html">セキュリティのセルフチェック</a>をお使いください。</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <p>ホームページの「守り」について、不安なことがあればご相談ください。<br>ヒアリングとお見積りは無料です。ご返信は通常2営業日以内です。</p>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="btn" data-cta="bottom">LINEで相談する →</a>
+    <p class="sub">フォームからのご相談は<a href="/index.html#contact">こちら</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-logo">Kairos <span>Web Production</span></div>
+    <nav class="footer-nav">
+      <a href="/lp.html">LP制作</a><a href="/corporate.html">コーポレート</a><a href="/ec.html">EC・実装</a><a href="/system.html">システム開発</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/tools/">無料診断</a>
+    </nav>
+    <span class="footer-copy">© 2026 Kairos Web Production.</span>
+  </div>
+</footer>
+<script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>
+<script>
+
+(function(){
+var FIXED={'8.2':35,'8.3':36,'8.4':27,'8.5':12};
+var inp=document.getElementById('php-in'),res=document.getElementById('php-result'),err=document.getElementById('php-err');
+function ga(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}}
+function show(t,badge,h,body){
+ res.innerHTML='<span class="badge '+t+'">'+badge+'</span><h2>'+h+'</h2>'+body+
+ '<div class="cta-box"><p>更新や、新しいバージョンへの移行の作業が不安な場合は、ご相談ください。現状をうかがい、何を・どの順番で行うかをお伝えします（ヒアリングは無料）。更新や点検をお任せいただく保守プランもあります（ライト 月5,000円〜／税込、最低契約6か月）。</p><div class="actions"><a class="btn" data-cta="result" href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener">LINEで無料相談する →</a></div></div>'+
+ '<p class="note">この診断は、入力されたバージョン番号だけをもとにした簡易判定です。実際のサイトは調べていません。サーバー会社が、バージョン表示を変えずに対策のプログラムだけを適用している場合もあるため、不明なときは、サーバー会社に確認してください。判定の基準は、IPAの注意喚起（2026年10月22日公開、10月27日更新）にもとづきます。最新の情報は、<a href="https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html" target="_blank" rel="noopener">IPAのページ</a>でご確認ください。入力内容は、この端末の中だけで処理され、送信されません。</p>';
+ res.classList.add('show');res.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function run(){
+ var v=(inp.value||'').trim().replace(/^php\s*/i,'');
+ var m=v.match(/^(\d+)\.(\d+)(?:\.(\d+))?/);
+ res.classList.remove('show');
+ if(!m){err.textContent='「8.3.30」のように、数字とピリオドで入力してください。';return;}
+ err.textContent='';
+ var maj=+m[1],min=+m[2],pat=m[3]===undefined?null:+m[3],key=maj+'.'+min,t,r;
+ if(maj<8||(maj===8&&min<=1)){
+  t='ng';r='eol';
+  show('ng','移行が必要です','PHP '+key+' は、サポートが終了しています。','<p>IPAは、PHP 8.1 以前は、サポートが終了しているため、修正プログラムが提供されないとしています。サポートされている版（8.2〜8.5）への移行が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、移行できるかを確認します。</li><li><b>注意：</b>WordPress のテーマやプラグインが、新しいPHPに対応していないことがあります。バックアップを取り、確認してから移行します。</li></ul>');
+ }else if(FIXED[key]!==undefined){
+  if(pat===null){
+   err.textContent='パッチ番号まで入力してください（例：'+key+'.30）。';return;
+  }
+  if(pat<FIXED[key]){t='ng';r='old';
+   show('ng','更新が必要です','PHP '+v+' は、修正版より古い版です。','<p>この脆弱性の修正版は、PHP '+key+' 系では <b>'+key+'.'+FIXED[key]+'</b> 以降です。いまの版は、それより古いため、更新が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、'+key+'.'+FIXED[key]+' 以降への更新を依頼します。</li><li><b>更新の前に：</b>バックアップを取ります。</li></ul>');
+  }else{t='ok';r='fixed';
+   show('ok','この脆弱性については、修正版以降です','PHP '+v+' は、修正版以降の版です。','<p>この脆弱性（CVE-2026-109618・CVE-2026-109619）については、修正版（'+key+'.'+FIXED[key]+'）以降なので、対策済みと考えられます。</p><p>ただし、ほかのシステム（WordPress 本体、プラグイン、テーマ）にも、更新が必要なものがないかを、あわせて確認してください。</p>');
+  }
+ }else{
+  t='mid';r='unknown';
+  show('mid','確認をおすすめします','PHP '+key+' は、この診断の想定にない版です。','<p>この診断は、PHP 5〜8.5 を想定しています。IPAの最新の情報を確認してください。</p>');
+ }
+ ga('php_check_complete',{result:r});
+}
+document.getElementById('php-run').onclick=run;
+inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();run();}});
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-cta]');if(a)ga('php_check_cta',{place:a.getAttribute('data-cta')});});
+})();
+
+</script>
+</body>
+</html>

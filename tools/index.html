@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料診断｜ホームページのセキュリティ・PHPバージョン｜Kairos</title>
+<meta name="description" content="ホームページのセキュリティのセルフチェックと、PHPバージョン診断。登録不要・無料で、更新やバックアップなど「守り」の確認したい点を調べられます。蟹江町のKairos。">
+<link rel="canonical" href="https://kairos-web.jp/tools/">
+<link rel="alternate" type="application/rss+xml" title="Kairos ブログ" href="/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Kairos">
+<meta property="og:title" content="無料診断｜ホームページのセキュリティ・PHPバージョン｜Kairos">
+<meta property="og:description" content="ホームページのセキュリティのセルフチェックと、PHPバージョン診断。登録不要・無料で、更新やバックアップなど「守り」の確認したい点を調べられます。蟹江町のKairos。">
+<meta property="og:url" content="https://kairos-web.jp/tools/">
+<meta property="og:image" content="https://kairos-web.jp/assets/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="無料診断｜ホームページのセキュリティ・PHPバージョン｜Kairos">
+<meta name="twitter:description" content="ホームページのセキュリティのセルフチェックと、PHPバージョン診断。登録不要・無料で、更新やバックアップなど「守り」の確認したい点を調べられます。蟹江町のKairos。">
+<meta name="twitter:image" content="https://kairos-web.jp/assets/ogp.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kairos-web.jp/"},{"@type":"ListItem","position":2,"name":"無料診断","item":"https://kairos-web.jp/tools/"}]}
+</script>
+<style>
+.tool{max-width:760px}
+.tool .q{border:0;border-bottom:1px solid var(--border);padding:22px 0;margin:0}
+.tool .q legend{font-size:14px;font-weight:500;line-height:1.8;padding:0}
+.tool .q .why{font-size:11px;color:var(--gray);line-height:1.9;margin-top:4px}
+.tool .q label{display:inline-flex;align-items:center;gap:6px;margin:10px 20px 0 0;font-size:13px;color:var(--gray-dark);cursor:pointer}
+.tool .q.miss{background:#fbf0ea;outline:1px solid var(--accent)}
+.tool input[type=text]{font-family:inherit;font-size:14px;padding:12px 14px;border:1px solid var(--border);width:100%;max-width:320px;background:#fff}
+.tool button.btn{border:0;cursor:pointer;font-family:inherit}
+.tool .actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.tool .err{font-size:12px;color:#b3401b;margin-top:12px;min-height:1.2em}
+.result{display:none;background:var(--bg);padding:34px 32px;margin-top:36px;max-width:760px}
+.result.show{display:block}
+.result h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(20px,2.6vw,26px);font-weight:400;line-height:1.6;margin-bottom:10px}
+.result .badge{display:inline-block;font-size:10px;letter-spacing:.14em;padding:3px 12px;border:1px solid;border-radius:99px;margin-bottom:14px}
+.result .badge.ok{color:#2f7a4d;border-color:#2f7a4d}.result .badge.mid{color:#a9751a;border-color:#a9751a}.result .badge.ng{color:#b3401b;border-color:#b3401b}
+.result p{font-size:13px;line-height:2.1;color:var(--gray-dark);margin-top:12px}
+.result ul{margin:14px 0 0 1.2em}.result li{font-size:13px;line-height:2.1;color:var(--gray-dark);margin-top:8px}
+.result li b{color:var(--black);font-weight:500}
+.result .cta-box{border-top:1px solid var(--border);margin-top:28px;padding-top:24px}
+.result .note{font-size:11px;color:var(--gray);line-height:2;margin-top:18px}
+.tcards{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:28px;max-width:860px}
+.tcards a{background:var(--white);padding:30px 28px;text-decoration:none;color:inherit;display:block}
+.tcards a:hover{background:var(--bg)}
+.tcards h3{font-size:15px;font-weight:500;line-height:1.7;margin-bottom:8px}.tcards p{font-size:12px;line-height:2;color:var(--gray-dark)}
+.tcards span{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+@media(max-width:960px){.tcards{grid-template-columns:1fr}.result{padding:26px 20px}}
+</style>
+<style>
+:root{--black:#0f0f0f;--gray-dark:#444;--gray:#888;--border:#e8e8e8;--bg:#fafafa;--white:#fff;--accent:#c4714a;--accent-light:#f0e8e3}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--white);color:var(--black);overflow-x:hidden}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 48px;justify-content:space-between}
+.header-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em;color:var(--black);text-decoration:none}
+.header-logo span{color:var(--accent)}
+nav{display:flex;gap:32px;align-items:center}
+nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s}
+nav a:hover,nav a.active{color:var(--black)}
+.nav-contact{border:1px solid var(--black);padding:7px 18px;font-size:10px;letter-spacing:.14em;color:var(--black)!important}
+.nav-contact:hover{background:var(--black);color:var(--white)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:20px;height:1px;background:var(--black);display:block}
+.mobile-menu{position:fixed;inset:0;background:var(--white);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transform:translateX(100%);transition:transform .35s ease}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:28px;color:var(--black);text-decoration:none}
+.mobile-close{position:absolute;top:18px;right:24px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--gray)}
+
+.page-hero{padding:120px 48px 64px;border-bottom:1px solid var(--border);background:var(--bg)}
+.breadcrumb{font-size:11px;letter-spacing:.12em;color:var(--gray);margin-bottom:20px}
+.breadcrumb a{color:var(--gray);text-decoration:none}.breadcrumb a:hover{color:var(--black)}
+.eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.page-title{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(26px,4vw,44px);font-weight:400;line-height:1.45;margin-bottom:20px}
+.page-desc{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:640px}
+.work-badge{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.1em;padding:3px 12px;border-radius:99px;margin-bottom:16px;border:1px solid;line-height:1.6}
+.work-badge.is-deliv{background:var(--accent);color:#fff;border-color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 48px}
+section.blk{padding:80px 0;border-bottom:1px solid var(--border)}
+.h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(22px,3vw,30px);font-weight:400;line-height:1.5;margin-bottom:12px}
+.h2 em{font-style:italic;color:var(--accent)}
+.lead{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:700px}
+.shot{border:1px solid var(--border);background:var(--bg);overflow:hidden}
+.shot img{width:100%;height:auto;display:block}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:2px}
+.spec-item{background:var(--bg);padding:18px 22px}
+.spec-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.spec-value{font-size:12px;color:var(--gray-dark);line-height:1.8}
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:28px}
+.ps>div{background:var(--white);padding:36px}
+.ps h3{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:500}
+.ps p{font-size:12px;line-height:2.1;color:var(--gray-dark)}
+.craft{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:28px}
+.craft>div{background:var(--white);padding:32px 34px}
+.craft h4{font-size:14px;font-weight:500;line-height:1.7;margin-bottom:10px}
+.craft h4 span{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:400}
+.craft p{font-size:12px;line-height:2.1;color:var(--gray-dark)}
+.tech-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:22px}
+.tech-tag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);padding:4px 11px;color:var(--gray)}
+.btn{display:inline-block;background:var(--black);color:#fff;padding:14px 36px;font-size:11px;letter-spacing:.16em;text-decoration:none;transition:background .25s}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--black);border:1px solid var(--black)}
+.btn.ghost:hover{background:var(--black);color:#fff}
+.site-link{margin-top:28px}
+.credit{font-size:11px;line-height:2;color:var(--gray);margin-top:20px}
+.cta{padding:72px 0;text-align:center}
+.cta p{font-size:13px;line-height:2.1;color:var(--gray-dark);margin-bottom:24px}
+.cta .sub{font-size:11px;color:var(--gray);margin:20px 0 0}
+.cta .sub a{color:var(--gray-dark)}
+footer{background:var(--black);color:#fff;padding:48px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em}.footer-logo span{color:var(--accent)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.25)}
+.footer-nav{display:flex;gap:24px}.footer-nav a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none}.footer-nav a:hover{color:#fff}
+@media(max-width:960px){
+ header{padding:0 24px}nav{display:none}.hamburger{display:flex}
+ .page-hero{padding:100px 24px 48px}.wrap{padding:0 24px}section.blk{padding:56px 0}
+ .spec-grid{grid-template-columns:1fr}.ps{grid-template-columns:1fr}.ps>div{padding:28px 24px}
+ .craft{grid-template-columns:1fr}.craft>div{padding:26px 24px}
+ .footer-bottom{flex-direction:column;gap:20px;text-align:center}.footer-nav{flex-wrap:wrap;justify-content:center}footer{padding:40px 24px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.prose p{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:760px;margin-top:16px}.prose h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(20px,2.6vw,26px);font-weight:400;line-height:1.6;margin-top:48px;max-width:760px}.prose h3{font-size:15px;font-weight:500;line-height:1.8;margin-top:32px;max-width:760px}.prose ul,.prose ol{margin:16px 0 0 1.2em;max-width:760px}.prose li{font-size:13px;line-height:2.2;color:var(--gray-dark)}.prose a,.src a,.lead a,.note a{color:var(--accent)}.prose blockquote{border-left:2px solid var(--accent);padding:4px 0 4px 18px;margin:20px 0 0;max-width:760px}.prose table{width:100%;max-width:760px;border-collapse:collapse;margin-top:24px;font-size:12px}.prose th,.prose td{border-bottom:1px solid var(--border);padding:12px 10px;text-align:left;line-height:1.9;color:var(--gray-dark)}.prose th{font-weight:500;color:var(--black)}.meta{font-size:11px;color:var(--gray);margin-top:20px;letter-spacing:.06em}.src li{font-size:12px;line-height:2.1;color:var(--gray-dark);margin-left:1.2em}.faq details{border-bottom:1px solid var(--border);padding:18px 0}.faq summary{cursor:pointer;font-size:14px;font-weight:500;line-height:1.8}.faq details p{font-size:12px;line-height:2.1;color:var(--gray-dark);margin-top:10px}.note{font-size:11px;color:var(--gray);line-height:2;margin-top:16px}.plist{list-style:none;margin:28px 0 0;padding:0;max-width:860px}.plist li{border-bottom:1px solid var(--border);padding:22px 0}.plist a.t{font-size:16px;font-weight:500;line-height:1.7;color:var(--black);text-decoration:none}.plist a.t:hover{color:var(--accent)}.plist .m{font-size:10px;letter-spacing:.12em;color:var(--gray);margin-bottom:6px}.plist .m b{color:var(--accent);font-weight:500;margin-left:10px}.plist p{font-size:12px;line-height:2;color:var(--gray-dark);margin-top:6px}.pin{background:var(--bg);padding:22px 24px;margin-top:28px;max-width:860px}.pin .m{font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:6px}</style>
+<!-- Google tag (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0D5FE87BBJ"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
+</script>
+<!-- Microsoft Clarity -->
+<script>
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z6cmrb2gry");
+</script>
+</head>
+<body>
+<header>
+  <a href="/index.html" class="header-logo">Kairos <span>Web Production</span></a>
+  <nav>
+    <a href="/lp.html">LP制作</a>
+    <a href="/corporate.html">コーポレート</a>
+    <a href="/ec.html">EC・実装</a>
+    <a href="/system.html">システム開発</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/tools/">無料診断</a>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="nav-contact">Contact</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="閉じる">✕</button>
+  <a href="/index.html" onclick="toggleMenu()">Home</a>
+  <a href="/lp.html" onclick="toggleMenu()">LP制作</a>
+  <a href="/corporate.html" onclick="toggleMenu()">コーポレート</a>
+  <a href="/ec.html" onclick="toggleMenu()">EC・実装</a>
+  <a href="/system.html" onclick="toggleMenu()">システム開発</a>
+    <a href="/blog/" onclick="toggleMenu()">ブログ</a>
+    <a href="/tools/" onclick="toggleMenu()">無料診断</a>
+</div>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="/index.html">Home</a> / 無料診断</p>
+  <p class="eyebrow">Free Check</p>
+  <h1 class="page-title">ホームページの<br>無料診断</h1>
+  <p class="page-desc">公開後の「守り」を、無料で確認できます。</p>
+</div>
+
+<section class="blk">
+  <div class="wrap">
+    <p class="lead">ホームページを「作る」だけでなく、公開後に「守る」ための、無料の診断です。どちらも登録は不要で、入力内容は、この端末の中だけで処理されます。</p>
+    <div class="tcards">
+      <a href="/tools/security-check.html"><span>Self Check / 3 min</span><h3>ホームページのセキュリティ セルフチェック</h3><p>12の質問に答えて、更新・パスワード・バックアップなど、「守り」の確認したい点を調べます。</p></a>
+      <a href="/tools/php-check.html"><span>PHP / 1 min</span><h3>PHPバージョン診断</h3><p>2026年10月に公表されたPHPの脆弱性について、バージョンを入れると、更新が必要かを判定します。</p></a>
+    </div>
+    <p class="note" style="margin-top:32px">Kairos は、ホームページの制作と、公開後の保守・運用を一貫して担当しています。この診断は、「公開後に守る」ことの、最初の一歩として作りました。保守プランは、ライト 月5,000円〜、スタンダード 月15,000円〜、システム保守 月30,000円〜（税込、最低契約6か月）です。詳しくは<a href="/index.html#maintenance">保守・運用</a>をご覧ください。</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <p>ホームページの「守り」について、不安なことがあればご相談ください。<br>ヒアリングとお見積りは無料です。ご返信は通常2営業日以内です。</p>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="btn" data-cta="bottom">LINEで相談する →</a>
+    <p class="sub">フォームからのご相談は<a href="/index.html#contact">こちら</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-logo">Kairos <span>Web Production</span></div>
+    <nav class="footer-nav">
+      <a href="/lp.html">LP制作</a><a href="/corporate.html">コーポレート</a><a href="/ec.html">EC・実装</a><a href="/system.html">システム開発</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/tools/">無料診断</a>
+    </nav>
+    <span class="footer-copy">© 2026 Kairos Web Production.</span>
+  </div>
+</footer>
+<script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>
+</body>
+</html>
