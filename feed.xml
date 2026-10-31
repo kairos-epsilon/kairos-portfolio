@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Kairos ブログ</title>
+  <link>https://kairos-web.jp/blog/</link>
+  <description>ホームページ制作・システム開発・セキュリティなどの話題</description>
+  <language>ja</language>
+  <lastBuildDate>Sat, 31 Oct 2026 09:00:00 +0900</lastBuildDate>
+  <item>
+    <title>ホームページ制作を頼む前に決めておきたい5つのこと</title>
+    <link>https://kairos-web.jp/blog/hp-order-checklist.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/hp-order-checklist.html</guid>
+    <pubDate>Sat, 31 Oct 2026 09:00:00 +0900</pubDate>
+    <category>ホームページ制作</category>
+    <description>ホームページ制作を依頼する前に、目的・予算・素材・更新・連絡の5つを整理しておくと、見積りも進行もスムーズになります。初めての方向けに、決め方のポイントをまとめました。</description>
+  </item>
+</channel>
+</rss>

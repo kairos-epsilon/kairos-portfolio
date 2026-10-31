@@ -33,6 +33,10 @@
 - [事例: 施工管理会社向け社内業務システム](https://kairos-web.jp/case-construction-ops.html): 案件管理・日報・見積・請求を一つにまとめた業務システム
 - [プライバシーポリシー](https://kairos-web.jp/privacy.html)
 
+## ブログ
+- [Kairos ブログ](https://kairos-web.jp/blog/): ホームページ制作・システム開発・SEO・セキュリティ・業務効率化の話題。出典を確かめて公開しています
+- [ホームページ制作を頼む前に決めておきたい5つのこと](https://kairos-web.jp/blog/hp-order-checklist.html): ホームページ制作を依頼する前に、目的・予算・素材・更新・連絡の5つを整理しておくと、見積りも進行もスムーズになります。初めての方向けに、決め方のポイントをまとめました。
+
 ## 問い合わせ
 - 公式LINE: https://lin.ee/SvN5SIm
 - フォーム: https://kairos-web.jp/#contact
