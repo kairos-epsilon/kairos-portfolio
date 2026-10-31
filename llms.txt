@@ -7,7 +7,7 @@
 - 代表者: 渋江 義久
 - 所在地: 愛知県海部郡蟹江町
 - 事業形態: 個人事業（免税事業者）
-- 対応地域: 愛知県を中心に全国（LINE・Web会議）
+- 対応地域: 蟹江町を拠点に、弥富市・愛西市・津島市・あま市・飛島村・大治町など海部・津島エリア。愛知県内は対面相談も可能。全国はLINE・Web会議で対応
 - 特徴: WordPress に頼らず、お客様の業務に合わせた管理画面まで設計できる。公開後の保守・運用を前提に制作する
 - 相談・見積り: 無料。返信は通常2営業日以内
 
@@ -22,7 +22,8 @@
 
 ## ページ
 - [トップ](https://kairos-web.jp/): サービス、料金、制作の流れ、FAQ、運営者情報
-- [蟹江町・名古屋近郊のホームページ制作](https://kairos-web.jp/area-aichi.html): 対応地域、料金の目安、FAQ
+- [蟹江町のホームページ制作](https://kairos-web.jp/area-kanie.html): 拠点・対面相談・料金・FAQ
+- [海部・津島エリアのホームページ制作](https://kairos-web.jp/area-kaifu.html): 弥富市・愛西市・津島市・あま市・飛島村・大治町の方へ
 - [LP制作の実績](https://kairos-web.jp/lp.html)
 - [コーポレートサイトの実績](https://kairos-web.jp/corporate.html)
 - [ECサイト・フロントエンド実装の実績](https://kairos-web.jp/ec.html)
