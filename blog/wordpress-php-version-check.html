@@ -123,27 +123,75 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
 <body>
 <header>
   <a href="/index.html" class="header-logo">Kairos <span>Web Production</span></a>
-  <nav>
-    <a href="/lp.html">LP制作</a>
-    <a href="/corporate.html">コーポレート</a>
-    <a href="/ec.html">EC・実装</a>
-    <a href="/system.html">システム開発</a>
-    <a href="/blog/">ブログ</a>
-    <a href="/tools/">無料診断</a>
-    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="nav-contact">Contact</a>
-  </nav>
+  <nav class="gnav" aria-label="メインメニュー">
+  <div class="gn-group"><button type="button" class="gn-btn" aria-expanded="false" aria-haspopup="true">制作実績<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="gn-panel"><div class="gn-panel-in"><a href="/lp.html">LP制作</a><a href="/corporate.html">コーポレート</a><a href="/ec.html">EC・実装</a><a href="/system.html">システム開発</a></div></div></div>
+  <div class="gn-group"><button type="button" class="gn-btn" aria-expanded="false" aria-haspopup="true">料金・サービス<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="gn-panel"><div class="gn-panel-in"><a href="/index.html#pricing">料金</a><a href="/index.html#maintenance">保守・運用</a><a href="/index.html#logistics">運送・物流業の方へ</a><a href="/index.html#faq">FAQ</a></div></div></div>
+  <div class="gn-group"><button type="button" class="gn-btn" aria-expanded="false" aria-haspopup="true">ブログ・診断<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="gn-panel"><div class="gn-panel-in"><a href="/blog/">ブログ</a><a href="/tools/">無料診断</a></div></div></div>
+  <div class="gn-group"><button type="button" class="gn-btn" aria-expanded="false" aria-haspopup="true">Kairosについて<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="gn-panel"><div class="gn-panel-in"><a href="/index.html#message">代表挨拶</a><a href="/index.html#company">運営者情報</a></div></div></div>
+  <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="nav-contact">Contact</a>
+</nav>
   <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く"><span></span><span></span><span></span></button>
 </header>
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="toggleMenu()" aria-label="閉じる">✕</button>
-  <a href="/index.html" onclick="toggleMenu()">Home</a>
-  <a href="/lp.html" onclick="toggleMenu()">LP制作</a>
-  <a href="/corporate.html" onclick="toggleMenu()">コーポレート</a>
-  <a href="/ec.html" onclick="toggleMenu()">EC・実装</a>
-  <a href="/system.html" onclick="toggleMenu()">システム開発</a>
-    <a href="/blog/" onclick="toggleMenu()">ブログ</a>
-    <a href="/tools/" onclick="toggleMenu()">無料診断</a>
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="メニューを閉じる">✕</button>
+  <div class="mm-wrap">
+    <a class="mm-home" href="/index.html" onclick="toggleMenu()">ホーム</a>
+    <details class="mm-group"><summary>制作実績</summary><div class="mm-links"><a href="/lp.html" onclick="toggleMenu()">LP制作</a><a href="/corporate.html" onclick="toggleMenu()">コーポレート</a><a href="/ec.html" onclick="toggleMenu()">EC・実装</a><a href="/system.html" onclick="toggleMenu()">システム開発</a></div></details>
+    <details class="mm-group"><summary>料金・サービス</summary><div class="mm-links"><a href="/index.html#pricing" onclick="toggleMenu()">料金</a><a href="/index.html#maintenance" onclick="toggleMenu()">保守・運用</a><a href="/index.html#logistics" onclick="toggleMenu()">運送・物流業の方へ</a><a href="/index.html#faq" onclick="toggleMenu()">FAQ</a></div></details>
+    <details class="mm-group"><summary>ブログ・診断</summary><div class="mm-links"><a href="/blog/" onclick="toggleMenu()">ブログ</a><a href="/tools/" onclick="toggleMenu()">無料診断</a></div></details>
+    <details class="mm-group"><summary>Kairosについて</summary><div class="mm-links"><a href="/index.html#message" onclick="toggleMenu()">代表挨拶</a><a href="/index.html#company" onclick="toggleMenu()">運営者情報</a></div></details>
+    <a onclick="toggleMenu()" href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="mm-contact">Contact</a>
+  </div>
 </div>
+<style id="gnav-css">
+.gnav{display:flex;align-items:center;gap:30px}
+@media (max-width:960px){.gnav{display:none}}
+.gn-group{position:relative}
+.gn-btn{font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:none;color:var(--text-muted,var(--gray,#888));background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:12px 2px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.gn-btn svg{width:10px;height:10px;transition:transform .25s}
+.gn-group:has(a.active)>.gn-btn{color:var(--text-primary,var(--black,#0f0f0f));border-bottom-color:var(--accent,#c4714a)}
+.gn-btn:hover,.gn-group.open>.gn-btn{color:var(--text-primary,var(--black,#0f0f0f))}
+.gn-group.open>.gn-btn svg{transform:rotate(180deg)}
+.gn-panel{position:absolute;top:100%;left:50%;min-width:210px;padding-top:10px;transform:translate(-50%,6px);opacity:0;visibility:hidden;transition:opacity .2s,transform .25s,visibility .2s;z-index:210}
+.gn-panel-in{background:#fff;border:1px solid var(--border,#e5e5e5);border-radius:10px;box-shadow:0 14px 44px rgba(0,0,0,.13);padding:8px}
+.gn-group.open>.gn-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media (hover:hover){.gn-group:hover>.gn-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}.gn-group:hover>.gn-btn{color:var(--text-primary,var(--black,#0f0f0f))}.gn-group:hover>.gn-btn svg{transform:rotate(180deg)}}
+.gn-panel a{display:block;padding:11px 16px;border-radius:6px;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:400;letter-spacing:.04em;text-transform:none;white-space:nowrap;color:var(--text-primary,var(--black,#0f0f0f))!important;transition:background .2s,color .2s}
+.gn-panel a::after{display:none!important}
+.gn-panel a:hover{background:rgba(196,113,74,.09);color:var(--accent,#c4714a)!important}
+.gn-panel a.active{color:var(--accent,#c4714a)!important;font-weight:500}
+.mobile-menu{display:flex;flex-direction:column;align-items:center;justify-content:safe center;overflow-y:auto;padding:72px 0 40px;gap:0}
+.mm-wrap{width:min(88vw,380px)}
+.mm-home,.mm-group>summary{display:flex;justify-content:space-between;align-items:center;padding:19px 4px;font-family:'Playfair Display','Noto Sans JP',serif;font-size:20px;font-weight:400;color:var(--text-primary,var(--black,#0f0f0f));border-bottom:1px solid var(--border,#e5e5e5);cursor:pointer;list-style:none}
+.mm-group>summary::-webkit-details-marker{display:none}
+.mm-group>summary::after{content:'';width:8px;height:8px;margin-right:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .3s}
+.mm-group[open]>summary{border-bottom-color:transparent}
+.mm-group[open]>summary::after{transform:rotate(-135deg)}
+.mm-group[open]{border-bottom:1px solid var(--border,#e5e5e5)}
+.mobile-menu .mm-links{display:grid;padding:0 0 16px}
+.mobile-menu .mm-links a{font-family:'Noto Sans JP',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em;padding:12px 4px 12px 18px;color:var(--text-secondary,var(--gray-dark,#555));border-radius:6px}
+.mobile-menu .mm-links a.active{color:var(--accent,#c4714a);font-weight:500}
+.mobile-menu a.mm-contact{display:block;margin-top:28px;padding:15px 0;text-align:center;border:1px solid var(--text-primary,var(--black,#0f0f0f));border-radius:999px;font-family:'Noto Sans JP',sans-serif;font-size:14px;letter-spacing:.14em;color:var(--text-primary,var(--black,#0f0f0f))}
+</style>
+<script id="gnav-js">
+(function(){
+  var gs=[].slice.call(document.querySelectorAll('.gn-group'));
+  function closeAll(except){gs.forEach(function(g){if(g!==except){g.classList.remove('open');g.querySelector('.gn-btn').setAttribute('aria-expanded','false');}});}
+  gs.forEach(function(g){
+    var b=g.querySelector('.gn-btn');
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(e.detail>0&&window.matchMedia('(hover:hover)').matches)return;
+      var o=!g.classList.contains('open');closeAll(g);g.classList.toggle('open',o);b.setAttribute('aria-expanded',String(o));
+    });
+  });
+  document.addEventListener('click',function(){closeAll();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+  var ds=[].slice.call(document.querySelectorAll('.mm-group'));
+  ds.forEach(function(d){if(d.querySelector('a.active'))d.open=true;});
+  ds.forEach(function(d){d.addEventListener('toggle',function(){if(d.open)ds.forEach(function(o){if(o!==d)o.open=false;});});});
+})();
+</script>
 
 <div class="page-hero">
   <p class="breadcrumb"><a href="/index.html">Home</a> / <a href="/blog/">ブログ</a> / セキュリティ</p>
