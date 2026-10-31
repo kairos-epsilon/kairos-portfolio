@@ -33,11 +33,6 @@
 - [事例: 施工管理会社向け社内業務システム](https://kairos-web.jp/case-construction-ops.html): 案件管理・日報・見積・請求を一つにまとめた業務システム
 - [プライバシーポリシー](https://kairos-web.jp/privacy.html)
 
-## 無料診断
-- [無料診断](https://kairos-web.jp/tools/): ホームページの「守り」を確認できる、無料の診断ツール（登録不要、入力内容は端末内のみで処理）
-- [ホームページのセキュリティチェック](https://kairos-web.jp/tools/security-check.html): 12の質問で、更新・パスワード・バックアップなどの確認したい点を調べる
-- [PHP脆弱性チェック（PHPバージョン診断）](https://kairos-web.jp/tools/php-check.html): 2026年10月のPHPの脆弱性（IPAの注意喚起）について、バージョンから更新の要否を判定する
-
 ## ブログ
 - [Kairos ブログ](https://kairos-web.jp/blog/): ホームページ制作・システム開発・SEO・セキュリティ・業務効率化の話題。出典を確かめて公開しています
 - [WordPressは影響を受ける？PHPバージョンの確認方法と対応](https://kairos-web.jp/blog/wordpress-php-version-check.html): WordPressで作ったホームページは、PHPの脆弱性（PHP2shell）の影響を受けるのか。PHPバージョンの確認方法と、WordPress本体の脆弱性（wp2shell）の確認点を、IPAの情報で整理します。
@@ -45,6 +40,11 @@
 - [PHP2shell（PHPの脆弱性）とは？何が問題で、何をすればいい？](https://kairos-web.jp/blog/php2shell-explained.html): 2026年10月に公表されたPHPの脆弱性「PHP2shell」を、IPAとphp.netの情報をもとにやさしく解説。何が問題か、誰が対象か、修正版、いまやることを整理しました。
 - [「保護されていない通信」と表示されたら｜運営者向けの確認](https://kairos-web.jp/blog/not-secure-warning-https.html): 自社のホームページに「保護されていない通信」と表示される。その意味と原因、運営者が確認することを整理します。https化や、証明書の期限など、確認の手順をやさしく解説します。
 - [ホームページ制作を頼む前に決めておきたい5つのこと](https://kairos-web.jp/blog/hp-order-checklist.html): ホームページ制作を依頼する前に、目的・予算・素材・更新・連絡の5つを整理しておくと、見積りも進行もスムーズになります。初めての方向けに、決め方のポイントをまとめました。
+
+## セキュリティ簡易無料診断
+- [セキュリティ簡易無料診断](https://kairos-web.jp/tools/): ホームページの「守り」を確認できる、無料の診断ツール（登録不要、入力内容は端末内のみで処理）
+- [ホームページのセキュリティチェック](https://kairos-web.jp/tools/security-check.html): 12の質問で、更新・パスワード・バックアップなどの確認したい点を調べる
+- [PHP脆弱性チェック（PHPバージョン診断）](https://kairos-web.jp/tools/php-check.html): 2026年10月のPHPの脆弱性（IPAの注意喚起）について、バージョンから更新の要否を判定する
 
 ## 問い合わせ
 - 公式LINE: https://lin.ee/SvN5SIm

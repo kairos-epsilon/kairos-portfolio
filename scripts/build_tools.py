@@ -54,14 +54,14 @@ def page(fn, title, desc, h1, lead, crumb, body, script, app_name, faq=None):
         ld += jld({"@context": "https://schema.org", "@type": "WebApplication", "name": app_name, "url": url, "description": desc,
                    "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "inLanguage": "ja",
                    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@id": B + "#business"}})
-    items = [("Home", B), ("無料診断", B + "tools/")]
+    items = [("Home", B), ("セキュリティ簡易無料診断", B + "tools/")]
     if fn != "index.html": items.append((crumb, url))
     if faq:
         ld += jld({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in faq]})
     ld += jld(crumbs_ld(items)) + EXTRA_CSS
     out = head(title, desc, url, ld, og="website") + BODY_START
-    bc = '<a href="/index.html">Home</a> / ' + (f'<a href="/tools/">無料診断</a> / {esc(crumb)}' if fn != "index.html" else "無料診断")
+    bc = '<a href="/index.html">Home</a> / ' + (f'<a href="/tools/">セキュリティ簡易無料診断</a> / {esc(crumb)}' if fn != "index.html" else "セキュリティ簡易無料診断")
     out += f"""<div class="page-hero">
   <p class="breadcrumb">{bc}</p>
   <p class="eyebrow">Free Check</p>
@@ -292,10 +292,10 @@ def update_sitemap_llms():
     s = s.replace("</urlset>", add + "</urlset>")
     p.write_text(s, encoding="utf-8", newline="")
     p = ROOT / "llms.txt"; s = p.read_text(encoding="utf-8")
-    sec = (f"## 無料診断\n- [無料診断]({B}tools/): ホームページの「守り」を確認できる、無料の診断ツール（登録不要、入力内容は端末内のみで処理）\n"
+    sec = (f"## セキュリティ簡易無料診断\n- [セキュリティ簡易無料診断]({B}tools/): ホームページの「守り」を確認できる、無料の診断ツール（登録不要、入力内容は端末内のみで処理）\n"
            f"- [ホームページのセキュリティチェック]({B}tools/security-check.html): 12の質問で、更新・パスワード・バックアップなどの確認したい点を調べる\n"
            f"- [PHP脆弱性チェック（PHPバージョン診断）]({B}tools/php-check.html): 2026年10月のPHPの脆弱性（IPAの注意喚起）について、バージョンから更新の要否を判定する\n\n")
-    s = re.sub(r"## 無料診断\n.*?(?=\n## |\Z)", "", s, flags=re.S)
+    s = re.sub(r"## (?:セキュリティ簡易)?無料診断\n.*?(?=\n## |\Z)", "", s, flags=re.S)
     s = s.replace("## 問い合わせ", sec + "## 問い合わせ", 1) if "## 問い合わせ" in s else s.rstrip("\n") + "\n\n" + sec
     s = re.sub(r"\n{3,}", "\n\n", s)
     p.write_text(s, encoding="utf-8", newline="")
@@ -305,9 +305,9 @@ def main():
         try: st.reconfigure(encoding="utf-8")
         except Exception: pass
     OUT.mkdir(exist_ok=True)
-    page("index.html", "無料診断｜ホームページのセキュリティチェック・PHP脆弱性チェック｜Kairos",
+    page("index.html", "セキュリティ簡易無料診断｜ホームページのセキュリティチェック・PHP脆弱性チェック｜Kairos",
          "ホームページのセキュリティチェックと、PHP脆弱性チェック（PHPバージョン診断）。登録不要・無料で、更新やバックアップなど「守り」の確認したい点を調べられます。蟹江町のKairos。",
-         "ホームページの<br>無料診断", "公開後の「守り」を、無料で確認できます。", "無料診断", IDX_BODY, "", "Kairos 無料診断")
+         "セキュリティ簡易<br>無料診断", "公開後の「守り」を、無料で確認できます。", "セキュリティ簡易無料診断", IDX_BODY, "", "Kairos セキュリティ簡易無料診断")
     page("security-check.html", "ホームページのセキュリティチェック（無料）｜12の質問で確認｜Kairos",
          "ホームページのセキュリティチェックを、12の質問に答えるだけで。更新・パスワード・バックアップ・SSLなど、「守り」の確認したい点を、無料で調べられます。登録不要、入力内容は送信されません。",
          "ホームページの<br>セキュリティチェック（無料）", "12の質問で、確認したい点を調べます（無料・3分・登録不要）。", "セキュリティチェック", SEC_BODY, SEC_JS, "ホームページのセキュリティチェック", faq=SEC_FAQ)
