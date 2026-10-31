@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PHPバージョン診断｜2026年10月の脆弱性に更新が必要か判定（無料）｜Kairos</title>
-<meta name="description" content="2026年10月に公表されたPHPの脆弱性（PHP2shell）について、使っているPHPのバージョンを入力すると、更新が必要かを判定する無料の診断。IPAの注意喚起にもとづきます。">
+<title>PHP脆弱性チェック｜PHPバージョン確認と更新の要否を判定（無料）｜Kairos</title>
+<meta name="description" content="PHP脆弱性（PHP2shell、2026年10月公表）のチェックツール。PHPのバージョンを入れると、更新が必要かを無料で判定します。WordPressの方も。IPAの注意喚起にもとづく。">
 <link rel="canonical" href="https://kairos-web.jp/tools/php-check.html">
 <link rel="alternate" type="application/rss+xml" title="Kairos ブログ" href="/feed.xml">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:site_name" content="Kairos">
-<meta property="og:title" content="PHPバージョン診断｜2026年10月の脆弱性に更新が必要か判定（無料）｜Kairos">
-<meta property="og:description" content="2026年10月に公表されたPHPの脆弱性（PHP2shell）について、使っているPHPのバージョンを入力すると、更新が必要かを判定する無料の診断。IPAの注意喚起にもとづきます。">
+<meta property="og:title" content="PHP脆弱性チェック｜PHPバージョン確認と更新の要否を判定（無料）｜Kairos">
+<meta property="og:description" content="PHP脆弱性（PHP2shell、2026年10月公表）のチェックツール。PHPのバージョンを入れると、更新が必要かを無料で判定します。WordPressの方も。IPAの注意喚起にもとづく。">
 <meta property="og:url" content="https://kairos-web.jp/tools/php-check.html">
 <meta property="og:image" content="https://kairos-web.jp/assets/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PHPバージョン診断｜2026年10月の脆弱性に更新が必要か判定（無料）｜Kairos">
-<meta name="twitter:description" content="2026年10月に公表されたPHPの脆弱性（PHP2shell）について、使っているPHPのバージョンを入力すると、更新が必要かを判定する無料の診断。IPAの注意喚起にもとづきます。">
+<meta name="twitter:title" content="PHP脆弱性チェック｜PHPバージョン確認と更新の要否を判定（無料）｜Kairos">
+<meta name="twitter:description" content="PHP脆弱性（PHP2shell、2026年10月公表）のチェックツール。PHPのバージョンを入れると、更新が必要かを無料で判定します。WordPressの方も。IPAの注意喚起にもとづく。">
 <meta name="twitter:image" content="https://kairos-web.jp/assets/ogp.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -27,10 +27,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"PHPバージョン診断","url":"https://kairos-web.jp/tools/php-check.html","description":"2026年10月に公表されたPHPの脆弱性（PHP2shell）について、使っているPHPのバージョンを入力すると、更新が必要かを判定する無料の診断。IPAの注意喚起にもとづきます。","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"publisher":{"@id":"https://kairos-web.jp/#business"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"PHP脆弱性チェック（PHPバージョン診断）","url":"https://kairos-web.jp/tools/php-check.html","description":"PHP脆弱性（PHP2shell、2026年10月公表）のチェックツール。PHPのバージョンを入れると、更新が必要かを無料で判定します。WordPressの方も。IPAの注意喚起にもとづく。","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"publisher":{"@id":"https://kairos-web.jp/#business"}}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kairos-web.jp/"},{"@type":"ListItem","position":2,"name":"無料診断","item":"https://kairos-web.jp/tools/"},{"@type":"ListItem","position":3,"name":"PHPバージョン診断","item":"https://kairos-web.jp/tools/php-check.html"}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"PHP2shell とは何ですか？","acceptedAnswer":{"@type":"Answer","text":"2026年10月に公表された、PHP の2件の脆弱性（CVE-2026-109618、CVE-2026-109619）を組み合わせた通称です。条件がそろうと、外部の第三者が、サーバー上でプログラムを実行できてしまうおそれがあります。詳しくは、PHP2shell とは？何が問題で、何をすればいい？をご覧ください。"}},{"@type":"Question","name":"WordPress は、PHP の脆弱性の影響を受けますか？","acceptedAnswer":{"@type":"Answer","text":"WordPress は PHP で動いているため、PHP のバージョンが修正版より古ければ、影響を受けうります。WordPress 本体の更新では、PHP のバージョンは変わりません。PHP は、サーバー側で更新します。詳しくは、WordPress は影響を受ける？PHPバージョンの確認方法をご覧ください。"}},{"@type":"Question","name":"PHP のバージョンは、どう確認しますか？","acceptedAnswer":{"@type":"Answer","text":"制作会社やサーバー会社に聞くのが確実です。WordPress なら、管理画面の「ツール」→「サイトヘルス」→「情報」→「サーバー」で見られます。"}},{"@type":"Question","name":"PHP 8.1 以前を使っています。どうなりますか？","acceptedAnswer":{"@type":"Answer","text":"PHP のプロジェクトからは、更新が提供されません。ただし、Linux の配布元や、長期サポートの事業者が、独自に対策した版を出している場合があります。サーバー会社に確認し、必要なら、サポートされている版（8.2 〜 8.5）へ移行してください。"}},{"@type":"Question","name":"PHP 8.2 を使っています。修正版にすれば安心ですか？","acceptedAnswer":{"@type":"Answer","text":"この脆弱性については、8.2.35 以降で対策済みと考えられます。ただし、PHP 8.2 のセキュリティサポートは、2026年12月31日に終了します（php.net）。年内に、8.3 以降への移行を計画してください。"}}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kairos-web.jp/"},{"@type":"ListItem","position":2,"name":"無料診断","item":"https://kairos-web.jp/tools/"},{"@type":"ListItem","position":3,"name":"PHP脆弱性チェック","item":"https://kairos-web.jp/tools/php-check.html"}]}
 </script>
 <style>
 .tool{max-width:760px}
@@ -171,9 +174,9 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
 </div>
 
 <div class="page-hero">
-  <p class="breadcrumb"><a href="/index.html">Home</a> / <a href="/tools/">無料診断</a> / PHPバージョン診断</p>
+  <p class="breadcrumb"><a href="/index.html">Home</a> / <a href="/tools/">無料診断</a> / PHP脆弱性チェック</p>
   <p class="eyebrow">Free Check</p>
-  <h1 class="page-title">PHPバージョン診断</h1>
+  <h1 class="page-title">PHP脆弱性チェック<br>（PHPバージョン診断）</h1>
   <p class="page-desc">バージョンを入れると、更新が必要かを判定します（無料・1分・登録不要）。</p>
 </div>
 
@@ -195,6 +198,14 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
       <li style="font-size:13px;line-height:2.2;color:var(--gray-dark)">サーバーの管理画面に、PHPの設定（バージョン）の項目がある場合もあります。</li>
     </ul>
     <p class="note" style="margin-top:32px">Kairos は、ホームページの制作と、公開後の保守・運用を一貫して担当しています。この診断は、「公開後に守る」ことの、最初の一歩として作りました。背景は、<a href="/column-security.html">ホームページのセキュリティ、何を確認すればいい？</a>で解説しています。ほかの項目も確認したい方は、<a href="/tools/security-check.html">セキュリティのセルフチェック</a>をお使いください。</p>
+    <h2 class="h2" style="margin-top:56px;font-size:20px">関連する解説記事</h2><ul style="margin:12px 0 0 1.2em;max-width:760px"><li style="font-size:13px;line-height:2.2;margin-top:6px"><a href="/blog/php2shell-explained.html" style="color:var(--accent)">PHP2shell（PHPの脆弱性）とは？何が問題で、何をすればいい？</a></li><li style="font-size:13px;line-height:2.2;margin-top:6px"><a href="/blog/wordpress-php-version-check.html" style="color:var(--accent)">WordPressは影響を受ける？PHPバージョンの確認方法と対応</a></li><li style="font-size:13px;line-height:2.2;margin-top:6px"><a href="/blog/website-hacked-what-to-do.html" style="color:var(--accent)">ホームページが改ざん・乗っ取りされたら？初動対応と日頃の備え</a></li><li style="font-size:13px;line-height:2.2;margin-top:6px"><a href="/blog/not-secure-warning-https.html" style="color:var(--accent)">「保護されていない通信」と表示されたら｜運営者向けの確認</a></li><li style="font-size:13px;line-height:2.2;margin-top:6px"><a href="/column-security.html" style="color:var(--accent)">ホームページのセキュリティ、何を確認すればいい？</a></li></ul>
+  </div>
+</section>
+<section class="blk" style="background:var(--bg)">
+  <div class="wrap faq" style="max-width:760px">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="h2">よくあるご質問</h2>
+    <details><summary>PHP2shell とは何ですか？</summary><p>2026年10月に公表された、PHP の2件の脆弱性（CVE-2026-109618、CVE-2026-109619）を組み合わせた通称です。条件がそろうと、外部の第三者が、サーバー上でプログラムを実行できてしまうおそれがあります。詳しくは、<a href="/blog/php2shell-explained.html">PHP2shell とは？何が問題で、何をすればいい？</a>をご覧ください。</p></details><details><summary>WordPress は、PHP の脆弱性の影響を受けますか？</summary><p>WordPress は PHP で動いているため、PHP のバージョンが修正版より古ければ、影響を受けうります。WordPress 本体の更新では、PHP のバージョンは変わりません。PHP は、サーバー側で更新します。詳しくは、<a href="/blog/wordpress-php-version-check.html">WordPress は影響を受ける？PHPバージョンの確認方法</a>をご覧ください。</p></details><details><summary>PHP のバージョンは、どう確認しますか？</summary><p>制作会社やサーバー会社に聞くのが確実です。WordPress なら、管理画面の「ツール」→「サイトヘルス」→「情報」→「サーバー」で見られます。</p></details><details><summary>PHP 8.1 以前を使っています。どうなりますか？</summary><p>PHP のプロジェクトからは、更新が提供されません。ただし、Linux の配布元や、長期サポートの事業者が、独自に対策した版を出している場合があります。サーバー会社に確認し、必要なら、サポートされている版（8.2 〜 8.5）へ移行してください。</p></details><details><summary>PHP 8.2 を使っています。修正版にすれば安心ですか？</summary><p>この脆弱性については、8.2.35 以降で対策済みと考えられます。ただし、PHP 8.2 のセキュリティサポートは、2026年12月31日に終了します（php.net）。年内に、8.3 以降への移行を計画してください。</p></details>
   </div>
 </section>
 
@@ -222,12 +233,13 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
 
 (function(){
 var FIXED={'8.2':35,'8.3':36,'8.4':27,'8.5':12};
+var EOL82='<p><b>PHP 8.2 をお使いの方へ：</b>PHP の公式サイト（php.net）によると、PHP 8.2 のセキュリティサポートは、2026年12月31日に終了します。年内に、8.3 以降への移行を計画してください。</p>';
 var inp=document.getElementById('php-in'),res=document.getElementById('php-result'),err=document.getElementById('php-err');
 function ga(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}}
 function show(t,badge,h,body){
  res.innerHTML='<span class="badge '+t+'">'+badge+'</span><h2>'+h+'</h2>'+body+
  '<div class="cta-box"><p>更新や、新しいバージョンへの移行の作業が不安な場合は、ご相談ください。現状をうかがい、何を・どの順番で行うかをお伝えします（ヒアリングは無料）。更新や点検をお任せいただく保守プランもあります（ライト 月5,000円〜／税込、最低契約6か月）。</p><div class="actions"><a class="btn" data-cta="result" href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener">LINEで無料相談する →</a></div></div>'+
- '<p class="note">この診断は、入力されたバージョン番号だけをもとにした簡易判定です。実際のサイトは調べていません。サーバー会社が、バージョン表示を変えずに対策のプログラムだけを適用している場合もあるため、不明なときは、サーバー会社に確認してください。判定の基準は、IPAの注意喚起（2026年10月22日公開、10月27日更新）にもとづきます。最新の情報は、<a href="https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html" target="_blank" rel="noopener">IPAのページ</a>でご確認ください。入力内容は、この端末の中だけで処理され、送信されません。</p>';
+ '<p class="note">この診断は、入力されたバージョン番号だけをもとにした簡易判定です。実際のサイトは調べていません。サーバー会社が、バージョン表示を変えずに対策のプログラムだけを適用している場合もあるため、不明なときは、サーバー会社に確認してください。判定の基準は、IPAの注意喚起（2026年10月22日公開、10月27日更新）と、PHP の公式サイト（php.net）にもとづきます。最新の情報は、<a href="https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html" target="_blank" rel="noopener">IPAのページ</a>でご確認ください。入力内容は、この端末の中だけで処理され、送信されません。</p>';
  res.classList.add('show');res.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function run(){
@@ -239,15 +251,15 @@ function run(){
  var maj=+m[1],min=+m[2],pat=m[3]===undefined?null:+m[3],key=maj+'.'+min,t,r;
  if(maj<8||(maj===8&&min<=1)){
   t='ng';r='eol';
-  show('ng','移行が必要です','PHP '+key+' は、サポートが終了しています。','<p>IPAは、PHP 8.1 以前は、サポートが終了しているため、修正プログラムが提供されないとしています。サポートされている版（8.2〜8.5）への移行が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、移行できるかを確認します。</li><li><b>注意：</b>WordPress のテーマやプラグインが、新しいPHPに対応していないことがあります。バックアップを取り、確認してから移行します。</li></ul>');
+  show('ng','移行が必要です','PHP '+key+' は、サポートが終了しています。','<p>IPAは、PHP 8.1 以前は、サポートが終了しているため、修正プログラムが提供されないとしています。サポートされている版（8.2〜8.5）への移行が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、移行できるかを確認します。</li><li><b>対策済みの場合もあります：</b>Linux の配布元や、長期サポートを提供する事業者が、独自に対策した版を出している場合があり、そのときは、バージョンの表示が古くても、対策が済んでいることがあります。サーバー会社に確認してください。</li><li><b>注意：</b>WordPress のテーマやプラグインが、新しいPHPに対応していないことがあります。バックアップを取り、確認してから移行します。</li></ul>');
  }else if(FIXED[key]!==undefined){
   if(pat===null){
    err.textContent='パッチ番号まで入力してください（例：'+key+'.30）。';return;
   }
   if(pat<FIXED[key]){t='ng';r='old';
-   show('ng','更新が必要です','PHP '+v+' は、修正版より古い版です。','<p>この脆弱性の修正版は、PHP '+key+' 系では <b>'+key+'.'+FIXED[key]+'</b> 以降です。いまの版は、それより古いため、更新が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、'+key+'.'+FIXED[key]+' 以降への更新を依頼します。</li><li><b>更新の前に：</b>バックアップを取ります。</li></ul>');
+   show('ng','更新が必要です','PHP '+v+' は、修正版より古い版です。','<p>この脆弱性の修正版は、PHP '+key+' 系では <b>'+key+'.'+FIXED[key]+'</b> 以降です。いまの版は、それより古いため、更新が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、'+key+'.'+FIXED[key]+' 以降への更新を依頼します。</li><li><b>更新の前に：</b>バックアップを取ります。</li></ul>'+(key==='8.2'?EOL82:''));
   }else{t='ok';r='fixed';
-   show('ok','この脆弱性については、修正版以降です','PHP '+v+' は、修正版以降の版です。','<p>この脆弱性（CVE-2026-109618・CVE-2026-109619）については、修正版（'+key+'.'+FIXED[key]+'）以降なので、対策済みと考えられます。</p><p>ただし、ほかのシステム（WordPress 本体、プラグイン、テーマ）にも、更新が必要なものがないかを、あわせて確認してください。</p>');
+   show('ok','この脆弱性については、修正版以降です','PHP '+v+' は、修正版以降の版です。','<p>この脆弱性（CVE-2026-109618・CVE-2026-109619）については、修正版（'+key+'.'+FIXED[key]+'）以降なので、対策済みと考えられます。</p><p>ただし、ほかのシステム（WordPress 本体、プラグイン、テーマ）にも、更新が必要なものがないかを、あわせて確認してください。</p>'+(key==='8.2'?EOL82:''));
   }
  }else{
   t='mid';r='unknown';

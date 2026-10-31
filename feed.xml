@@ -7,6 +7,38 @@
   <language>ja</language>
   <lastBuildDate>Sat, 31 Oct 2026 09:00:00 +0900</lastBuildDate>
   <item>
+    <title>WordPressは影響を受ける？PHPバージョンの確認方法と対応</title>
+    <link>https://kairos-web.jp/blog/wordpress-php-version-check.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/wordpress-php-version-check.html</guid>
+    <pubDate>Sat, 31 Oct 2026 09:00:00 +0900</pubDate>
+    <category>セキュリティ</category>
+    <description>WordPressで作ったホームページは、PHPの脆弱性（PHP2shell）の影響を受けるのか。PHPバージョンの確認方法と、WordPress本体の脆弱性（wp2shell）の確認点を、IPAの情報で整理します。</description>
+  </item>
+  <item>
+    <title>ホームページが改ざん・乗っ取りされたら？初動対応と日頃の備え</title>
+    <link>https://kairos-web.jp/blog/website-hacked-what-to-do.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/website-hacked-what-to-do.html</guid>
+    <pubDate>Sat, 31 Oct 2026 09:00:00 +0900</pubDate>
+    <category>セキュリティ</category>
+    <description>ホームページが改ざんされたとき、まず何をすればよいか。警察庁の案内にもとづき、初動対応の手順と、日頃の備え、相談先を、非専門家の方にも分かるように整理しました。</description>
+  </item>
+  <item>
+    <title>PHP2shell（PHPの脆弱性）とは？何が問題で、何をすればいい？</title>
+    <link>https://kairos-web.jp/blog/php2shell-explained.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/php2shell-explained.html</guid>
+    <pubDate>Sat, 31 Oct 2026 09:00:00 +0900</pubDate>
+    <category>セキュリティ</category>
+    <description>2026年10月に公表されたPHPの脆弱性「PHP2shell」を、IPAとphp.netの情報をもとにやさしく解説。何が問題か、誰が対象か、修正版、いまやることを整理しました。</description>
+  </item>
+  <item>
+    <title>「保護されていない通信」と表示されたら｜運営者向けの確認</title>
+    <link>https://kairos-web.jp/blog/not-secure-warning-https.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/not-secure-warning-https.html</guid>
+    <pubDate>Sat, 31 Oct 2026 09:00:00 +0900</pubDate>
+    <category>セキュリティ</category>
+    <description>自社のホームページに「保護されていない通信」と表示される。その意味と原因、運営者が確認することを整理します。https化や、証明書の期限など、確認の手順をやさしく解説します。</description>
+  </item>
+  <item>
     <title>ホームページ制作を頼む前に決めておきたい5つのこと</title>
     <link>https://kairos-web.jp/blog/hp-order-checklist.html</link>
     <guid isPermaLink="true">https://kairos-web.jp/blog/hp-order-checklist.html</guid>

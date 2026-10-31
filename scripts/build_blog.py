@@ -112,7 +112,8 @@ def validate(posts, banned):
             if href.startswith("https://"): continue
             if href.startswith("/") or not re.match(r"[a-z]+:", href):
                 t = href.lstrip("/").split("#")[0].split("?")[0]
-                if t and not (t in pages or t.startswith("blog/") or t == "feed.xml"): err(f"{n}: 内部リンク先がありません: {href}")
+                tools_ok = t.startswith("tools/") and ((ROOT / t).is_file() or (t.endswith("/") and (ROOT / t / "index.html").is_file()))
+                if t and not (t in pages or t.startswith("blog/") or t == "feed.xml" or tools_ok): err(f"{n}: 内部リンク先がありません: {href}")
                 if t.startswith("blog/") and t not in ("blog/",) and Path(t).stem not in slugs | {p["slug"]} and t != "blog/index.html":
                     pass  # 他の記事へのリンクは全記事の読み込み後に確認
             else: err(f"{n}: 使えないリンク {href}")

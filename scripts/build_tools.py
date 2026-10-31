@@ -47,7 +47,7 @@ EXTRA_CSS = """<style>
 CTA_LINE = "https://lin.ee/SvN5SIm"
 LEAD = "Kairos は、ホームページの制作と、公開後の保守・運用を一貫して担当しています。この診断は、「公開後に守る」ことの、最初の一歩として作りました。"
 
-def page(fn, title, desc, h1, lead, crumb, body, script, app_name):
+def page(fn, title, desc, h1, lead, crumb, body, script, app_name, faq=None):
     url = f"{B}tools/{fn}" if fn != "index.html" else f"{B}tools/"
     ld = ""
     if fn != "index.html":
@@ -56,6 +56,9 @@ def page(fn, title, desc, h1, lead, crumb, body, script, app_name):
                    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@id": B + "#business"}})
     items = [("Home", B), ("無料診断", B + "tools/")]
     if fn != "index.html": items.append((crumb, url))
+    if faq:
+        ld += jld({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in faq]})
     ld += jld(crumbs_ld(items)) + EXTRA_CSS
     out = head(title, desc, url, ld, og="website") + BODY_START
     bc = '<a href="/index.html">Home</a> / ' + (f'<a href="/tools/">無料診断</a> / {esc(crumb)}' if fn != "index.html" else "無料診断")
@@ -66,7 +69,7 @@ def page(fn, title, desc, h1, lead, crumb, body, script, app_name):
   <p class="page-desc">{lead}</p>
 </div>
 
-{body}
+{body}{faq_html(faq)}
 <section class="cta">
   <div class="wrap">
     <p>ホームページの「守り」について、不安なことがあればご相談ください。<br>ヒアリングとお見積りは無料です。ご返信は通常2営業日以内です。</p>
@@ -78,6 +81,27 @@ def page(fn, title, desc, h1, lead, crumb, body, script, app_name):
 {FOOTER}"""
     if script: out = out.replace("</body>", f"<script>\n{script}\n</script>\n</body>", 1)
     (OUT / fn).write_text(out, encoding="utf-8", newline="")
+
+def faq_html(faq):
+    if not faq: return ""
+    items = "".join(f"<details><summary>{esc(q)}</summary><p>{a}</p></details>" for q, a in faq)
+    return f'''<section class="blk" style="background:var(--bg)">
+  <div class="wrap faq" style="max-width:760px">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="h2">よくあるご質問</h2>
+    {items}
+  </div>
+</section>
+'''
+
+ARTICLES = [("PHP2shell（PHPの脆弱性）とは？何が問題で、何をすればいい？", "/blog/php2shell-explained.html"),
+            ("WordPressは影響を受ける？PHPバージョンの確認方法と対応", "/blog/wordpress-php-version-check.html"),
+            ("ホームページが改ざん・乗っ取りされたら？初動対応と日頃の備え", "/blog/website-hacked-what-to-do.html"),
+            ("「保護されていない通信」と表示されたら｜運営者向けの確認", "/blog/not-secure-warning-https.html"),
+            ("ホームページのセキュリティ、何を確認すればいい？", "/column-security.html")]
+def related():
+    li = "".join(f'<li style="font-size:13px;line-height:2.2;margin-top:6px"><a href="{u}" style="color:var(--accent)">{esc(t)}</a></li>' for t, u in ARTICLES)
+    return f'<h2 class="h2" style="margin-top:56px;font-size:20px">関連する解説記事</h2><ul style="margin:12px 0 0 1.2em;max-width:760px">{li}</ul>'
 
 # ------------------------------------------------------------------ セルフチェック
 SEC_JS = r"""
@@ -162,6 +186,7 @@ SEC_BODY = """<section class="blk">
     <p class="err" id="sc-err" role="alert"></p>
     <div class="result" id="sc-result" aria-live="polite"></div>
     <p class="note" style="margin-top:40px">""" + LEAD + """あわせて、<a href="/column-security.html">ホームページのセキュリティの基本</a>、<a href="/tools/php-check.html">PHPバージョン診断</a>もご覧ください。</p>
+    """ + related() + """
   </div>
 </section>
 """
@@ -170,12 +195,13 @@ SEC_BODY = """<section class="blk">
 PHP_JS = r"""
 (function(){
 var FIXED={'8.2':35,'8.3':36,'8.4':27,'8.5':12};
+var EOL82='<p><b>PHP 8.2 をお使いの方へ：</b>PHP の公式サイト（php.net）によると、PHP 8.2 のセキュリティサポートは、2026年12月31日に終了します。年内に、8.3 以降への移行を計画してください。</p>';
 var inp=document.getElementById('php-in'),res=document.getElementById('php-result'),err=document.getElementById('php-err');
 function ga(n,p){try{if(window.gtag)gtag('event',n,p||{});}catch(e){}}
 function show(t,badge,h,body){
  res.innerHTML='<span class="badge '+t+'">'+badge+'</span><h2>'+h+'</h2>'+body+
  '<div class="cta-box"><p>更新や、新しいバージョンへの移行の作業が不安な場合は、ご相談ください。現状をうかがい、何を・どの順番で行うかをお伝えします（ヒアリングは無料）。更新や点検をお任せいただく保守プランもあります（ライト 月5,000円〜／税込、最低契約6か月）。</p><div class="actions"><a class="btn" data-cta="result" href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener">LINEで無料相談する →</a></div></div>'+
- '<p class="note">この診断は、入力されたバージョン番号だけをもとにした簡易判定です。実際のサイトは調べていません。サーバー会社が、バージョン表示を変えずに対策のプログラムだけを適用している場合もあるため、不明なときは、サーバー会社に確認してください。判定の基準は、IPAの注意喚起（2026年10月22日公開、10月27日更新）にもとづきます。最新の情報は、<a href="https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html" target="_blank" rel="noopener">IPAのページ</a>でご確認ください。入力内容は、この端末の中だけで処理され、送信されません。</p>';
+ '<p class="note">この診断は、入力されたバージョン番号だけをもとにした簡易判定です。実際のサイトは調べていません。サーバー会社が、バージョン表示を変えずに対策のプログラムだけを適用している場合もあるため、不明なときは、サーバー会社に確認してください。判定の基準は、IPAの注意喚起（2026年10月22日公開、10月27日更新）と、PHP の公式サイト（php.net）にもとづきます。最新の情報は、<a href="https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html" target="_blank" rel="noopener">IPAのページ</a>でご確認ください。入力内容は、この端末の中だけで処理され、送信されません。</p>';
  res.classList.add('show');res.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function run(){
@@ -187,15 +213,15 @@ function run(){
  var maj=+m[1],min=+m[2],pat=m[3]===undefined?null:+m[3],key=maj+'.'+min,t,r;
  if(maj<8||(maj===8&&min<=1)){
   t='ng';r='eol';
-  show('ng','移行が必要です','PHP '+key+' は、サポートが終了しています。','<p>IPAは、PHP 8.1 以前は、サポートが終了しているため、修正プログラムが提供されないとしています。サポートされている版（8.2〜8.5）への移行が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、移行できるかを確認します。</li><li><b>注意：</b>WordPress のテーマやプラグインが、新しいPHPに対応していないことがあります。バックアップを取り、確認してから移行します。</li></ul>');
+  show('ng','移行が必要です','PHP '+key+' は、サポートが終了しています。','<p>IPAは、PHP 8.1 以前は、サポートが終了しているため、修正プログラムが提供されないとしています。サポートされている版（8.2〜8.5）への移行が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、移行できるかを確認します。</li><li><b>対策済みの場合もあります：</b>Linux の配布元や、長期サポートを提供する事業者が、独自に対策した版を出している場合があり、そのときは、バージョンの表示が古くても、対策が済んでいることがあります。サーバー会社に確認してください。</li><li><b>注意：</b>WordPress のテーマやプラグインが、新しいPHPに対応していないことがあります。バックアップを取り、確認してから移行します。</li></ul>');
  }else if(FIXED[key]!==undefined){
   if(pat===null){
    err.textContent='パッチ番号まで入力してください（例：'+key+'.30）。';return;
   }
   if(pat<FIXED[key]){t='ng';r='old';
-   show('ng','更新が必要です','PHP '+v+' は、修正版より古い版です。','<p>この脆弱性の修正版は、PHP '+key+' 系では <b>'+key+'.'+FIXED[key]+'</b> 以降です。いまの版は、それより古いため、更新が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、'+key+'.'+FIXED[key]+' 以降への更新を依頼します。</li><li><b>更新の前に：</b>バックアップを取ります。</li></ul>');
+   show('ng','更新が必要です','PHP '+v+' は、修正版より古い版です。','<p>この脆弱性の修正版は、PHP '+key+' 系では <b>'+key+'.'+FIXED[key]+'</b> 以降です。いまの版は、それより古いため、更新が必要です。</p><ul><li><b>まずやること：</b>制作会社やサーバー会社に、'+key+'.'+FIXED[key]+' 以降への更新を依頼します。</li><li><b>更新の前に：</b>バックアップを取ります。</li></ul>'+(key==='8.2'?EOL82:''));
   }else{t='ok';r='fixed';
-   show('ok','この脆弱性については、修正版以降です','PHP '+v+' は、修正版以降の版です。','<p>この脆弱性（CVE-2026-109618・CVE-2026-109619）については、修正版（'+key+'.'+FIXED[key]+'）以降なので、対策済みと考えられます。</p><p>ただし、ほかのシステム（WordPress 本体、プラグイン、テーマ）にも、更新が必要なものがないかを、あわせて確認してください。</p>');
+   show('ok','この脆弱性については、修正版以降です','PHP '+v+' は、修正版以降の版です。','<p>この脆弱性（CVE-2026-109618・CVE-2026-109619）については、修正版（'+key+'.'+FIXED[key]+'）以降なので、対策済みと考えられます。</p><p>ただし、ほかのシステム（WordPress 本体、プラグイン、テーマ）にも、更新が必要なものがないかを、あわせて確認してください。</p>'+(key==='8.2'?EOL82:''));
   }
  }else{
   t='mid';r='unknown';
@@ -227,6 +253,7 @@ PHP_BODY = """<section class="blk">
       <li style="font-size:13px;line-height:2.2;color:var(--gray-dark)">サーバーの管理画面に、PHPの設定（バージョン）の項目がある場合もあります。</li>
     </ul>
     <p class="note" style="margin-top:32px">""" + LEAD + """背景は、<a href="/column-security.html">ホームページのセキュリティ、何を確認すればいい？</a>で解説しています。ほかの項目も確認したい方は、<a href="/tools/security-check.html">セキュリティのセルフチェック</a>をお使いください。</p>
+    """ + related() + """
   </div>
 </section>
 """
@@ -235,13 +262,28 @@ IDX_BODY = """<section class="blk">
   <div class="wrap">
     <p class="lead">ホームページを「作る」だけでなく、公開後に「守る」ための、無料の診断です。どちらも登録は不要で、入力内容は、この端末の中だけで処理されます。</p>
     <div class="tcards">
-      <a href="/tools/security-check.html"><span>Self Check / 3 min</span><h3>ホームページのセキュリティ セルフチェック</h3><p>12の質問に答えて、更新・パスワード・バックアップなど、「守り」の確認したい点を調べます。</p></a>
-      <a href="/tools/php-check.html"><span>PHP / 1 min</span><h3>PHPバージョン診断</h3><p>2026年10月に公表されたPHPの脆弱性について、バージョンを入れると、更新が必要かを判定します。</p></a>
+      <a href="/tools/security-check.html"><span>Self Check / 3 min</span><h3>ホームページのセキュリティチェック</h3><p>12の質問に答えて、更新・パスワード・バックアップなど、「守り」の確認したい点を調べます。</p></a>
+      <a href="/tools/php-check.html"><span>PHP / 1 min</span><h3>PHP脆弱性チェック（PHPバージョン診断）</h3><p>2026年10月に公表されたPHPの脆弱性について、バージョンを入れると、更新が必要かを判定します。</p></a>
     </div>
     <p class="note" style="margin-top:32px">""" + LEAD + """保守プランは、ライト 月5,000円〜、スタンダード 月15,000円〜、システム保守 月30,000円〜（税込、最低契約6か月）です。詳しくは<a href="/index.html#maintenance">保守・運用</a>をご覧ください。</p>
   </div>
 </section>
 """
+
+SEC_FAQ = [
+ ("ホームページのセキュリティチェックでは、何を調べますか？", "更新、パスワード、二段階認証、バックアップ、アカウント、SSL、個人情報の扱い、緊急時の連絡など、12の項目について、質問に答える形で確認します。実際のサイトを調べる診断ではありません。"),
+ ("入力した内容は、送信されますか？", "いいえ。入力内容は、お使いの端末の中だけで処理され、当方のサーバーには送信されません。登録も不要です。"),
+ ("「心配な点は見つかりませんでした」と出れば、安全ですか？", "安全を保証するものではありません。簡易チェックの範囲では、気になる点がなかったということです。ホームページの安全は、更新や点検を続けることで保たれます。"),
+ ("心配な点があると出ました。どうすればよいですか？", "結果に表示される、項目ごとの対処のヒントを、順に確認してください。自分での対応が難しい場合は、ご相談ください（ヒアリングは無料です）。"),
+ ("ホームページが改ざんされた場合は、どうすればよいですか？", "直ちにサービスを止め、ログを保存し、警察などに相談する流れを、警察庁が案内しています。詳しくは、<a href=\"/blog/website-hacked-what-to-do.html\">改ざん・乗っ取りされたら？初動対応と日頃の備え</a>をご覧ください。"),
+]
+PHP_FAQ = [
+ ("PHP2shell とは何ですか？", "2026年10月に公表された、PHP の2件の脆弱性（CVE-2026-109618、CVE-2026-109619）を組み合わせた通称です。条件がそろうと、外部の第三者が、サーバー上でプログラムを実行できてしまうおそれがあります。詳しくは、<a href=\"/blog/php2shell-explained.html\">PHP2shell とは？何が問題で、何をすればいい？</a>をご覧ください。"),
+ ("WordPress は、PHP の脆弱性の影響を受けますか？", "WordPress は PHP で動いているため、PHP のバージョンが修正版より古ければ、影響を受けうります。WordPress 本体の更新では、PHP のバージョンは変わりません。PHP は、サーバー側で更新します。詳しくは、<a href=\"/blog/wordpress-php-version-check.html\">WordPress は影響を受ける？PHPバージョンの確認方法</a>をご覧ください。"),
+ ("PHP のバージョンは、どう確認しますか？", "制作会社やサーバー会社に聞くのが確実です。WordPress なら、管理画面の「ツール」→「サイトヘルス」→「情報」→「サーバー」で見られます。"),
+ ("PHP 8.1 以前を使っています。どうなりますか？", "PHP のプロジェクトからは、更新が提供されません。ただし、Linux の配布元や、長期サポートの事業者が、独自に対策した版を出している場合があります。サーバー会社に確認し、必要なら、サポートされている版（8.2 〜 8.5）へ移行してください。"),
+ ("PHP 8.2 を使っています。修正版にすれば安心ですか？", "この脆弱性については、8.2.35 以降で対策済みと考えられます。ただし、PHP 8.2 のセキュリティサポートは、2026年12月31日に終了します（php.net）。年内に、8.3 以降への移行を計画してください。"),
+]
 
 def update_sitemap_llms():
     p = ROOT / "sitemap.xml"; s = p.read_text(encoding="utf-8")
@@ -251,8 +293,8 @@ def update_sitemap_llms():
     p.write_text(s, encoding="utf-8", newline="")
     p = ROOT / "llms.txt"; s = p.read_text(encoding="utf-8")
     sec = (f"## 無料診断\n- [無料診断]({B}tools/): ホームページの「守り」を確認できる、無料の診断ツール（登録不要、入力内容は端末内のみで処理）\n"
-           f"- [ホームページのセキュリティ セルフチェック]({B}tools/security-check.html): 12の質問で、更新・パスワード・バックアップなどの確認したい点を調べる\n"
-           f"- [PHPバージョン診断]({B}tools/php-check.html): 2026年10月のPHPの脆弱性（IPAの注意喚起）について、バージョンから更新の要否を判定する\n\n")
+           f"- [ホームページのセキュリティチェック]({B}tools/security-check.html): 12の質問で、更新・パスワード・バックアップなどの確認したい点を調べる\n"
+           f"- [PHP脆弱性チェック（PHPバージョン診断）]({B}tools/php-check.html): 2026年10月のPHPの脆弱性（IPAの注意喚起）について、バージョンから更新の要否を判定する\n\n")
     s = re.sub(r"## 無料診断\n.*?(?=\n## |\Z)", "", s, flags=re.S)
     s = s.replace("## 問い合わせ", sec + "## 問い合わせ", 1) if "## 問い合わせ" in s else s.rstrip("\n") + "\n\n" + sec
     s = re.sub(r"\n{3,}", "\n\n", s)
@@ -263,15 +305,15 @@ def main():
         try: st.reconfigure(encoding="utf-8")
         except Exception: pass
     OUT.mkdir(exist_ok=True)
-    page("index.html", "無料診断｜ホームページのセキュリティ・PHPバージョン｜Kairos",
-         "ホームページのセキュリティのセルフチェックと、PHPバージョン診断。登録不要・無料で、更新やバックアップなど「守り」の確認したい点を調べられます。蟹江町のKairos。",
+    page("index.html", "無料診断｜ホームページのセキュリティチェック・PHP脆弱性チェック｜Kairos",
+         "ホームページのセキュリティチェックと、PHP脆弱性チェック（PHPバージョン診断）。登録不要・無料で、更新やバックアップなど「守り」の確認したい点を調べられます。蟹江町のKairos。",
          "ホームページの<br>無料診断", "公開後の「守り」を、無料で確認できます。", "無料診断", IDX_BODY, "", "Kairos 無料診断")
-    page("security-check.html", "ホームページのセキュリティ セルフチェック（無料・3分）｜Kairos",
-         "12の質問に答えるだけで、ホームページの更新・パスワード・バックアップなど、「守り」の確認したい点を調べられる無料のセルフチェック。登録不要、入力内容は送信されません。",
-         "ホームページの<br>セキュリティ セルフチェック", "12の質問で、確認したい点を調べます（無料・3分・登録不要）。", "セキュリティ セルフチェック", SEC_BODY, SEC_JS, "ホームページのセキュリティ セルフチェック")
-    page("php-check.html", "PHPバージョン診断｜2026年10月の脆弱性に更新が必要か判定（無料）｜Kairos",
-         "2026年10月に公表されたPHPの脆弱性（PHP2shell）について、使っているPHPのバージョンを入力すると、更新が必要かを判定する無料の診断。IPAの注意喚起にもとづきます。",
-         "PHPバージョン診断", "バージョンを入れると、更新が必要かを判定します（無料・1分・登録不要）。", "PHPバージョン診断", PHP_BODY, PHP_JS, "PHPバージョン診断")
+    page("security-check.html", "ホームページのセキュリティチェック（無料）｜12の質問で確認｜Kairos",
+         "ホームページのセキュリティチェックを、12の質問に答えるだけで。更新・パスワード・バックアップ・SSLなど、「守り」の確認したい点を、無料で調べられます。登録不要、入力内容は送信されません。",
+         "ホームページの<br>セキュリティチェック（無料）", "12の質問で、確認したい点を調べます（無料・3分・登録不要）。", "セキュリティチェック", SEC_BODY, SEC_JS, "ホームページのセキュリティチェック", faq=SEC_FAQ)
+    page("php-check.html", "PHP脆弱性チェック｜PHPバージョン確認と更新の要否を判定（無料）｜Kairos",
+         "PHP脆弱性（PHP2shell、2026年10月公表）のチェックツール。PHPのバージョンを入れると、更新が必要かを無料で判定します。WordPressの方も。IPAの注意喚起にもとづく。",
+         "PHP脆弱性チェック<br>（PHPバージョン診断）", "バージョンを入れると、更新が必要かを判定します（無料・1分・登録不要）。", "PHP脆弱性チェック", PHP_BODY, PHP_JS, "PHP脆弱性チェック（PHPバージョン診断）", faq=PHP_FAQ)
     update_sitemap_llms()
     print("完了：tools/ 3ページ")
 

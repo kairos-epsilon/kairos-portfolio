@@ -170,10 +170,12 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
       <li>PHP の2件の脆弱性（CVE-2026-109618・CVE-2026-109619。組み合わせて「PHP2shell」と呼ばれています）が公表されました。</li>
       <li>条件がそろうと、外部の第三者が、サーバー上でプログラムを実行できてしまうおそれがあります。</li>
       <li>修正版が公開されています。PHP 8.2系は 8.2.35、8.3系は 8.3.36、8.4系は 8.4.27、8.5系は 8.5.12 以降です。</li>
-      <li>PHP 8.1 以前は、すでにサポートが終わっており、修正版が出ません。サポートされている版への移行が必要です。</li>
+      <li>PHP 8.1 以前は、すでにサポートが終わっており、PHP のプロジェクトからは、修正版が提供されません。ただし、Linux の配布元や、長期サポートを提供する事業者が、独自に対策した版を出している場合があり、その場合は、バージョンの表示が古くても、対策が済んでいることがあります。サーバー会社に確認し、必要ならサポートされている版への移行を検討してください。</li>
+      <li>PHP 8.2 のセキュリティサポートは、2026年12月31日に終了します（php.net）。修正版（8.2.35）に更新したあとも、年内に、8.3 以降への移行を計画してください。</li>
       <li>IPA は2026年10月22日に注意喚起を出し、10月27日に更新しました。IPA は、国内での被害事例は把握していないとしています。</li>
     </ul>
     <p>報道では、国内の複数のサービスが、緊急メンテナンスのために、一時的に停止したと伝えられています。</p>
+    <p>より詳しい解説は、<a href="/blog/php2shell-explained.html">PHP2shell とは？何が問題で、何をすればいい？</a>、<a href="/blog/wordpress-php-version-check.html">WordPress は影響を受ける？PHPバージョンの確認方法</a>をご覧ください。バージョンの判定は、<a href="/tools/php-check.html">PHP脆弱性チェック</a>（無料）で、ホームページ全体の確認は、<a href="/tools/security-check.html">セキュリティチェック</a>（無料）で行えます。</p>
     <h3>GMO の「お名前.com デスクトップクラウド」の件について</h3>
     <p>同じ時期に、GMOインターネットグループが、「お名前.com デスクトップクラウド」への不正アクセスを公表しています。GMO は、このサービスを10月21日に停止したと発表しています。</p>
     <p>これは、ホームページの脆弱性とは別の件です。ホームページやレンタルサーバーなど、ほかのサービスへの影響は、公式発表の中では述べられていません。ただ、「預けたデータをどう守るか」「連絡を装った詐欺にどう備えるか」を考える機会にはなります。GMO は、利用者に対し、パスワードや認証コードを聞くことはない、という趣旨の注意も出しています。</p>
@@ -218,6 +220,7 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
     <ul>
       <li><a href="https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html" target="_blank" rel="noopener">IPA「PHPの脆弱性対策について（CVE-2026-109618、CVE-2026-109619：PHP2shell）」</a>（2026年10月22日公開、10月27日更新）</li>
       <li><a href="https://www.ipa.go.jp/security/security-alert/2026/index.html" target="_blank" rel="noopener">IPA「2026年度 セキュリティ注意喚起」一覧</a></li>
+      <li><a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener">PHP：サポートされているバージョン（php.net）</a></li>
       <li><a href="https://group.gmo/info/alert/" target="_blank" rel="noopener">GMOインターネットグループ「重要なお知らせ」（お名前.com デスクトップクラウドへの不正アクセスについて）</a></li>
     </ul>
   </div>
