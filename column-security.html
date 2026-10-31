@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ホームページのセキュリティ対策｜PHPの脆弱性（2026年10月）で確認すること｜Kairos</title>
+<meta name="description" content="2026年10月に公表されたPHPの重大な脆弱性について、IPAの注意喚起をもとに、中小企業・個人事業主が確認することをやさしく解説。チェックリスト付き。蟹江町のKairos。">
+<link rel="canonical" href="https://kairos-web.jp/column-security.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Kairos">
+<meta property="og:title" content="ホームページのセキュリティ対策｜PHPの脆弱性（2026年10月）で確認すること｜Kairos">
+<meta property="og:description" content="2026年10月に公表されたPHPの重大な脆弱性について、IPAの注意喚起をもとに、中小企業・個人事業主が確認することをやさしく解説。チェックリスト付き。蟹江町のKairos。">
+<meta property="og:url" content="https://kairos-web.jp/column-security.html">
+<meta property="og:image" content="https://kairos-web.jp/assets/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ホームページのセキュリティ対策｜PHPの脆弱性（2026年10月）で確認すること｜Kairos">
+<meta name="twitter:description" content="2026年10月に公表されたPHPの重大な脆弱性について、IPAの注意喚起をもとに、中小企業・個人事業主が確認することをやさしく解説。チェックリスト付き。蟹江町のKairos。">
+<meta name="twitter:image" content="https://kairos-web.jp/assets/ogp.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","@id":"https://kairos-web.jp/column-security.html#page","url":"https://kairos-web.jp/column-security.html","name":"ホームページのセキュリティ対策｜PHPの脆弱性（2026年10月）で確認すること｜Kairos","description":"2026年10月に公表されたPHPの重大な脆弱性について、IPAの注意喚起をもとに、中小企業・個人事業主が確認することをやさしく解説。チェックリスト付き。蟹江町のKairos。","inLanguage":"ja","isPartOf":{"@id":"https://kairos-web.jp/#website"},"publisher":{"@id":"https://kairos-web.jp/#business"},"headline":"ホームページのセキュリティ対策","author":{"@id":"https://kairos-web.jp/#business"},"image":"https://kairos-web.jp/assets/ogp.png","datePublished":"2026-10-31","dateModified":"2026-10-31"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kairos-web.jp/"},{"@type":"ListItem","position":2,"name":"コラム：セキュリティ","item":"https://kairos-web.jp/column-security.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"自分のホームページがPHPで動いているか、どうすれば分かりますか？","acceptedAnswer":{"@type":"Answer","text":"制作を依頼した会社やサーバー会社に、PHPのバージョンを聞くのが確実です。WordPress の場合は、管理画面の「ツール」→「サイトヘルス」→「情報」→「サーバー」で、PHPのバージョンを確認できます。"}},{"@type":"Question","name":"PHPの更新は、自分でやってもよいですか？","acceptedAnswer":{"@type":"Answer","text":"更新の方法はサーバー会社によって異なり、更新すると動かなくなるプラグインやテーマが出ることもあります。バックアップを取ったうえで、制作会社やサーバー会社に相談しながら進めるのがおすすめです。"}},{"@type":"Question","name":"セキュリティ対策は、保守プランに入らないとできませんか？","acceptedAnswer":{"@type":"Answer","text":"必須ではありません。ただ、更新の確認や、問題が起きたときの対応を任せたい方には、保守プランが向いています。Kairos の保守プランでは、更新、不具合対応、サーバー管理に対応します。"}},{"@type":"Question","name":"いま使っているホームページが安全かどうか、見てもらえますか？","acceptedAnswer":{"@type":"Answer","text":"ご相談ください。ヒアリングは無料です。使っているシステムとサーバーの構成をうかがい、何を確認するとよいかをお伝えします。"}}]}
+</script>
+<style>
+:root{--black:#0f0f0f;--gray-dark:#444;--gray:#888;--border:#e8e8e8;--bg:#fafafa;--white:#fff;--accent:#c4714a;--accent-light:#f0e8e3}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--white);color:var(--black);overflow-x:hidden}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 48px;justify-content:space-between}
+.header-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em;color:var(--black);text-decoration:none}
+.header-logo span{color:var(--accent)}
+nav{display:flex;gap:32px;align-items:center}
+nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s}
+nav a:hover,nav a.active{color:var(--black)}
+.nav-contact{border:1px solid var(--black);padding:7px 18px;font-size:10px;letter-spacing:.14em;color:var(--black)!important}
+.nav-contact:hover{background:var(--black);color:var(--white)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:20px;height:1px;background:var(--black);display:block}
+.mobile-menu{position:fixed;inset:0;background:var(--white);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transform:translateX(100%);transition:transform .35s ease}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:28px;color:var(--black);text-decoration:none}
+.mobile-close{position:absolute;top:18px;right:24px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--gray)}
+
+.page-hero{padding:120px 48px 64px;border-bottom:1px solid var(--border);background:var(--bg)}
+.breadcrumb{font-size:11px;letter-spacing:.12em;color:var(--gray);margin-bottom:20px}
+.breadcrumb a{color:var(--gray);text-decoration:none}.breadcrumb a:hover{color:var(--black)}
+.eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.page-title{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(26px,4vw,44px);font-weight:400;line-height:1.45;margin-bottom:20px}
+.page-desc{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:640px}
+.work-badge{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.1em;padding:3px 12px;border-radius:99px;margin-bottom:16px;border:1px solid;line-height:1.6}
+.work-badge.is-deliv{background:var(--accent);color:#fff;border-color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 48px}
+section.blk{padding:80px 0;border-bottom:1px solid var(--border)}
+.h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(22px,3vw,30px);font-weight:400;line-height:1.5;margin-bottom:12px}
+.h2 em{font-style:italic;color:var(--accent)}
+.lead{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:700px}
+.shot{border:1px solid var(--border);background:var(--bg);overflow:hidden}
+.shot img{width:100%;height:auto;display:block}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:2px}
+.spec-item{background:var(--bg);padding:18px 22px}
+.spec-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.spec-value{font-size:12px;color:var(--gray-dark);line-height:1.8}
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:28px}
+.ps>div{background:var(--white);padding:36px}
+.ps h3{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:500}
+.ps p{font-size:12px;line-height:2.1;color:var(--gray-dark)}
+.craft{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:28px}
+.craft>div{background:var(--white);padding:32px 34px}
+.craft h4{font-size:14px;font-weight:500;line-height:1.7;margin-bottom:10px}
+.craft h4 span{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:400}
+.craft p{font-size:12px;line-height:2.1;color:var(--gray-dark)}
+.tech-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:22px}
+.tech-tag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);padding:4px 11px;color:var(--gray)}
+.btn{display:inline-block;background:var(--black);color:#fff;padding:14px 36px;font-size:11px;letter-spacing:.16em;text-decoration:none;transition:background .25s}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--black);border:1px solid var(--black)}
+.btn.ghost:hover{background:var(--black);color:#fff}
+.site-link{margin-top:28px}
+.credit{font-size:11px;line-height:2;color:var(--gray);margin-top:20px}
+.cta{padding:72px 0;text-align:center}
+.cta p{font-size:13px;line-height:2.1;color:var(--gray-dark);margin-bottom:24px}
+.cta .sub{font-size:11px;color:var(--gray);margin:20px 0 0}
+.cta .sub a{color:var(--gray-dark)}
+footer{background:var(--black);color:#fff;padding:48px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em}.footer-logo span{color:var(--accent)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.25)}
+.footer-nav{display:flex;gap:24px}.footer-nav a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none}.footer-nav a:hover{color:#fff}
+@media(max-width:960px){
+ header{padding:0 24px}nav{display:none}.hamburger{display:flex}
+ .page-hero{padding:100px 24px 48px}.wrap{padding:0 24px}section.blk{padding:56px 0}
+ .spec-grid{grid-template-columns:1fr}.ps{grid-template-columns:1fr}.ps>div{padding:28px 24px}
+ .craft{grid-template-columns:1fr}.craft>div{padding:26px 24px}
+ .footer-bottom{flex-direction:column;gap:20px;text-align:center}.footer-nav{flex-wrap:wrap;justify-content:center}footer{padding:40px 24px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.faq details{border-bottom:1px solid var(--border);padding:18px 0}.faq summary{cursor:pointer;font-size:14px;font-weight:500;line-height:1.8}.faq details p{font-size:12px;line-height:2.1;color:var(--gray-dark);margin-top:10px}.ptable{width:100%;border-collapse:collapse;margin-top:28px;font-size:12px}.ptable th,.ptable td{border-bottom:1px solid var(--border);padding:14px 12px;text-align:left;line-height:1.9;color:var(--gray-dark)}.ptable th{font-weight:500;color:var(--black);width:34%}.note{font-size:11px;color:var(--gray);line-height:2;margin-top:16px}.lead a,.note a,.craft a,.prose a,.src a{color:var(--accent)}.prose p{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:760px;margin-top:16px}.prose h3{font-size:15px;font-weight:500;line-height:1.8;margin-top:32px;max-width:760px}.prose ul{margin:16px 0 0 1.2em;max-width:760px}.prose li{font-size:13px;line-height:2.2;color:var(--gray-dark)}.src li{font-size:12px;line-height:2.1;color:var(--gray-dark);margin-left:1.2em}.meta{font-size:11px;color:var(--gray);margin-top:20px;letter-spacing:.06em}@media(max-width:960px){.ptable th,.ptable td{display:block;width:100%;border-bottom:0;padding:6px 0}.ptable tr{display:block;border-bottom:1px solid var(--border);padding:10px 0}}</style>
+<!-- Google tag (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0D5FE87BBJ"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
+</script>
+<!-- Microsoft Clarity -->
+<script>
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z6cmrb2gry");
+</script>
+</head>
+<body>
+<header>
+  <a href="index.html" class="header-logo">Kairos <span>Web Production</span></a>
+  <nav>
+    <a href="lp.html">LP制作</a>
+    <a href="corporate.html">コーポレート</a>
+    <a href="ec.html">EC・実装</a>
+    <a href="system.html">システム開発</a>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="nav-contact">Contact</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="閉じる">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="lp.html" onclick="toggleMenu()">LP制作</a>
+  <a href="corporate.html" onclick="toggleMenu()">コーポレート</a>
+  <a href="ec.html" onclick="toggleMenu()">EC・実装</a>
+  <a href="system.html" onclick="toggleMenu()">システム開発</a>
+</div>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="index.html">Home</a> / コラム：セキュリティ</p>
+  <p class="eyebrow">Column / Security</p>
+  <h1 class="page-title">ホームページのセキュリティ、<br>何を確認すればいい？</h1>
+  <p class="page-desc">2026年10月に公表されたPHPの脆弱性（PHP2shell）をきっかけに、WordPress などのホームページを持つ中小企業・個人事業主の方が、最初に確認することを解説します。</p>
+</div>
+
+<section class="blk">
+  <div class="wrap prose">
+    <p class="eyebrow">Summary</p>
+    <h2 class="h2">まず、<em>結論</em>から。</h2>
+    <p>2026年10月、PHP という、多くのホームページの裏で動いているプログラムに、重大な脆弱性（弱点）が見つかりました。IPA（情報処理推進機構）が注意喚起を出しています。WordPress など、PHP で動くホームページを持っている方は、いまのうちに確認してください。</p>
+    <p>慌てる必要はありません。確認することは、最初の1つだけです。<strong>「自分のホームページが、PHPのどのバージョンで動いているか」</strong>を、制作会社やサーバー会社に聞いてください。</p>
+    <p class="meta">公開：2026年10月31日／この内容は、2026年10月31日時点の公式発表にもとづきます。最新の情報は、末尾の出典でご確認ください。</p>
+  </div>
+</section>
+
+<section class="blk" style="background:var(--bg)">
+  <div class="wrap prose">
+    <p class="eyebrow">What happened</p>
+    <h2 class="h2">いま<em>何が起きている</em>のか。</h2>
+    <h3>PHP の脆弱性（2026年10月）</h3>
+    <ul>
+      <li>PHP の2件の脆弱性（CVE-2026-109618・CVE-2026-109619。組み合わせて「PHP2shell」と呼ばれています）が公表されました。</li>
+      <li>条件がそろうと、外部の第三者が、サーバー上でプログラムを実行できてしまうおそれがあります。</li>
+      <li>修正版が公開されています。PHP 8.2系は 8.2.35、8.3系は 8.3.36、8.4系は 8.4.27、8.5系は 8.5.12 以降です。</li>
+      <li>PHP 8.1 以前は、すでにサポートが終わっており、修正版が出ません。サポートされている版への移行が必要です。</li>
+      <li>IPA は2026年10月22日に注意喚起を出し、10月27日に更新しました。IPA は、国内での被害事例は把握していないとしています。</li>
+    </ul>
+    <p>報道では、国内の複数のサービスが、緊急メンテナンスのために、一時的に停止したと伝えられています。</p>
+    <h3>GMO の「お名前.com デスクトップクラウド」の件について</h3>
+    <p>同じ時期に、GMOインターネットグループが、「お名前.com デスクトップクラウド」への不正アクセスを公表しています。GMO は、このサービスを10月21日に停止したと発表しています。</p>
+    <p>これは、ホームページの脆弱性とは別の件です。ホームページやレンタルサーバーなど、ほかのサービスへの影響は、公式発表の中では述べられていません。ただ、「預けたデータをどう守るか」「連絡を装った詐欺にどう備えるか」を考える機会にはなります。GMO は、利用者に対し、パスワードや認証コードを聞くことはない、という趣旨の注意も出しています。</p>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="wrap prose">
+    <p class="eyebrow">Check</p>
+    <h2 class="h2">自分のサイトは、<em>関係がある</em>？</h2>
+    <p>PHP は、サーバー側で動くプログラムの言語です。WordPress や、EC-CUBE などの多くのシステムが、PHP で動いています。</p>
+    <ul>
+      <li><strong>PHP で動いているサイト</strong>（WordPress など）：PHP のバージョンを確認してください。修正版より古いなら、更新が必要です。</li>
+      <li><strong>HTML だけで作られた静的なサイト</strong>：サイトそのものが PHP で動いていなければ、この脆弱性の影響は受けません。この Kairos のサイトは、HTML だけで作っています。</li>
+    </ul>
+    <p>どちらか分からない場合は、制作を依頼した会社か、サーバー会社に聞いてください。WordPress であれば、管理画面の「ツール」→「サイトヘルス」→「情報」→「サーバー」で、PHP のバージョンを確認できます。</p>
+  </div>
+</section>
+
+<section class="blk" style="background:var(--bg)">
+  <div class="wrap prose">
+    <p class="eyebrow">Checklist</p>
+    <h2 class="h2">最低限の<em>セキュリティ対策</em>。</h2>
+    <p>今回の件に限らず、ホームページを持っている方が、ふだんから確認したいことをまとめました。</p>
+    <table class="ptable"><tr><th>1. PHPのバージョンを確認する</th><td>8.2.35・8.3.36・8.4.27・8.5.12 未満なら、更新が必要です。PHP 8.1 以前は修正が出ないため、移行を検討します</td></tr><tr><th>2. WordPress・テーマ・プラグインを最新にする</th><td>更新通知を放置しません。自動更新を使える部分は、オンにしておきます</td></tr><tr><th>3. 使っていないプラグインや古いサイトを消す</th><td>使っていない機能や、放置したテスト用のサイトは、狙われやすい入口になります</td></tr><tr><th>4. パスワードを強くして、使い回さない</th><td>管理画面、サーバー、ドメインのパスワードは別々にします。二段階認証が使えるサービスは、オンにします</td></tr><tr><th>5. バックアップを別の場所にも取る</th><td>サーバーの中だけでなく、別の場所にも保管します。復元できることまで確認できるとさらに安心です</td></tr><tr><th>6. 契約している会社と、連絡先の窓口を把握する</th><td>ドメイン・サーバー・ホームページを、誰がどこで契約しているかを整理します。緊急時に連絡が取れる状態にしておきます</td></tr><tr><th>7. 怪しいメール・SMSのリンクを開かない</th><td>公式を名乗る連絡でも、リンクは開かず、公式サイトから確認します</td></tr></table>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="wrap prose">
+    <p class="eyebrow">Support</p>
+    <h2 class="h2">Kairos が<em>できること</em>。</h2>
+    <p>Kairos は、ホームページの制作だけでなく、公開後の更新、不具合対応、サーバー管理までを担当する保守プランを用意しています（ライト 月5,000円〜／スタンダード 月15,000円〜／システム保守 月30,000円〜。税込、最低契約6か月）。</p>
+    <p>お客様のシステムの構成（使っている言語やサーバー）によって、確認すべきことは変わります。ご相談の際に、どこから確認するかをお伝えします。ヒアリングは無料です。蟹江町を拠点に、<a href="area-kanie.html">蟹江町</a>、<a href="area-kaifu.html">海部・津島・尾張西部</a>の方は、対面でのご相談も可能です。</p>
+  </div>
+</section>
+
+<section class="blk" style="background:var(--bg)">
+  <div class="wrap src">
+    <p class="eyebrow">Sources</p>
+    <h2 class="h2">出典・<em>参考</em>。</h2>
+    <ul>
+      <li><a href="https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html" target="_blank" rel="noopener">IPA「PHPの脆弱性対策について（CVE-2026-109618、CVE-2026-109619：PHP2shell）」</a>（2026年10月22日公開、10月27日更新）</li>
+      <li><a href="https://www.ipa.go.jp/security/security-alert/2026/index.html" target="_blank" rel="noopener">IPA「2026年度 セキュリティ注意喚起」一覧</a></li>
+      <li><a href="https://group.gmo/info/alert/" target="_blank" rel="noopener">GMOインターネットグループ「重要なお知らせ」（お名前.com デスクトップクラウドへの不正アクセスについて）</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="blk" style="background:var(--bg)">
+  <div class="wrap faq">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="h2">よくある<em>ご質問</em>。</h2>
+    <details><summary>自分のホームページがPHPで動いているか、どうすれば分かりますか？</summary><p>制作を依頼した会社やサーバー会社に、PHPのバージョンを聞くのが確実です。WordPress の場合は、管理画面の「ツール」→「サイトヘルス」→「情報」→「サーバー」で、PHPのバージョンを確認できます。</p></details><details><summary>PHPの更新は、自分でやってもよいですか？</summary><p>更新の方法はサーバー会社によって異なり、更新すると動かなくなるプラグインやテーマが出ることもあります。バックアップを取ったうえで、制作会社やサーバー会社に相談しながら進めるのがおすすめです。</p></details><details><summary>セキュリティ対策は、保守プランに入らないとできませんか？</summary><p>必須ではありません。ただ、更新の確認や、問題が起きたときの対応を任せたい方には、保守プランが向いています。Kairos の保守プランでは、更新、不具合対応、サーバー管理に対応します。</p></details><details><summary>いま使っているホームページが安全かどうか、見てもらえますか？</summary><p>ご相談ください。ヒアリングは無料です。使っているシステムとサーバーの構成をうかがい、何を確認するとよいかをお伝えします。</p></details>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <p>ホームページのセキュリティについて、お困りのことがあればご相談ください。<br>まずは、いまのお困りごとをお聞かせください。<br>ご返信は通常2営業日以内です。</p>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="btn">LINEで相談する →</a>
+    <p class="sub">フォームからのご相談は<a href="index.html#contact">こちら</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-logo">Kairos <span>Web Production</span></div>
+    <nav class="footer-nav">
+      <a href="lp.html">LP制作</a><a href="corporate.html">コーポレート</a><a href="ec.html">EC・実装</a><a href="system.html">システム開発</a>
+    </nav>
+    <span class="footer-copy">© 2026 Kairos Web Production.</span>
+  </div>
+</footer>
+<script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>
+</body>
+</html>
