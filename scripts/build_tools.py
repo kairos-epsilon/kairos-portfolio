@@ -237,7 +237,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 
 PHP_BODY = """<section class="blk">
   <div class="wrap tool">
-    <p class="lead">2026年10月、PHP の重大な脆弱性（PHP2shell）が公表されました。自分のホームページが使っているPHPのバージョンを入れると、更新が必要かを、すぐに判定します。</p>
+    <p class="lead">2026年10月、PHP（ホームページを動かすプログラム）の重大な脆弱性（セキュリティ上の弱点）「PHP2shell」が公表されました。自分のホームページが使っているPHPのバージョンを入れると、更新が必要かを、すぐに判定します。</p>
     <p class="note">入力内容は、この端末の中だけで処理され、送信されません。登録も不要です。</p>
     <div style="margin-top:28px">
       <label for="php-in" style="display:block;font-size:13px;font-weight:500;margin-bottom:10px">PHP のバージョン（例：8.3.30）</label>
@@ -263,7 +263,7 @@ IDX_BODY = """<section class="blk">
     <p class="lead">ホームページを「作る」だけでなく、公開後に「守る」ための、無料の診断です。どちらも登録は不要で、入力内容は、この端末の中だけで処理されます。</p>
     <div class="tcards">
       <a href="/tools/security-check.html"><span>Self Check / 3 min</span><h3>ホームページのセキュリティチェック</h3><p>12の質問に答えて、更新・パスワード・バックアップなど、「守り」の確認したい点を調べます。</p></a>
-      <a href="/tools/php-check.html"><span>PHP / 1 min</span><h3>PHP脆弱性チェック（PHPバージョン診断）</h3><p>2026年10月に公表されたPHPの脆弱性について、バージョンを入れると、更新が必要かを判定します。</p></a>
+      <a href="/tools/php-check.html"><span>PHP / 1 min</span><h3>PHP脆弱性チェック（PHPバージョン診断）</h3><p>2026年10月に公表されたPHPの脆弱性（セキュリティ上の弱点）について、バージョンを入れると、更新が必要かを判定します。</p></a>
     </div>
     <p class="note" style="margin-top:32px">""" + LEAD + """保守プランは、ライト 月5,000円〜、スタンダード 月15,000円〜、システム保守 月30,000円〜（税込、最低契約6か月）です。詳しくは<a href="/index.html#maintenance">保守・運用</a>をご覧ください。</p>
   </div>

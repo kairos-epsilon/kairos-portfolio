@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # (グループ名, [(リンク先, 表示名), ...])。リンク先の "@" は、トップページ（index.html）の意味。
 GROUPS = [
-    ("制作実績", [("lp.html", "LP制作"), ("corporate.html", "コーポレート"), ("ec.html", "EC・実装"), ("system.html", "システム開発")]),
+    ("制作実績", [("lp.html", "サイト（LP）制作"), ("corporate.html", "コーポレートサイト"), ("ec.html", "EC（ネットショップ）"), ("system.html", "システム開発")]),
     ("料金・サービス", [("@#pricing", "料金"), ("@#maintenance", "保守・運用"), ("@#logistics", "運送・物流業の方へ"), ("@#faq", "FAQ")]),
     ("ブログ・診断", [("blog/", "ブログ"), ("tools/", "セキュリティ診断")]),
     ("Kairosについて", [("@#message", "代表挨拶"), ("@#company", "運営者情報")]),
