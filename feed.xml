@@ -5,7 +5,15 @@
   <link>https://kairos-web.jp/blog/</link>
   <description>ホームページ制作・システム開発・セキュリティなどの話題</description>
   <language>ja</language>
-  <lastBuildDate>Sat, 31 Oct 2026 09:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Mon, 02 Nov 2026 09:00:00 +0900</lastBuildDate>
+  <item>
+    <title>Googleビジネスプロフィールとは？地域のお店が最初に整えたい5つのこと</title>
+    <link>https://kairos-web.jp/blog/google-business-profile-basics.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/google-business-profile-basics.html</guid>
+    <pubDate>Mon, 02 Nov 2026 09:00:00 +0900</pubDate>
+    <category>SEO・集客</category>
+    <description>Googleマップや検索で「近くのお店」として見つけてもらうための Googleビジネスプロフィール。登録の考え方と、最初に整えたい5つのポイントを、初めての方向けにやさしく解説します。</description>
+  </item>
   <item>
     <title>WordPressは影響を受ける？PHPバージョンの確認方法と対応</title>
     <link>https://kairos-web.jp/blog/wordpress-php-version-check.html</link>
