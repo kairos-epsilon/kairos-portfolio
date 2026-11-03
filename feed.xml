@@ -5,7 +5,15 @@
   <link>https://kairos-web.jp/blog/</link>
   <description>ホームページ制作・システム開発・セキュリティなどの話題</description>
   <language>ja</language>
-  <lastBuildDate>Mon, 02 Nov 2026 09:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Tue, 03 Nov 2026 09:00:00 +0900</lastBuildDate>
+  <item>
+    <title>ホームページのバックアップとは？何を・どこに・どれくらい取るか</title>
+    <link>https://kairos-web.jp/blog/website-backup-basics.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/website-backup-basics.html</guid>
+    <pubDate>Tue, 03 Nov 2026 09:00:00 +0900</pubDate>
+    <category>セキュリティ</category>
+    <description>ホームページのバックアップは、改ざんや更新の失敗に備える基本の対策です。何を、どこに、どれくらいの頻度で取ればよいか、戻せるかの確認方法まで、初心者向けに整理しました。</description>
+  </item>
   <item>
     <title>Googleビジネスプロフィールとは？地域のお店が最初に整えたい5つのこと</title>
     <link>https://kairos-web.jp/blog/google-business-profile-basics.html</link>
