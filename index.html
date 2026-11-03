@@ -532,6 +532,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   padding: 0 clamp(24px, 4vw, 56px) 24px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding: 0 clamp(24px, 4vw, 56px);
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
@@ -598,10 +599,27 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   display: flex; justify-content: center; gap: 8px;
   margin-top: 32px; padding: 0 24px;
 }
+.services-scroll-hint { align-items: center; }
 .services-scroll-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: var(--border); transition: all 0.3s;
+  background: var(--border); transition: all 0.3s; cursor: pointer;
 }
+.services-arrow {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--bg-base);
+  color: var(--text-primary); font-size: 15px; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background .2s, color .2s, border-color .2s, opacity .2s;
+}
+.services-arrow:first-child { margin-right: 8px; }
+.services-arrow:last-child { margin-left: 8px; }
+.services-arrow:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.services-arrow:disabled { opacity: .3; pointer-events: none; }
+.services-track { cursor: grab; }
+.services-track.dragging { cursor: grabbing; }
+.services-track.dragging, .services-track.sliding { scroll-snap-type: none; }
+.services-track.dragging a { pointer-events: none; }
+.services-track img, .services-track video { -webkit-user-drag: none; user-select: none; }
 .services-scroll-dot.active {
   width: 24px; border-radius: 3px;
   background: var(--accent);
@@ -1480,10 +1498,12 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
     </div>
   </div>
   <div class="services-scroll-hint" id="servicesDots">
+    <button type="button" class="services-arrow" id="svcPrev" aria-label="前の制作分野へ">←</button>
     <span class="services-scroll-dot active"></span>
     <span class="services-scroll-dot"></span>
     <span class="services-scroll-dot"></span>
     <span class="services-scroll-dot"></span>
+    <button type="button" class="services-arrow" id="svcNext" aria-label="次の制作分野へ">→</button>
   </div>
 </section>
 
@@ -2110,7 +2130,67 @@ function toggleMenu() {
     const progress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
     const activeIndex = Math.round(progress * (dots.length - 1));
     dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+    prev.disabled = scrollLeft <= 2;
+    next.disabled = scrollLeft >= maxScroll - 2;
   }, { passive: true });
+
+  /* 矢印・ドットで1枚ずつ送る（PCのマウス操作用） */
+  const prev = document.getElementById('svcPrev');
+  const next = document.getElementById('svcNext');
+  const panels = track.querySelectorAll('.service-panel');
+  const step = () => {
+    const p = panels[1];
+    return p ? p.offsetLeft - panels[0].offsetLeft : track.clientWidth * 0.8;
+  };
+  /* 自前のアニメーション（スナップと smooth の相性に左右されない） */
+  let raf = 0;
+  const slideTo = (to) => {
+    const max = track.scrollWidth - track.clientWidth;
+    to = Math.max(0, Math.min(max, to));
+    const from = track.scrollLeft, t0 = performance.now(), dur = 450;
+    cancelAnimationFrame(raf);
+    track.classList.add('sliding');
+    const tick = (now) => {
+      const k = Math.min(1, (now - t0) / dur);
+      track.scrollLeft = from + (to - from) * (1 - Math.pow(1 - k, 3));
+      if (k < 1) raf = requestAnimationFrame(tick);
+      else track.classList.remove('sliding');
+    };
+    raf = requestAnimationFrame(tick);
+  };
+  const cur = () => Math.round(track.scrollLeft / step());
+  const go = (dir) => slideTo((cur() + dir) * step());
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(1));
+  dots.forEach((d, i) => d.addEventListener('click', () => {
+    slideTo(i * step());
+  }));
+  prev.disabled = true;
+
+  /* マウスのドラッグで横に動かす（タッチは標準のスワイプのまま） */
+  let down = false, moved = false, sx = 0, sl = 0;
+  track.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    down = true; moved = false; sx = e.clientX; sl = track.scrollLeft;
+  });
+  window.addEventListener('pointermove', (e) => {
+    if (!down) return;
+    const dx = e.clientX - sx;
+    if (!moved && Math.abs(dx) > 5) { moved = true; track.classList.add('dragging'); }
+    if (moved) track.scrollLeft = sl - dx;
+  });
+  const end = () => {
+    if (!down) return;
+    down = false;
+    if (moved) {
+      track.classList.remove('dragging');
+      slideTo(cur() * step());
+      moved = false;
+    }
+  };
+  window.addEventListener('pointerup', end);
+  window.addEventListener('pointercancel', end);
+  track.addEventListener('dragstart', (e) => e.preventDefault());
 })();
 
 /* ── Scroll reveal ── */
