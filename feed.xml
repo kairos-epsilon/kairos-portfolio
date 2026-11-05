@@ -5,7 +5,15 @@
   <link>https://kairos-web.jp/blog/</link>
   <description>ホームページ制作・システム開発・セキュリティなどの話題</description>
   <language>ja</language>
-  <lastBuildDate>Tue, 03 Nov 2026 09:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Fri, 06 Nov 2026 09:00:00 +0900</lastBuildDate>
+  <item>
+    <title>ホームページの管理画面パスワードを守る｜使い回し対策と二段階認証</title>
+    <link>https://kairos-web.jp/blog/admin-password-two-factor-website.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/admin-password-two-factor-website.html</guid>
+    <pubDate>Fri, 06 Nov 2026 09:00:00 +0900</pubDate>
+    <category>セキュリティ</category>
+    <description>ホームページの管理画面やサーバーのパスワードは、乗っ取りの入口になりやすい場所です。使い回しをやめる、長くする、二段階認証を使うなど、今日からできる守り方を初心者向けに整理しました。</description>
+  </item>
   <item>
     <title>ホームページのバックアップとは？何を・どこに・どれくらい取るか</title>
     <link>https://kairos-web.jp/blog/website-backup-basics.html</link>
