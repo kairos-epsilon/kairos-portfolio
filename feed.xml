@@ -5,7 +5,15 @@
   <link>https://kairos-web.jp/blog/</link>
   <description>ホームページ制作・システム開発・セキュリティなどの話題</description>
   <language>ja</language>
-  <lastBuildDate>Fri, 06 Nov 2026 09:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Sun, 08 Nov 2026 09:00:00 +0900</lastBuildDate>
+  <item>
+    <title>信金システム障害（11/6）を整理｜サイバー攻撃ではない、それでも備えたいこと</title>
+    <link>https://kairos-web.jp/blog/shinkin-system-outage-prepare.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/shinkin-system-outage-prepare.html</guid>
+    <pubDate>Sun, 08 Nov 2026 09:00:00 +0900</pubDate>
+    <category>ニュース解説</category>
+    <description>2026年11月6日に西日本の128信用金庫で起きたシステム障害を、報道と発表の範囲で整理します。サイバー攻撃ではないと説明された一方、会社が備えておきたいことを、一般的な例でまとめます。</description>
+  </item>
   <item>
     <title>ホームページの管理画面パスワードを守る｜使い回し対策と二段階認証</title>
     <link>https://kairos-web.jp/blog/admin-password-two-factor-website.html</link>

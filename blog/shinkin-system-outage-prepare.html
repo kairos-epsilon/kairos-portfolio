@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>信金システム障害（11/6）を整理｜サイバー攻撃ではない、それでも備えたいこと｜Kairos ブログ</title>
+<meta name="description" content="2026年11月6日に西日本の128信用金庫で起きたシステム障害を、報道と発表の範囲で整理します。サイバー攻撃ではないと説明された一方、会社が備えておきたいことを、一般的な例でまとめます。">
+<link rel="canonical" href="https://kairos-web.jp/blog/shinkin-system-outage-prepare.html">
+<link rel="alternate" type="application/rss+xml" title="Kairos ブログ" href="/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Kairos">
+<meta property="og:title" content="信金システム障害（11/6）を整理｜サイバー攻撃ではない、それでも備えたいこと｜Kairos ブログ">
+<meta property="og:description" content="2026年11月6日に西日本の128信用金庫で起きたシステム障害を、報道と発表の範囲で整理します。サイバー攻撃ではないと説明された一方、会社が備えておきたいことを、一般的な例でまとめます。">
+<meta property="og:url" content="https://kairos-web.jp/blog/shinkin-system-outage-prepare.html">
+<meta property="og:image" content="https://kairos-web.jp/assets/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="信金システム障害（11/6）を整理｜サイバー攻撃ではない、それでも備えたいこと｜Kairos ブログ">
+<meta name="twitter:description" content="2026年11月6日に西日本の128信用金庫で起きたシステム障害を、報道と発表の範囲で整理します。サイバー攻撃ではないと説明された一方、会社が備えておきたいことを、一般的な例でまとめます。">
+<meta name="twitter:image" content="https://kairos-web.jp/assets/ogp.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://kairos-web.jp/blog/shinkin-system-outage-prepare.html#post","mainEntityOfPage":"https://kairos-web.jp/blog/shinkin-system-outage-prepare.html","url":"https://kairos-web.jp/blog/shinkin-system-outage-prepare.html","headline":"信金システム障害（11/6）を整理｜サイバー攻撃ではない、それでも備えたいこと","description":"2026年11月6日に西日本の128信用金庫で起きたシステム障害を、報道と発表の範囲で整理します。サイバー攻撃ではないと説明された一方、会社が備えておきたいことを、一般的な例でまとめます。","inLanguage":"ja","image":"https://kairos-web.jp/assets/ogp.png","datePublished":"2026-11-08","dateModified":"2026-11-08","articleSection":"ニュース解説","author":{"@id":"https://kairos-web.jp/#business"},"publisher":{"@id":"https://kairos-web.jp/#business"},"isPartOf":{"@id":"https://kairos-web.jp/#website"},"keywords":"信用金庫, システム障害, ATM, 事業継続, 備え"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kairos-web.jp/"},{"@type":"ListItem","position":2,"name":"ブログ","item":"https://kairos-web.jp/blog/"},{"@type":"ListItem","position":3,"name":"信金システム障害（11/6）を整理｜サイバー攻撃ではない、それでも備えたいこと","item":"https://kairos-web.jp/blog/shinkin-system-outage-prepare.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"今回の信金の障害は、サイバー攻撃だったのですか？","acceptedAnswer":{"@type":"Answer","text":"報道によると、信金中央金庫などの発表元は「サイバー攻撃によるものではない」と説明しています。原因は、しんきん共同センターの機器の故障と伝えられています。詳しい原因は、今後の調査で明らかになるとされています。"}},{"@type":"Question","name":"会社として、まず何を備えておくとよいですか？","acceptedAnswer":{"@type":"Answer","text":"一般的には、連絡手段の確認、取引先への支払い・入金の予定の把握、手作業で代替できる手順の用意、大切なデータのバックアップが、基本の備えです。個別の資金面の判断は、取引のある金融機関や専門家にご相談ください。"}}]}
+</script>
+<style>
+:root{--black:#0f0f0f;--gray-dark:#444;--gray:#888;--border:#e8e8e8;--bg:#fafafa;--white:#fff;--accent:#c4714a;--accent-light:#f0e8e3}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--white);color:var(--black);overflow-x:hidden}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 48px;justify-content:space-between}
+.header-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em;color:var(--black);text-decoration:none}
+.header-logo span{color:var(--accent)}
+nav{display:flex;gap:32px;align-items:center}
+nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s}
+nav a:hover,nav a.active{color:var(--black)}
+.nav-contact{border:1px solid var(--black);padding:7px 18px;font-size:10px;letter-spacing:.14em;color:var(--black)!important}
+.nav-contact:hover{background:var(--black);color:var(--white)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:20px;height:1px;background:var(--black);display:block}
+.mobile-menu{position:fixed;inset:0;background:var(--white);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transform:translateX(100%);transition:transform .35s ease}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:28px;color:var(--black);text-decoration:none}
+.mobile-close{position:absolute;top:18px;right:24px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--gray)}
+
+.page-hero{padding:120px 48px 64px;border-bottom:1px solid var(--border);background:var(--bg)}
+.breadcrumb{font-size:11px;letter-spacing:.12em;color:var(--gray);margin-bottom:20px}
+.breadcrumb a{color:var(--gray);text-decoration:none}.breadcrumb a:hover{color:var(--black)}
+.eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.page-title{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(26px,4vw,44px);font-weight:400;line-height:1.45;margin-bottom:20px}
+.page-desc{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:640px}
+.work-badge{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.1em;padding:3px 12px;border-radius:99px;margin-bottom:16px;border:1px solid;line-height:1.6}
+.work-badge.is-deliv{background:var(--accent);color:#fff;border-color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 48px}
+section.blk{padding:80px 0;border-bottom:1px solid var(--border)}
+.h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(22px,3vw,30px);font-weight:400;line-height:1.5;margin-bottom:12px}
+.h2 em{font-style:italic;color:var(--accent)}
+.lead{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:700px}
+.shot{border:1px solid var(--border);background:var(--bg);overflow:hidden}
+.shot img{width:100%;height:auto;display:block}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:2px}
+.spec-item{background:var(--bg);padding:18px 22px}
+.spec-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.spec-value{font-size:12px;color:var(--gray-dark);line-height:1.8}
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:28px}
+.ps>div{background:var(--white);padding:36px}
+.ps h3{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:500}
+.ps p{font-size:12px;line-height:2.1;color:var(--gray-dark)}
+.craft{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:28px}
+.craft>div{background:var(--white);padding:32px 34px}
+.craft h4{font-size:14px;font-weight:500;line-height:1.7;margin-bottom:10px}
+.craft h4 span{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:400}
+.craft p{font-size:12px;line-height:2.1;color:var(--gray-dark)}
+.tech-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:22px}
+.tech-tag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);padding:4px 11px;color:var(--gray)}
+.btn{display:inline-block;background:var(--black);color:#fff;padding:14px 36px;font-size:11px;letter-spacing:.16em;text-decoration:none;transition:background .25s}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--black);border:1px solid var(--black)}
+.btn.ghost:hover{background:var(--black);color:#fff}
+.site-link{margin-top:28px}
+.credit{font-size:11px;line-height:2;color:var(--gray);margin-top:20px}
+.cta{padding:72px 0;text-align:center}
+.cta p{font-size:13px;line-height:2.1;color:var(--gray-dark);margin-bottom:24px}
+.cta .sub{font-size:11px;color:var(--gray);margin:20px 0 0}
+.cta .sub a{color:var(--gray-dark)}
+footer{background:var(--black);color:#fff;padding:48px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;letter-spacing:.06em}.footer-logo span{color:var(--accent)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.25)}
+.footer-nav{display:flex;gap:24px}.footer-nav a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none}.footer-nav a:hover{color:#fff}
+@media(max-width:960px){
+ header{padding:0 24px}nav{display:none}.hamburger{display:flex}
+ .page-hero{padding:100px 24px 48px}.wrap{padding:0 24px}section.blk{padding:56px 0}
+ .spec-grid{grid-template-columns:1fr}.ps{grid-template-columns:1fr}.ps>div{padding:28px 24px}
+ .craft{grid-template-columns:1fr}.craft>div{padding:26px 24px}
+ .footer-bottom{flex-direction:column;gap:20px;text-align:center}.footer-nav{flex-wrap:wrap;justify-content:center}footer{padding:40px 24px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.prose p{font-size:13px;line-height:2.2;color:var(--gray-dark);max-width:760px;margin-top:16px}.prose h2{font-family:'Playfair Display','Noto Sans JP',serif;font-size:clamp(20px,2.6vw,26px);font-weight:400;line-height:1.6;margin-top:48px;max-width:760px}.prose h3{font-size:15px;font-weight:500;line-height:1.8;margin-top:32px;max-width:760px}.prose ul,.prose ol{margin:16px 0 0 1.2em;max-width:760px}.prose li{font-size:13px;line-height:2.2;color:var(--gray-dark)}.prose a,.src a,.lead a,.note a{color:var(--accent)}.prose blockquote{border-left:2px solid var(--accent);padding:4px 0 4px 18px;margin:20px 0 0;max-width:760px}.prose table{width:100%;max-width:760px;border-collapse:collapse;margin-top:24px;font-size:12px}.prose th,.prose td{border-bottom:1px solid var(--border);padding:12px 10px;text-align:left;line-height:1.9;color:var(--gray-dark)}.prose th{font-weight:500;color:var(--black)}.meta{font-size:11px;color:var(--gray);margin-top:20px;letter-spacing:.06em}.src li{font-size:12px;line-height:2.1;color:var(--gray-dark);margin-left:1.2em}.faq details{border-bottom:1px solid var(--border);padding:18px 0}.faq summary{cursor:pointer;font-size:14px;font-weight:500;line-height:1.8}.faq details p{font-size:12px;line-height:2.1;color:var(--gray-dark);margin-top:10px}.note{font-size:11px;color:var(--gray);line-height:2;margin-top:16px}.plist{list-style:none;margin:28px 0 0;padding:0;max-width:860px}.plist li{border-bottom:1px solid var(--border);padding:22px 0}.plist a.t{font-size:16px;font-weight:500;line-height:1.7;color:var(--black);text-decoration:none}.plist a.t:hover{color:var(--accent)}.plist .m{font-size:10px;letter-spacing:.12em;color:var(--gray);margin-bottom:6px}.plist .m b{color:var(--accent);font-weight:500;margin-left:10px}.plist p{font-size:12px;line-height:2;color:var(--gray-dark);margin-top:6px}.pin{background:var(--bg);padding:22px 24px;margin-top:28px;max-width:860px}.pin .m{font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:6px}</style>
+<!-- Google tag (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0D5FE87BBJ"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
+</script>
+<!-- Microsoft Clarity -->
+<script>
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z6cmrb2gry");
+</script>
+</head>
+<body>
+<header>
+  <a href="/index.html" class="header-logo">Kairos <span>Web Production</span></a>
+  <nav class="gnav" aria-label="メインメニュー">
+  <div class="gn-group"><button type="button" class="gn-btn" aria-expanded="false" aria-haspopup="true">制作実績<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="gn-panel"><div class="gn-panel-in"><a href="/lp.html">サイト（LP）制作</a><a href="/corporate.html">コーポレートサイト</a><a href="/ec.html">EC（ネットショップ）</a><a href="/system.html">システム開発</a></div></div></div>
+  <div class="gn-group"><button type="button" class="gn-btn" aria-expanded="false" aria-haspopup="true">料金・サービス<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="gn-panel"><div class="gn-panel-in"><a href="/index.html#pricing">料金</a><a href="/index.html#maintenance">保守・運用</a><a href="/index.html#logistics">運送・物流業の方へ</a><a href="/index.html#faq">FAQ</a></div></div></div>
+  <div class="gn-group"><button type="button" class="gn-btn" aria-expanded="false" aria-haspopup="true">ブログ・診断<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="gn-panel"><div class="gn-panel-in"><a href="/blog/">ブログ</a><a href="/tools/">セキュリティ診断</a></div></div></div>
+  <div class="gn-group"><button type="button" class="gn-btn" aria-expanded="false" aria-haspopup="true">Kairosについて<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="gn-panel"><div class="gn-panel-in"><a href="/index.html#message">代表挨拶</a><a href="/index.html#company">運営者情報</a></div></div></div>
+  <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="nav-contact">Contact</a>
+</nav>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="メニューを閉じる">✕</button>
+  <div class="mm-wrap">
+    <a class="mm-home" href="/index.html" onclick="toggleMenu()">ホーム</a>
+    <details class="mm-group"><summary>制作実績</summary><div class="mm-links"><a href="/lp.html" onclick="toggleMenu()">サイト（LP）制作</a><a href="/corporate.html" onclick="toggleMenu()">コーポレートサイト</a><a href="/ec.html" onclick="toggleMenu()">EC（ネットショップ）</a><a href="/system.html" onclick="toggleMenu()">システム開発</a></div></details>
+    <details class="mm-group"><summary>料金・サービス</summary><div class="mm-links"><a href="/index.html#pricing" onclick="toggleMenu()">料金</a><a href="/index.html#maintenance" onclick="toggleMenu()">保守・運用</a><a href="/index.html#logistics" onclick="toggleMenu()">運送・物流業の方へ</a><a href="/index.html#faq" onclick="toggleMenu()">FAQ</a></div></details>
+    <details class="mm-group"><summary>ブログ・診断</summary><div class="mm-links"><a href="/blog/" onclick="toggleMenu()">ブログ</a><a href="/tools/" onclick="toggleMenu()">セキュリティ診断</a></div></details>
+    <details class="mm-group"><summary>Kairosについて</summary><div class="mm-links"><a href="/index.html#message" onclick="toggleMenu()">代表挨拶</a><a href="/index.html#company" onclick="toggleMenu()">運営者情報</a></div></details>
+    <a onclick="toggleMenu()" href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="mm-contact">Contact</a>
+  </div>
+</div>
+<style id="gnav-css">
+.gnav{display:flex;align-items:center;gap:30px}
+@media (max-width:960px){.gnav{display:none}}
+.gn-group{position:relative}
+.gn-btn{font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:none;color:var(--text-muted,var(--gray,#888));background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:12px 2px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.gn-btn svg{width:10px;height:10px;transition:transform .25s}
+.gn-group:has(a.active)>.gn-btn{color:var(--text-primary,var(--black,#0f0f0f));border-bottom-color:var(--accent,#c4714a)}
+.gn-btn:hover,.gn-group.open>.gn-btn{color:var(--text-primary,var(--black,#0f0f0f))}
+.gn-group.open>.gn-btn svg{transform:rotate(180deg)}
+.gn-panel{position:absolute;top:100%;left:50%;min-width:210px;padding-top:10px;transform:translate(-50%,6px);opacity:0;visibility:hidden;transition:opacity .2s,transform .25s,visibility .2s;z-index:210}
+.gn-panel-in{background:#fff;border:1px solid var(--border,#e5e5e5);border-radius:10px;box-shadow:0 14px 44px rgba(0,0,0,.13);padding:8px}
+.gn-group.open>.gn-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media (hover:hover){.gn-group:hover>.gn-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}.gn-group:hover>.gn-btn{color:var(--text-primary,var(--black,#0f0f0f))}.gn-group:hover>.gn-btn svg{transform:rotate(180deg)}}
+.gn-panel a{display:block;padding:11px 16px;border-radius:6px;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:400;letter-spacing:.04em;text-transform:none;white-space:nowrap;color:var(--text-primary,var(--black,#0f0f0f))!important;transition:background .2s,color .2s}
+.gn-panel a::after{display:none!important}
+.gn-panel a:hover{background:rgba(196,113,74,.09);color:var(--accent,#c4714a)!important}
+.gn-panel a.active{color:var(--accent,#c4714a)!important;font-weight:500}
+.mobile-menu{display:flex;flex-direction:column;align-items:center;justify-content:safe center;overflow-y:auto;padding:72px 0 40px;gap:0}
+.mm-wrap{width:min(88vw,380px)}
+.mm-home,.mm-group>summary{display:flex;justify-content:space-between;align-items:center;padding:19px 4px;font-family:'Playfair Display','Noto Sans JP',serif;font-size:20px;font-weight:400;color:var(--text-primary,var(--black,#0f0f0f));border-bottom:1px solid var(--border,#e5e5e5);cursor:pointer;list-style:none}
+.mm-group>summary::-webkit-details-marker{display:none}
+.mm-group>summary::after{content:'';width:8px;height:8px;margin-right:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .3s}
+.mm-group[open]>summary{border-bottom-color:transparent}
+.mm-group[open]>summary::after{transform:rotate(-135deg)}
+.mm-group[open]{border-bottom:1px solid var(--border,#e5e5e5)}
+.mobile-menu .mm-links{display:grid;padding:0 0 16px}
+.mobile-menu .mm-links a{font-family:'Noto Sans JP',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em;padding:12px 4px 12px 18px;color:var(--text-secondary,var(--gray-dark,#555));border-radius:6px}
+.mobile-menu .mm-links a.active{color:var(--accent,#c4714a);font-weight:500}
+.mobile-menu a.mm-contact{display:block;margin-top:28px;padding:15px 0;text-align:center;border:1px solid var(--text-primary,var(--black,#0f0f0f));border-radius:999px;font-family:'Noto Sans JP',sans-serif;font-size:14px;letter-spacing:.14em;color:var(--text-primary,var(--black,#0f0f0f))}
+</style>
+<script id="gnav-js">
+(function(){
+  var gs=[].slice.call(document.querySelectorAll('.gn-group'));
+  function closeAll(except){gs.forEach(function(g){if(g!==except){g.classList.remove('open');g.querySelector('.gn-btn').setAttribute('aria-expanded','false');}});}
+  gs.forEach(function(g){
+    var b=g.querySelector('.gn-btn');
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(e.detail>0&&window.matchMedia('(hover:hover)').matches)return;
+      var o=!g.classList.contains('open');closeAll(g);g.classList.toggle('open',o);b.setAttribute('aria-expanded',String(o));
+    });
+  });
+  document.addEventListener('click',function(){closeAll();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+  var ds=[].slice.call(document.querySelectorAll('.mm-group'));
+  ds.forEach(function(d){if(d.querySelector('a.active'))d.open=true;});
+  ds.forEach(function(d){d.addEventListener('toggle',function(){if(d.open)ds.forEach(function(o){if(o!==d)o.open=false;});});});
+})();
+</script>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="/index.html">Home</a> / <a href="/blog/">ブログ</a> / ニュース解説</p>
+  <p class="eyebrow">ニュース解説</p>
+  <h1 class="page-title">信金システム障害（11/6）を整理｜サイバー攻撃ではない、それでも備えたいこと</h1>
+  <p class="meta">公開：2026年11月8日</p>
+</div>
+
+<section class="blk">
+  <div class="wrap prose">
+<p>2026年11月6日（金）の午後、西日本を中心とした信用金庫で、ATMや窓口、ネットバンキングが使えなくなる障害がありました。「うちの取引先の信金も止まっていた」「サイバー攻撃ではないのか」と心配された方も多いと思います。この記事では、報道と発表で確認できる範囲を整理したうえで、<strong>攻撃ではなくても、会社として備えておきたいこと</strong>を、一般的な例でまとめます。</p>
+
+<h2>何が起きたのか（報道と発表の範囲）</h2>
+<p>複数の報道によると、次のとおりです。</p>
+<table class="ptable">
+<thead><tr><th>項目</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td>発生</td><td>2026年11月6日の午後1時30分ごろ</td></tr>
+<tr><td>範囲</td><td>東海地方以西の西日本にある、128の信用金庫</td></tr>
+<tr><td>影響</td><td>窓口、ATM、ネットバンキング、資金決済などが、一時使えなくなった。愛知県内の信金にも影響が出たと報じられている</td></tr>
+<tr><td>復旧</td><td>同日の午後7時ごろまでに、全面復旧（5〜6時間ほど）</td></tr>
+<tr><td>原因の説明</td><td>しんきん共同センター（信金が共同で使う基幹システム）の、機器の故障。詳しい原因は調査中</td></tr>
+<tr><td>発表元</td><td>信金中央金庫、しんきん共同センター、全国信用金庫協会</td></tr>
+</tbody>
+</table>
+<p>時刻や停止時間は、報道によって表現が少し異なります。また、記事によっては、10月のシステム更新との関係を指摘するものもありますが、確定した事実としては、まだ示されていません。正式な原因の発表を待つ必要があります。</p>
+
+<h2>「サイバー攻撃ではない」と説明されています</h2>
+<p>報道によると、発表元は、今回の障害を「サイバー攻撃によるものではない」と説明しています。ビジネス＋ITの記事では、顧客データへの影響には触れられておらず、報じられているのは、サービスの停止や、口座振替の遅れなどです。</p>
+<p>ですから、「情報が盗まれたのでは」と、過度に心配する必要は、いまのところ示されていません。この記事も、そのような不安をあおるものではありません。ただ、最新の状況は、取引のある信用金庫の公式発表で確認してください。</p>
+
+<h2>それでも、心配ですよね</h2>
+<p>攻撃ではなかったとしても、「取引先の振込が遅れた」「給与や仕入れの支払いの予定が気になった」「お客様から入金の連絡が来なかった」など、会社の動きには、実際に影響が出うる出来事でした。</p>
+<p>今回のように、<strong>共同で使う仕組みが止まると、一つの会社の努力では防げない</strong>ことがあります。だからこそ、「止まることがある」前提で、あらかじめ備えておくことが、大切になります。</p>
+
+<h2>会社として備えておきたいこと（一般的な例）</h2>
+<p>金融や会計の個別の判断は、取引のある金融機関や、専門家にご相談ください。ここでは、IT・ホームページの面から、一般的に挙げられる備えの例をまとめます。</p>
+<ul>
+<li><strong>連絡手段を複数持つ：</strong>メールだけでなく、電話、LINE、ホームページのお知らせなど、複数の手段で、取引先やお客様に連絡できるようにしておきます。</li>
+<li><strong>支払い・入金の予定を一覧にしておく：</strong>止まったときに、「どれが影響を受けるか」がすぐ分かるように、日付と金額の予定を、手元に整理しておきます。</li>
+<li><strong>手作業で代替できる手順を決める：</strong>システムが使えないときに、紙や表計算で、いったん記録しておく流れを、決めておきます。</li>
+<li><strong>大切なデータのバックアップ：</strong>顧客名簿、見積・請求のデータ、ホームページのデータなどを、別の場所に保存しておきます。詳しくは、<a href="/blog/website-backup-basics.html">ホームページのバックアップとは？何を・どこに・どれくらい取るか</a>をご覧ください。</li>
+<li><strong>ホームページに、お知らせを出せる準備：</strong>障害や休止があったとき、お客様に状況を伝える場所として、ホームページが使えるようにしておきます。</li>
+<li><strong>取引先の「止まったとき」の連絡先を確認：</strong>金融機関や、使っているサービスの、障害情報の出る場所を、あらかじめ確認しておきます。</li>
+</ul>
+
+<h2>ホームページ・システムの「守り」も確認する</h2>
+<p>今回の信金の障害は、機器の故障でしたが、ホームページや社内のシステムが止まる原因は、更新の漏れや、パスワードの管理、バックアップの不足など、身近なところにもあります。自分のサイトの備えを確認したい方は、<a href="/tools/security-check.html">ホームページのセキュリティチェック</a>（無料・12の質問・登録不要）をお使いください。入力した内容は、お使いの端末の中だけで処理され、送信されません。簡易的なチェックで、安全を保証するものではありません。基本的な考え方は、<a href="/column-security.html">ホームページのセキュリティ、何を確認すればいいか</a>にまとめています。</p>
+
+<h2>Kairos がお手伝いできること</h2>
+<p>Kairos では、ホームページや業務システムの制作に加えて、公開後の更新、不具合の対応、サーバーの管理を担当する保守プランを用意しています（ライト 月5,000円〜、スタンダード 月15,000円〜、システム保守 月30,000円〜／税込、最低契約6か月）。バックアップや更新の確認を、継続的にお任せいただけます。</p>
+<p>また、予約・会員・業務管理などのシステムや、管理画面の制作にも対応しています。「手作業が多くて、止まったときが不安」という会社には、業務の流れに合わせた仕組みを一緒に考えることもできます。ヒアリングは無料です。蟹江町や近隣の方は、対面でもご相談いただけます（<a href="/area-kanie.html">蟹江町のホームページ制作</a>）。</p>
+<p>この記事は、2026年11月8日時点の報道にもとづきます。原因の詳細や、今後の対応は、今後の発表で変わる可能性があります。最新の内容は、各信用金庫や、信金中央金庫の発表でご確認ください。</p>
+  </div>
+</section>
+<section class="blk" style="background:var(--bg)">
+  <div class="wrap src">
+    <p class="eyebrow">Sources</p>
+    <h2 class="h2">出典・参考</h2>
+    <ul><li><a href="https://www.jiji.com/jc/article?k=2026110601196&amp;g=eco" target="_blank" rel="noopener">信金のシステム障害、完全復旧 西日本地域、機器の故障が原因（時事ドットコム）</a></li><li><a href="https://news.yahoo.co.jp/articles/c09612967c8b632356799e6b0864dc7001b75049" target="_blank" rel="noopener">西日本の128信金が6時間近く停止、原因は通信機器の故障 サイバー攻撃ではないと説明（ビジネス＋IT／Yahoo!ニュース）</a></li><li><a href="https://www.chunichi.co.jp/article/1335648" target="_blank" rel="noopener">西日本地域の信用金庫でシステム障害、ATM利用できず 愛知県内の信金も（中日新聞Web）</a></li></ul>
+    <p class="note">この記事は、公開日時点の情報にもとづきます。最新の情報は、各出典でご確認ください。</p>
+  </div>
+</section>
+<section class="blk">
+  <div class="wrap faq">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="h2">よくあるご質問</h2>
+    <details><summary>今回の信金の障害は、サイバー攻撃だったのですか？</summary><p>報道によると、信金中央金庫などの発表元は「サイバー攻撃によるものではない」と説明しています。原因は、しんきん共同センターの機器の故障と伝えられています。詳しい原因は、今後の調査で明らかになるとされています。</p></details><details><summary>会社として、まず何を備えておくとよいですか？</summary><p>一般的には、連絡手段の確認、取引先への支払い・入金の予定の把握、手作業で代替できる手順の用意、大切なデータのバックアップが、基本の備えです。個別の資金面の判断は、取引のある金融機関や専門家にご相談ください。</p></details>
+  </div>
+</section>
+<section class="blk" style="background:var(--bg)">
+  <div class="wrap">
+    <p class="eyebrow">Related</p>
+    <h2 class="h2">あわせて読みたい</h2>
+    <ul class="plist"><li><div class="m">2026年11月6日<b>セキュリティ</b></div><a class="t" href="/blog/admin-password-two-factor-website.html">ホームページの管理画面パスワードを守る｜使い回し対策と二段階認証</a></li><li><div class="m">2026年11月3日<b>セキュリティ</b></div><a class="t" href="/blog/website-backup-basics.html">ホームページのバックアップとは？何を・どこに・どれくらい取るか</a></li><li><div class="m">2026年11月2日<b>SEO・集客</b></div><a class="t" href="/blog/google-business-profile-basics.html">Googleビジネスプロフィールとは？地域のお店が最初に整えたい5つのこと</a></li></ul>
+    <p class="note"><a href="/blog/">ブログの一覧へ</a></p>
+  </div>
+</section>
+<section class="cta">
+  <div class="wrap">
+    <p>ホームページやシステムのお困りごとを、お聞かせください。<br>ヒアリングとお見積りは無料です。ご返信は通常2営業日以内です。</p>
+    <a href="https://lin.ee/SvN5SIm" target="_blank" rel="noopener" class="btn">LINEで相談する →</a>
+    <p class="sub">フォームからのご相談は<a href="/index.html#contact">こちら</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-logo">Kairos <span>Web Production</span></div>
+    <nav class="footer-nav">
+      <a href="/lp.html">サイト（LP）制作</a><a href="/corporate.html">コーポレートサイト</a><a href="/ec.html">EC（ネットショップ）</a><a href="/system.html">システム開発</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/tools/">セキュリティ診断</a>
+    </nav>
+    <span class="footer-copy">© 2026 Kairos Web Production.</span>
+  </div>
+</footer>
+<script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>
+</body>
+</html>
