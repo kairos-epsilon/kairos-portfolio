@@ -5,7 +5,15 @@
   <link>https://kairos-web.jp/blog/</link>
   <description>ホームページ制作・システム開発・セキュリティなどの話題</description>
   <language>ja</language>
-  <lastBuildDate>Sun, 08 Nov 2026 09:00:00 +0900</lastBuildDate>
+  <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0900</lastBuildDate>
+  <item>
+    <title>IPAの中小企業向けガイドライン第4.0版｜ホームページ運用の自己診断項目を解説</title>
+    <link>https://kairos-web.jp/blog/ipa-sme-guideline-website-check.html</link>
+    <guid isPermaLink="true">https://kairos-web.jp/blog/ipa-sme-guideline-website-check.html</guid>
+    <pubDate>Mon, 09 Nov 2026 09:00:00 +0900</pubDate>
+    <category>ニュース解説</category>
+    <description>IPAの「中小企業の情報セキュリティ対策ガイドライン」第4.0版で、バックアップが加わり6か条に。自社診断に追加された「ウェブサイトを安全に運用する」の見方を、やさしく整理します。</description>
+  </item>
   <item>
     <title>信金システム障害（11/6）を整理｜サイバー攻撃ではない、それでも備えたいこと</title>
     <link>https://kairos-web.jp/blog/shinkin-system-outage-prepare.html</link>
