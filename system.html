@@ -328,8 +328,8 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
       <span class="work-badge is-own">自社開発・運用中</span>
       <p class="work-tag">Full-stack Web Application</p>
       <h3 class="work-title">実績管理システム「Kairos Hub」</h3>
-      <p class="work-subtitle">kairos-hub — Next.js + FastAPI + Docker</p>
-      <p class="work-desc">制作実績を一元管理・検索するために自社開発したフルスタックWebアプリケーション。案件情報をURL・GitHubリンク・使用技術タグ・説明文付きで登録し、公開一覧・キーワード検索・タグ絞り込みで横断的に参照できる。JWT認証による管理者ログイン、GitHubリポジトリのREADME自動取得、公開/非公開の制御などを実装。Docker化とGitHub ActionsによるCI/CD（Lint・テスト・ビルド）まで整備している。</p>
+      <p class="work-subtitle">kairos-hub — Next.js + FastAPI + Docker（公開デモはバックエンドなし）</p>
+      <p class="work-desc">制作実績を一元管理・検索するために自社開発したフルスタックWebアプリケーション。案件情報をURL・GitHubリンク・使用技術タグ・説明文付きで登録し、公開一覧・キーワード検索・タグ絞り込みで横断的に参照できる。JWT認証による管理者ログイン、GitHubリポジトリのREADME自動取得、公開/非公開の制御などを実装。Docker化とGitHub ActionsによるCI/CD（Lint・テスト・ビルド）まで整備している。本番構成はFastAPI・PostgreSQLで構築したもので、現在の公開版はバックエンド不要のデモ版です（案件はすべて架空で、データはブラウザ内のみに保存。ログイン画面の「デモ用ログイン」から、管理者・営業・制作の3つの役割をお試しいただけます）。</p>
       <div class="spec-grid">
         <div class="spec-item">
           <p class="spec-label">Frontend</p>
@@ -337,7 +337,7 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
         </div>
         <div class="spec-item">
           <p class="spec-label">Backend / DB</p>
-          <p class="spec-value">FastAPI（Python）<br>PostgreSQL<br>JWT認証</p>
+          <p class="spec-value">本番構成：FastAPI・PostgreSQL<br>JWT認証<br>公開デモ：ブラウザ内ストア</p>
         </div>
         <div class="spec-item">
           <p class="spec-label">Infra / CI</p>
@@ -356,7 +356,7 @@ gtag('js',new Date());gtag('config','G-0D5FE87BBJ');
         <span class="tech-tag">Docker</span>
         <span class="tech-tag">GitHub Actions</span>
       </div>
-      <a href="https://github.com/kairos-epsilon/kairos-hub" target="_blank" rel="noopener" class="view-btn">View Code →</a>
+      <a href="https://kairos-hub-dusky.vercel.app" target="_blank" rel="noopener" class="view-btn">View Demo →</a>
     </div>
   </div>
 
